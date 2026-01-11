@@ -1,65 +1,719 @@
-import Image from "next/image";
+"use client";
+
+import { useRouter } from "next/navigation";
+import { ArrowUpRight, Sparkles, ChevronRight, Mic, Brain, Zap, Globe, Shield, Clock, Users, Phone, Code, Cpu, Headphones, MessageSquare, ArrowRight, Check } from "lucide-react";
 
 export default function Home() {
-  return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    const router = useRouter();
+
+    return (
+        <div style={{ minHeight: '100vh', position: 'relative' }}>
+            {/* Dot Pattern Overlay */}
+            <div style={{
+                position: 'fixed',
+                inset: 0,
+                backgroundImage: 'radial-gradient(rgba(255,255,255,0.12) 1px, transparent 1px)',
+                backgroundSize: '24px 24px',
+                pointerEvents: 'none',
+                zIndex: 1
+            }} />
+
+            {/* Navbar */}
+            <nav style={{ 
+                position: 'fixed',
+                top: 0,
+                left: 0,
+                right: 0,
+                zIndex: 50,
+                padding: '20px 48px',
+                display: 'flex', 
+                alignItems: 'center', 
+                justifyContent: 'space-between',
+                backgroundColor: 'rgba(26, 26, 46, 0.8)',
+                backdropFilter: 'blur(20px)'
+            }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '48px' }}>
+                    {/* Logo */}
+                    <div style={{ 
+                        fontWeight: '800', 
+                        fontSize: '24px', 
+                        color: 'white', 
+                        letterSpacing: '-1px',
+                        fontFamily: 'system-ui, -apple-system, sans-serif'
+                    }}>
+                        TALKRIX
+                    </div>
+                    
+                    {/* Nav Links */}
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '32px' }}>
+                        <NavLink text="CUSTOM AGENTS" href="#features" />
+                        <NavLink text="PRICING" href="#pricing" />
+                        <NavLink text="DOCS" hasArrow />
+                        <NavLink text="RESOURCES" hasChevron />
+                        <NavLink text="CAREERS" />
+                        <NavLink text="ENTERPRISE" />
+                    </div>
+                </div>
+
+                <button 
+                    onClick={() => router.push('/login')}
+                    style={{ 
+                        background: 'linear-gradient(135deg, #a855f7 0%, #6366f1 100%)', 
+                        color: 'white', 
+                        border: 'none',
+                        borderRadius: '50px',
+                        padding: '14px 28px',
+                        cursor: 'pointer',
+                        fontSize: '13px',
+                        fontWeight: '600',
+                        letterSpacing: '0.5px',
+                        transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+                        boxShadow: '0 4px 20px rgba(168, 85, 247, 0.3)'
+                    }}
+                    onMouseEnter={(e) => {
+                        e.currentTarget.style.transform = 'translateY(-2px)';
+                        e.currentTarget.style.boxShadow = '0 6px 24px rgba(168, 85, 247, 0.4)';
+                    }}
+                    onMouseLeave={(e) => {
+                        e.currentTarget.style.transform = 'translateY(0)';
+                        e.currentTarget.style.boxShadow = '0 4px 20px rgba(168, 85, 247, 0.3)';
+                    }}
+                >
+                    OPEN DASHBOARD
+                </button>
+            </nav>
+
+            {/* Hero Section */}
+            <section style={{ 
+                position: 'relative',
+                zIndex: 10,
+                display: 'flex', 
+                flexDirection: 'column', 
+                alignItems: 'center', 
+                justifyContent: 'center',
+                minHeight: '100vh',
+                padding: '120px 48px 80px',
+                textAlign: 'center'
+            }}>
+                <h1 style={{ 
+                    fontSize: 'clamp(56px, 12vw, 140px)', 
+                    fontWeight: '300', 
+                    color: 'white', 
+                    marginBottom: '0', 
+                    letterSpacing: '-4px',
+                    lineHeight: '1',
+                    fontFamily: 'system-ui, -apple-system, sans-serif'
+                }}>
+                    Talk to the future
+                </h1>
+                <h1 style={{ 
+                    fontSize: 'clamp(56px, 12vw, 140px)', 
+                    fontWeight: '300', 
+                    color: 'white', 
+                    marginBottom: '60px', 
+                    letterSpacing: '-4px',
+                    lineHeight: '1',
+                    fontFamily: 'system-ui, -apple-system, sans-serif'
+                }}>
+                    with <span style={{ color: '#a855f7' }}>AI voice</span>
+                </h1>
+
+                {/* CTA Buttons */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '80px' }}>
+                    <button 
+                        onClick={() => router.push('/signup')}
+                        style={{ 
+                            height: '60px', 
+                            borderRadius: '50px', 
+                            background: 'linear-gradient(135deg, #a855f7 0%, #6366f1 100%)', 
+                            color: 'white', 
+                            fontWeight: '600',
+                            fontSize: '14px',
+                            border: 'none',
+                            cursor: 'pointer',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            gap: '12px',
+                            padding: '0 40px',
+                            letterSpacing: '1px',
+                            transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+                            boxShadow: '0 4px 20px rgba(168, 85, 247, 0.3)'
+                        }}
+                        onMouseEnter={(e) => {
+                            e.currentTarget.style.transform = 'translateY(-2px)';
+                            e.currentTarget.style.boxShadow = '0 8px 30px rgba(168, 85, 247, 0.4)';
+                        }}
+                        onMouseLeave={(e) => {
+                            e.currentTarget.style.transform = 'translateY(0)';
+                            e.currentTarget.style.boxShadow = '0 4px 20px rgba(168, 85, 247, 0.3)';
+                        }}
+                    >
+                        SIGN UP
+                        <Sparkles style={{ width: '18px', height: '18px' }} />
+                    </button>
+
+                    <button 
+                        style={{ 
+                            height: '60px', 
+                            borderRadius: '50px', 
+                            background: 'rgba(255,255,255,0.08)', 
+                            color: 'white', 
+                            fontWeight: '600',
+                            fontSize: '14px',
+                            border: '1px solid rgba(255,255,255,0.2)',
+                            cursor: 'pointer',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            gap: '12px',
+                            padding: '0 40px',
+                            letterSpacing: '1px',
+                            transition: 'all 0.2s ease'
+                        }}
+                        onMouseEnter={(e) => {
+                            e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.12)';
+                            e.currentTarget.style.borderColor = 'rgba(255,255,255,0.3)';
+                        }}
+                        onMouseLeave={(e) => {
+                            e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.08)';
+                            e.currentTarget.style.borderColor = 'rgba(255,255,255,0.2)';
+                        }}
+                    >
+                        READ THE DOCS
+                        <Sparkles style={{ width: '18px', height: '18px', opacity: 0.6 }} />
+                    </button>
+                </div>
+
+                {/* Stats Row */}
+                <div style={{ display: 'flex', gap: '48px' }}>
+                    <StatItem value="<100ms" label="Latency" />
+                    <StatItem value="50+" label="Languages" />
+                    <StatItem value="99.9%" label="Uptime" />
+                    <StatItem value="10M+" label="API Calls/Day" />
+                </div>
+            </section>
+
+            {/* Trusted By Section */}
+            <section style={{ 
+                position: 'relative',
+                zIndex: 10,
+                padding: '60px 48px',
+                borderTop: '1px solid rgba(255,255,255,0.1)',
+                borderBottom: '1px solid rgba(255,255,255,0.1)'
+            }}>
+                <p style={{ textAlign: 'center', color: 'rgba(255,255,255,0.4)', fontSize: '13px', letterSpacing: '2px', marginBottom: '32px' }}>
+                    TRUSTED BY INNOVATIVE TEAMS
+                </p>
+                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '64px', flexWrap: 'wrap' }}>
+                    {['Stripe', 'Vercel', 'Linear', 'Notion', 'Figma', 'Discord'].map((company) => (
+                        <div key={company} style={{ color: 'rgba(255,255,255,0.3)', fontSize: '24px', fontWeight: '700', letterSpacing: '-1px' }}>
+                            {company}
+                        </div>
+                    ))}
+                </div>
+            </section>
+
+            {/* Features Section */}
+            <section id="features" style={{ 
+                position: 'relative',
+                zIndex: 10,
+                padding: '120px 48px',
+                maxWidth: '1400px',
+                margin: '0 auto'
+            }}>
+                <div style={{ textAlign: 'center', marginBottom: '80px' }}>
+                    <p style={{ color: '#a855f7', fontSize: '14px', fontWeight: '600', letterSpacing: '2px', marginBottom: '16px' }}>
+                        FEATURES
+                    </p>
+                    <h2 style={{ fontSize: '48px', fontWeight: '300', color: 'white', letterSpacing: '-2px', marginBottom: '24px' }}>
+                        Everything you need to build
+                        <br />
+                        <span style={{ color: '#a855f7' }}>voice-first experiences</span>
+                    </h2>
+                    <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '18px', maxWidth: '600px', margin: '0 auto' }}>
+                        Connect, communicate, and create with intelligent voice technology that understands you
+                    </p>
+                </div>
+
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }}>
+                    <FeatureCard 
+                        icon={<Mic />}
+                        title="Real-time Voice"
+                        description="Crystal clear 48kHz audio with adaptive bitrate. Voice activity detection under 100ms."
+                    />
+                    <FeatureCard 
+                        icon={<Brain />}
+                        title="AI-Powered"
+                        description="Powered by GPT-4, Claude, and custom models. Natural conversations indistinguishable from humans."
+                    />
+                    <FeatureCard 
+                        icon={<Zap />}
+                        title="Lightning Fast"
+                        description="Sub-100ms latency globally. Instant speech-to-text, LLM inference, and text-to-speech."
+                    />
+                    <FeatureCard 
+                        icon={<Globe />}
+                        title="50+ Languages"
+                        description="Multilingual support with automatic language detection and real-time translation."
+                    />
+                    <FeatureCard 
+                        icon={<Shield />}
+                        title="Enterprise Security"
+                        description="End-to-end encryption, SOC2 Type II, HIPAA compliant. Your data never leaves your control."
+                    />
+                    <FeatureCard 
+                        icon={<Code />}
+                        title="Developer First"
+                        description="Simple REST APIs, WebSocket streams, and SDKs for React, Python, Node.js, and more."
+                    />
+                </div>
+            </section>
+
+            {/* How It Works Section */}
+            <section style={{ 
+                position: 'relative',
+                zIndex: 10,
+                padding: '120px 48px',
+                backgroundColor: 'rgba(255,255,255,0.02)'
+            }}>
+                <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
+                    <div style={{ textAlign: 'center', marginBottom: '80px' }}>
+                        <p style={{ color: '#a855f7', fontSize: '14px', fontWeight: '600', letterSpacing: '2px', marginBottom: '16px' }}>
+                            HOW IT WORKS
+                        </p>
+                        <h2 style={{ fontSize: '48px', fontWeight: '300', color: 'white', letterSpacing: '-2px' }}>
+                            Three steps to go live
+                        </h2>
+                    </div>
+
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '48px' }}>
+                        <StepCard 
+                            number="01"
+                            title="Create your agent"
+                            description="Define your AI agent's personality, voice, and capabilities using our intuitive dashboard or API."
+                        />
+                        <StepCard 
+                            number="02"
+                            title="Connect your systems"
+                            description="Integrate with your existing tools—CRM, calendar, databases—with pre-built connectors."
+                        />
+                        <StepCard 
+                            number="03"
+                            title="Deploy & scale"
+                            description="Launch globally with one click. Auto-scale from 1 to 1 million concurrent calls."
+                        />
+                    </div>
+                </div>
+            </section>
+
+            {/* Use Cases Section */}
+            <section style={{ 
+                position: 'relative',
+                zIndex: 10,
+                padding: '120px 48px',
+                maxWidth: '1400px',
+                margin: '0 auto'
+            }}>
+                <div style={{ textAlign: 'center', marginBottom: '80px' }}>
+                    <p style={{ color: '#a855f7', fontSize: '14px', fontWeight: '600', letterSpacing: '2px', marginBottom: '16px' }}>
+                        USE CASES
+                    </p>
+                    <h2 style={{ fontSize: '48px', fontWeight: '300', color: 'white', letterSpacing: '-2px' }}>
+                        Built for every industry
+                    </h2>
+                </div>
+
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '24px' }}>
+                    <UseCaseCard 
+                        icon={<Phone />}
+                        title="Customer Support"
+                        description="24/7 voice support that resolves 80% of inquiries automatically. Seamless handoff to humans when needed."
+                        stats="80% resolution rate"
+                    />
+                    <UseCaseCard 
+                        icon={<Users />}
+                        title="Sales & Outreach"
+                        description="AI agents that qualify leads, book meetings, and follow up—all with a natural, human touch."
+                        stats="3x more meetings"
+                    />
+                    <UseCaseCard 
+                        icon={<Headphones />}
+                        title="Virtual Assistants"
+                        description="Personal AI assistants for scheduling, reminders, information lookup, and task management."
+                        stats="10M+ tasks/month"
+                    />
+                    <UseCaseCard 
+                        icon={<MessageSquare />}
+                        title="Healthcare"
+                        description="HIPAA-compliant voice agents for appointment scheduling, symptom checking, and patient follow-ups."
+                        stats="HIPAA Certified"
+                    />
+                </div>
+            </section>
+
+            {/* Pricing Section */}
+            <section id="pricing" style={{ 
+                position: 'relative',
+                zIndex: 10,
+                padding: '120px 48px',
+                backgroundColor: 'rgba(255,255,255,0.02)'
+            }}>
+                <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+                    <div style={{ textAlign: 'center', marginBottom: '80px' }}>
+                        <p style={{ color: '#a855f7', fontSize: '14px', fontWeight: '600', letterSpacing: '2px', marginBottom: '16px' }}>
+                            PRICING
+                        </p>
+                        <h2 style={{ fontSize: '48px', fontWeight: '300', color: 'white', letterSpacing: '-2px', marginBottom: '24px' }}>
+                            Simple, transparent pricing
+                        </h2>
+                        <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '18px' }}>
+                            Start free. Scale as you grow.
+                        </p>
+                    </div>
+
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }}>
+                        <PricingCard 
+                            name="Starter"
+                            price="Free"
+                            description="Perfect for trying out Talkrix"
+                            features={['100 minutes/month', '1 AI agent', 'Community support', 'Basic analytics']}
+                        />
+                        <PricingCard 
+                            name="Pro"
+                            price="$99"
+                            period="/month"
+                            description="For growing teams"
+                            features={['10,000 minutes/month', 'Unlimited agents', 'Priority support', 'Advanced analytics', 'Custom voices', 'API access']}
+                            highlighted
+                        />
+                        <PricingCard 
+                            name="Enterprise"
+                            price="Custom"
+                            description="For large scale deployments"
+                            features={['Unlimited minutes', 'Dedicated infrastructure', '24/7 phone support', 'SLA guarantee', 'Custom integrations', 'On-premise option']}
+                        />
+                    </div>
+                </div>
+            </section>
+
+            {/* CTA Section */}
+            <section style={{ 
+                position: 'relative',
+                zIndex: 10,
+                padding: '120px 48px',
+                textAlign: 'center'
+            }}>
+                <h2 style={{ fontSize: '56px', fontWeight: '300', color: 'white', letterSpacing: '-2px', marginBottom: '24px' }}>
+                    Ready to build the future?
+                </h2>
+                <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '20px', marginBottom: '48px', maxWidth: '600px', margin: '0 auto 48px' }}>
+                    Join thousands of developers building voice-first applications with Talkrix
+                </p>
+                <button 
+                    onClick={() => router.push('/signup')}
+                    style={{ 
+                        height: '64px', 
+                        borderRadius: '50px', 
+                        background: 'linear-gradient(135deg, #a855f7 0%, #6366f1 100%)', 
+                        color: 'white', 
+                        fontWeight: '600',
+                        fontSize: '16px',
+                        border: 'none',
+                        cursor: 'pointer',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        gap: '12px',
+                        padding: '0 48px',
+                        letterSpacing: '1px',
+                        transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+                        boxShadow: '0 4px 20px rgba(168, 85, 247, 0.3)'
+                    }}
+                    onMouseEnter={(e) => {
+                        e.currentTarget.style.transform = 'translateY(-2px)';
+                        e.currentTarget.style.boxShadow = '0 8px 30px rgba(168, 85, 247, 0.4)';
+                    }}
+                    onMouseLeave={(e) => {
+                        e.currentTarget.style.transform = 'translateY(0)';
+                        e.currentTarget.style.boxShadow = '0 4px 20px rgba(168, 85, 247, 0.3)';
+                    }}
+                >
+                    GET STARTED FREE
+                    <ArrowRight style={{ width: '20px', height: '20px' }} />
+                </button>
+            </section>
+
+            {/* Footer */}
+            <footer style={{ 
+                position: 'relative',
+                zIndex: 10,
+                padding: '80px 48px 40px',
+                borderTop: '1px solid rgba(255,255,255,0.1)'
+            }}>
+                <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr 1fr', gap: '48px', marginBottom: '64px' }}>
+                        <div>
+                            <div style={{ fontWeight: '800', fontSize: '24px', color: 'white', letterSpacing: '-1px', marginBottom: '16px' }}>
+                                TALKRIX
+                            </div>
+                            <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '14px', lineHeight: '1.6', maxWidth: '300px' }}>
+                                Building the future of voice AI. Enterprise-grade infrastructure for developers.
+                            </p>
+                        </div>
+                        <FooterColumn title="Product" links={['Features', 'Pricing', 'Documentation', 'API Reference', 'Changelog']} />
+                        <FooterColumn title="Company" links={['About', 'Blog', 'Careers', 'Press Kit', 'Contact']} />
+                        <FooterColumn title="Resources" links={['Community', 'Partners', 'Guides', 'Webinars', 'Status']} />
+                        <FooterColumn title="Legal" links={[
+                            { text: 'Privacy', href: '/privacy' },
+                            { text: 'Terms', href: '/terms' },
+                            { text: 'Security' },
+                            { text: 'GDPR' },
+                            { text: 'Cookies' }
+                        ]} />
+                    </div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '32px', borderTop: '1px solid rgba(255,255,255,0.1)' }}>
+                        <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '14px' }}>
+                            © 2026 Talkrix Inc. All rights reserved.
+                        </p>
+                        <div style={{ display: 'flex', gap: '24px' }}>
+                            <a href="#" style={{ color: 'rgba(255,255,255,0.4)', fontSize: '14px', textDecoration: 'none' }}>Twitter</a>
+                            <a href="#" style={{ color: 'rgba(255,255,255,0.4)', fontSize: '14px', textDecoration: 'none' }}>GitHub</a>
+                            <a href="#" style={{ color: 'rgba(255,255,255,0.4)', fontSize: '14px', textDecoration: 'none' }}>Discord</a>
+                            <a href="#" style={{ color: 'rgba(255,255,255,0.4)', fontSize: '14px', textDecoration: 'none' }}>LinkedIn</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+    );
+}
+
+function NavLink({ text, hasArrow, hasChevron, href }: { text: string, hasArrow?: boolean, hasChevron?: boolean, href?: string }) {
+    return (
+        <a 
+            href={href || "#"} 
+            style={{ 
+                color: 'rgba(255,255,255,0.7)', 
+                textDecoration: 'none', 
+                fontSize: '13px', 
+                fontWeight: '500',
+                letterSpacing: '0.5px',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '4px',
+                transition: 'color 0.2s ease'
+            }}
+            onMouseEnter={(e) => e.currentTarget.style.color = 'white'}
+            onMouseLeave={(e) => e.currentTarget.style.color = 'rgba(255,255,255,0.7)'}
+        >
+            {text}
+            {hasArrow && <ArrowUpRight style={{ width: '12px', height: '12px' }} />}
+            {hasChevron && <ChevronRight style={{ width: '14px', height: '14px' }} />}
+        </a>
+    );
+}
+
+function StatItem({ value, label }: { value: string, label: string }) {
+    return (
+        <div style={{ textAlign: 'center' }}>
+            <div style={{ fontSize: '32px', fontWeight: '600', color: 'white', letterSpacing: '-1px' }}>{value}</div>
+            <div style={{ fontSize: '14px', color: 'rgba(255,255,255,0.5)' }}>{label}</div>
         </div>
-      </main>
-    </div>
-  );
+    );
+}
+
+function FeatureCard({ icon, title, description }: { icon: React.ReactNode, title: string, description: string }) {
+    return (
+        <div style={{ 
+            padding: '32px',
+            backgroundColor: 'rgba(255,255,255,0.03)',
+            borderRadius: '16px',
+            border: '1px solid rgba(255,255,255,0.08)',
+            transition: 'all 0.3s ease'
+        }}
+        onMouseEnter={(e) => {
+            e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.06)';
+            e.currentTarget.style.borderColor = 'rgba(168, 85, 247, 0.3)';
+        }}
+        onMouseLeave={(e) => {
+            e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.03)';
+            e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)';
+        }}
+        >
+            <div style={{ 
+                width: '48px', 
+                height: '48px', 
+                borderRadius: '12px', 
+                backgroundColor: 'rgba(168, 85, 247, 0.15)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginBottom: '20px',
+                color: '#a855f7'
+            }}>
+                {icon}
+            </div>
+            <h3 style={{ fontSize: '20px', fontWeight: '600', color: 'white', marginBottom: '12px' }}>{title}</h3>
+            <p style={{ fontSize: '15px', color: 'rgba(255,255,255,0.6)', lineHeight: '1.6' }}>{description}</p>
+        </div>
+    );
+}
+
+function StepCard({ number, title, description }: { number: string, title: string, description: string }) {
+    return (
+        <div style={{ textAlign: 'center' }}>
+            <div style={{ 
+                fontSize: '64px', 
+                fontWeight: '200', 
+                color: 'rgba(168, 85, 247, 0.3)', 
+                marginBottom: '24px',
+                letterSpacing: '-4px'
+            }}>
+                {number}
+            </div>
+            <h3 style={{ fontSize: '24px', fontWeight: '600', color: 'white', marginBottom: '16px' }}>{title}</h3>
+            <p style={{ fontSize: '16px', color: 'rgba(255,255,255,0.6)', lineHeight: '1.6' }}>{description}</p>
+        </div>
+    );
+}
+
+function UseCaseCard({ icon, title, description, stats }: { icon: React.ReactNode, title: string, description: string, stats: string }) {
+    return (
+        <div style={{ 
+            padding: '40px',
+            backgroundColor: 'rgba(255,255,255,0.03)',
+            borderRadius: '20px',
+            border: '1px solid rgba(255,255,255,0.08)',
+            display: 'flex',
+            gap: '24px',
+            alignItems: 'flex-start',
+            transition: 'all 0.3s ease'
+        }}
+        onMouseEnter={(e) => {
+            e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.06)';
+            e.currentTarget.style.borderColor = 'rgba(168, 85, 247, 0.3)';
+        }}
+        onMouseLeave={(e) => {
+            e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.03)';
+            e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)';
+        }}
+        >
+            <div style={{ 
+                width: '56px', 
+                height: '56px', 
+                borderRadius: '14px', 
+                backgroundColor: 'rgba(168, 85, 247, 0.15)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                flexShrink: 0,
+                color: '#a855f7'
+            }}>
+                {icon}
+            </div>
+            <div>
+                <h3 style={{ fontSize: '22px', fontWeight: '600', color: 'white', marginBottom: '12px' }}>{title}</h3>
+                <p style={{ fontSize: '15px', color: 'rgba(255,255,255,0.6)', lineHeight: '1.6', marginBottom: '16px' }}>{description}</p>
+                <span style={{ 
+                    display: 'inline-block',
+                    padding: '6px 14px', 
+                    backgroundColor: 'rgba(168, 85, 247, 0.15)', 
+                    borderRadius: '50px',
+                    fontSize: '13px',
+                    color: '#a855f7',
+                    fontWeight: '600'
+                }}>{stats}</span>
+            </div>
+        </div>
+    );
+}
+
+function PricingCard({ name, price, period, description, features, highlighted }: { 
+    name: string, 
+    price: string, 
+    period?: string, 
+    description: string, 
+    features: string[],
+    highlighted?: boolean 
+}) {
+    return (
+        <div style={{ 
+            padding: '40px',
+            backgroundColor: highlighted ? 'rgba(168, 85, 247, 0.1)' : 'rgba(255,255,255,0.03)',
+            borderRadius: '20px',
+            border: highlighted ? '2px solid rgba(168, 85, 247, 0.5)' : '1px solid rgba(255,255,255,0.08)',
+            position: 'relative'
+        }}>
+            {highlighted && (
+                <div style={{ 
+                    position: 'absolute',
+                    top: '-12px',
+                    left: '50%',
+                    transform: 'translateX(-50%)',
+                    padding: '6px 16px',
+                    backgroundColor: '#a855f7',
+                    borderRadius: '50px',
+                    fontSize: '12px',
+                    fontWeight: '600',
+                    color: 'white',
+                    letterSpacing: '0.5px'
+                }}>
+                    MOST POPULAR
+                </div>
+            )}
+            <h3 style={{ fontSize: '20px', fontWeight: '600', color: 'white', marginBottom: '8px' }}>{name}</h3>
+            <div style={{ marginBottom: '8px' }}>
+                <span style={{ fontSize: '48px', fontWeight: '600', color: 'white' }}>{price}</span>
+                {period && <span style={{ fontSize: '16px', color: 'rgba(255,255,255,0.5)' }}>{period}</span>}
+            </div>
+            <p style={{ fontSize: '14px', color: 'rgba(255,255,255,0.5)', marginBottom: '32px' }}>{description}</p>
+            <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 32px 0' }}>
+                {features.map((feature, i) => (
+                    <li key={i} style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '12px', color: 'rgba(255,255,255,0.8)', fontSize: '14px' }}>
+                        <Check style={{ width: '16px', height: '16px', color: '#a855f7' }} />
+                        {feature}
+                    </li>
+                ))}
+            </ul>
+            <button style={{ 
+                width: '100%',
+                height: '48px', 
+                borderRadius: '50px', 
+                background: highlighted ? 'linear-gradient(135deg, #a855f7 0%, #6366f1 100%)' : 'transparent', 
+                color: 'white', 
+                fontWeight: '600',
+                fontSize: '14px',
+                border: highlighted ? 'none' : '1px solid rgba(255,255,255,0.2)',
+                cursor: 'pointer',
+                transition: 'all 0.2s ease'
+            }}>
+                Get Started
+            </button>
+        </div>
+    );
+}
+
+function FooterColumn({ title, links }: { title: string, links: { text: string, href?: string }[] | string[] }) {
+    return (
+        <div>
+            <h4 style={{ fontSize: '14px', fontWeight: '600', color: 'white', marginBottom: '20px' }}>{title}</h4>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                {links.map((link, i) => {
+                    const linkText = typeof link === 'string' ? link : link.text;
+                    const linkHref = typeof link === 'string' ? '#' : (link.href || '#');
+                    return (
+                        <li key={i} style={{ marginBottom: '12px' }}>
+                            <a href={linkHref} style={{ color: 'rgba(255,255,255,0.5)', fontSize: '14px', textDecoration: 'none', transition: 'color 0.2s ease' }}
+                               onMouseEnter={(e) => e.currentTarget.style.color = 'white'}
+                               onMouseLeave={(e) => e.currentTarget.style.color = 'rgba(255,255,255,0.5)'}
+                            >
+                                {linkText}
+                            </a>
+                        </li>
+                    );
+                })}
+            </ul>
+        </div>
+    );
 }
