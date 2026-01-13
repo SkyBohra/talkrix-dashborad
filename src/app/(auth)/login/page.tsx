@@ -25,12 +25,20 @@ export default function LoginPage() {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ email, password }),
             });
-            if (!res.ok) throw new Error("Invalid credentials");
             const data = await res.json();
-            localStorage.setItem("token", data.access_token);
+            if (!res.ok || data.statusCode >= 400) {
+                throw new Error(data.error || data.message || "Invalid credentials");
+            }
+            localStorage.setItem("token", data.data.access_token);
+            // Decode JWT to get userId
+            const tokenPayload = JSON.parse(atob(data.data.access_token.split('.')[1]));
+            localStorage.setItem("userId", tokenPayload.sub);
+            localStorage.setItem("userName", data.data.name || "");
+            localStorage.setItem("userEmail", data.data.email || "");
             router.push("/dashboard");
-        } catch (err) {
-            setError("Login failed.");
+        } catch (err: unknown) {
+            const errorMessage = err instanceof Error ? err.message : "Login failed.";
+            setError(errorMessage);
             setIsLoading(false);
         }
     };

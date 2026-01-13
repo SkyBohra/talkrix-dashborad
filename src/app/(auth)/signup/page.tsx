@@ -20,17 +20,25 @@ export default function SignupPage() {
         setError("");
         setIsLoading(true);
         try {
-            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/signup`, {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/register`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ full_name: name, email, password }),
+                body: JSON.stringify({ name, email, password }),
             });
-            if (!res.ok) throw new Error("Signup failed");
             const data = await res.json();
-            localStorage.setItem("token", data.access_token);
+            if (!res.ok || data.statusCode >= 400) {
+                throw new Error(data.error || data.message || "Signup failed");
+            }
+            localStorage.setItem("token", data.data.access_token);
+            // Decode JWT to get userId
+            const tokenPayload = JSON.parse(atob(data.data.access_token.split('.')[1]));
+            localStorage.setItem("userId", tokenPayload.sub);
+            localStorage.setItem("userName", data.data.name || "");
+            localStorage.setItem("userEmail", data.data.email || "");
             router.push("/dashboard");
-        } catch (err) {
-            setError("Signup failed.");
+        } catch (err: unknown) {
+            const errorMessage = err instanceof Error ? err.message : "Signup failed.";
+            setError(errorMessage);
             setIsLoading(false);
         }
     };
