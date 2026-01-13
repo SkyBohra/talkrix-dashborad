@@ -30,6 +30,7 @@ export default function VoicesSection() {
     const [loading, setLoading] = useState(true);
     const [searchQuery, setSearchQuery] = useState("");
     const [playingVoiceId, setPlayingVoiceId] = useState<string | null>(null);
+    const [selectedVoiceId, setSelectedVoiceId] = useState<string | null>(null);
     const [audioRef, setAudioRef] = useState<HTMLAudioElement | null>(null);
     const [total, setTotal] = useState(0);
 
@@ -257,44 +258,64 @@ export default function VoicesSection() {
                 <div
                     style={{
                         display: "grid",
-                        gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))",
-                        gap: "20px",
+                        gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))",
+                        gap: "16px",
                     }}
                 >
                     {voices.map((voice) => {
                         const providerStyle = getProviderColor(voice.provider);
                         const isPlaying = playingVoiceId === voice.voiceId;
+                        const isSelected = selectedVoiceId === voice.voiceId;
 
                         return (
                             <div
                                 key={voice.voiceId}
+                                onClick={() => setSelectedVoiceId(voice.voiceId)}
+                                className="voice-card"
                                 style={{
-                                    background: "rgba(255,255,255,0.03)",
-                                    border: "1px solid rgba(255,255,255,0.08)",
-                                    borderRadius: "16px",
-                                    padding: "20px",
-                                    transition: "all 0.2s ease",
-                                    cursor: "default",
+                                    background: isSelected 
+                                        ? "rgba(168, 85, 247, 0.15)" 
+                                        : "rgba(255,255,255,0.03)",
+                                    border: isSelected 
+                                        ? "1px solid rgba(168, 85, 247, 0.5)" 
+                                        : "1px solid rgba(255,255,255,0.08)",
+                                    borderRadius: "12px",
+                                    padding: "14px",
+                                    transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                                    cursor: "pointer",
+                                    transform: isSelected ? "scale(1.02)" : "scale(1)",
+                                    boxShadow: isSelected 
+                                        ? "0 8px 32px rgba(168, 85, 247, 0.25), 0 0 0 1px rgba(168, 85, 247, 0.1)" 
+                                        : "none",
                                 }}
                                 onMouseEnter={(e) => {
-                                    e.currentTarget.style.background = "rgba(255,255,255,0.06)";
-                                    e.currentTarget.style.borderColor = "rgba(168, 85, 247, 0.3)";
-                                    e.currentTarget.style.transform = "translateY(-2px)";
+                                    if (!isSelected) {
+                                        e.currentTarget.style.background = "rgba(255,255,255,0.08)";
+                                        e.currentTarget.style.borderColor = "rgba(168, 85, 247, 0.3)";
+                                        e.currentTarget.style.transform = "translateY(-4px) scale(1.01)";
+                                        e.currentTarget.style.boxShadow = "0 12px 24px rgba(0, 0, 0, 0.3)";
+                                    }
                                 }}
                                 onMouseLeave={(e) => {
-                                    e.currentTarget.style.background = "rgba(255,255,255,0.03)";
-                                    e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)";
-                                    e.currentTarget.style.transform = "translateY(0)";
+                                    if (!isSelected) {
+                                        e.currentTarget.style.background = "rgba(255,255,255,0.03)";
+                                        e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)";
+                                        e.currentTarget.style.transform = "scale(1)";
+                                        e.currentTarget.style.boxShadow = "none";
+                                    } else {
+                                        e.currentTarget.style.transform = "scale(1.02)";
+                                        e.currentTarget.style.boxShadow = "0 8px 32px rgba(168, 85, 247, 0.25), 0 0 0 1px rgba(168, 85, 247, 0.1)";
+                                    }
                                 }}
                             >
                                 {/* Header */}
-                                <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: "12px" }}>
+                                <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: "8px" }}>
                                     <div style={{ flex: 1, minWidth: 0 }}>
-                                        <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "4px" }}>
-                                            <span style={{ fontSize: "20px" }}>{getLanguageFlag(voice.primaryLanguage)}</span>
+                                        <div style={{ display: "flex", alignItems: "center", gap: "6px", marginBottom: "2px" }}>
+                                            <span style={{ fontSize: "16px" }}>{getLanguageFlag(voice.primaryLanguage)}</span>
                                             <h3
                                                 style={{
-                                                    fontSize: "16px",
+                                                    fontSize: "14px",
                                                     fontWeight: "600",
                                                     color: "white",
                                                     margin: 0,
@@ -324,8 +345,8 @@ export default function VoicesSection() {
                                         onClick={() => handlePlayPreview(voice)}
                                         disabled={!voice.previewUrl}
                                         style={{
-                                            width: "40px",
-                                            height: "40px",
+                                            width: "34px",
+                                            height: "34px",
                                             borderRadius: "50%",
                                             background: isPlaying
                                                 ? "linear-gradient(135deg, #ec4899 0%, #a855f7 100%)"
@@ -361,11 +382,10 @@ export default function VoicesSection() {
                                 {/* Description */}
                                 <p
                                     style={{
-                                        fontSize: "13px",
+                                        fontSize: "12px",
                                         color: "rgba(255,255,255,0.5)",
-                                        margin: "0 0 16px 0",
-                                        lineHeight: "1.5",
-                                        minHeight: "40px",
+                                        margin: "0 0 10px 0",
+                                        lineHeight: "1.4",
                                         overflow: "hidden",
                                         textOverflow: "ellipsis",
                                         display: "-webkit-box",
@@ -380,9 +400,9 @@ export default function VoicesSection() {
                                 <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
                                     <span
                                         style={{
-                                            padding: "4px 10px",
-                                            borderRadius: "6px",
-                                            fontSize: "12px",
+                                            padding: "3px 8px",
+                                            borderRadius: "5px",
+                                            fontSize: "11px",
                                             fontWeight: "500",
                                             color: providerStyle.color,
                                             background: providerStyle.bg,
@@ -392,7 +412,7 @@ export default function VoicesSection() {
                                     </span>
                                     <span
                                         style={{
-                                            fontSize: "11px",
+                                            fontSize: "10px",
                                             color: "rgba(255,255,255,0.3)",
                                             textTransform: "uppercase",
                                         }}
@@ -415,6 +435,38 @@ export default function VoicesSection() {
                     to {
                         transform: translateY(-50%) rotate(360deg);
                     }
+                }
+                
+                .voice-card {
+                    animation: fadeInUp 0.4s ease-out;
+                    animation-fill-mode: both;
+                }
+                
+                .voice-card:nth-child(1) { animation-delay: 0.05s; }
+                .voice-card:nth-child(2) { animation-delay: 0.1s; }
+                .voice-card:nth-child(3) { animation-delay: 0.15s; }
+                .voice-card:nth-child(4) { animation-delay: 0.2s; }
+                .voice-card:nth-child(5) { animation-delay: 0.25s; }
+                .voice-card:nth-child(6) { animation-delay: 0.3s; }
+                .voice-card:nth-child(7) { animation-delay: 0.35s; }
+                .voice-card:nth-child(8) { animation-delay: 0.4s; }
+                .voice-card:nth-child(9) { animation-delay: 0.45s; }
+                .voice-card:nth-child(10) { animation-delay: 0.5s; }
+                .voice-card:nth-child(n+11) { animation-delay: 0.55s; }
+                
+                @keyframes fadeInUp {
+                    from {
+                        opacity: 0;
+                        transform: translateY(20px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
+                
+                .voice-card:active {
+                    transform: scale(0.98) !important;
                 }
             `}</style>
         </div>
