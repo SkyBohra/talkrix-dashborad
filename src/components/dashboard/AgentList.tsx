@@ -14,13 +14,19 @@ export const AgentList: React.FC<AgentListProps> = ({ userId, onEdit }) => {
   useEffect(() => {
     setLoading(true);
     fetchAgentsByUser(userId)
-      .then(setAgents)
+      .then((response) => {
+        if (response.success && response.data) {
+          setAgents(response.data);
+        }
+      })
       .finally(() => setLoading(false));
   }, [userId]);
 
   const handleDelete = async (id: string) => {
-    await deleteAgent(id);
-    setAgents(agents.filter(a => a._id !== id));
+    const response = await deleteAgent(id);
+    if (response.success) {
+      setAgents(agents.filter(a => a._id !== id));
+    }
   };
 
   if (loading) return <div>Loading agents...</div>;
