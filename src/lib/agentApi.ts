@@ -51,3 +51,15 @@ export const deleteAgent = async (id: string) => {
   return normalizeResponse(res);
 };
 
+export const fetchVoices = async (search?: string) => {
+  const params = new URLSearchParams();
+  if (search && search.trim()) {
+    params.append('search', search.trim());
+  }
+  const url = `${API_BASE}/voices${params.toString() ? '?' + params.toString() : ''}`;
+  const res = await axios.get(url, {
+    headers: getAuthHeaders(),
+  });
+  return normalizeResponse(res);
+};
+

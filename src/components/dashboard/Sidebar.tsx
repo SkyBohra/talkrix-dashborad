@@ -10,6 +10,7 @@ import {
     LogOut,
     ChevronLeft,
     ChevronRight,
+    Mic,
 } from "lucide-react";
 
 type SidebarItem = {
@@ -21,6 +22,7 @@ type SidebarItem = {
 const sidebarItems: SidebarItem[] = [
     { id: "dashboard", label: "Dashboard", icon: <LayoutDashboard size={20} /> },
     { id: "agents", label: "Agents", icon: <Bot size={20} /> },
+    { id: "voices", label: "Voices", icon: <Mic size={20} /> },
     { id: "tools", label: "Tools", icon: <Wrench size={20} /> },
     { id: "rag", label: "RAG", icon: <Database size={20} /> },
     { id: "settings", label: "Settings", icon: <Settings size={20} /> },

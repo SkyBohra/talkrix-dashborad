@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Sidebar from "@/components/dashboard/Sidebar";
 import DashboardSection from "@/components/dashboard/DashboardSection";
 import AgentsSection from "@/components/dashboard/AgentsSection";
+import VoicesSection from "@/components/dashboard/VoicesSection";
 import ToolsSection from "@/components/dashboard/ToolsSection";
 import RAGSection from "@/components/dashboard/RAGSection";
 import SettingsSection from "@/components/dashboard/SettingsSection";
@@ -31,6 +32,8 @@ export default function Dashboard() {
                 return <DashboardSection />;
             case "agents":
                 return <AgentsSection />;
+            case "voices":
+                return <VoicesSection />;
             case "tools":
                 return <ToolsSection />;
             case "rag":
