@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { createAgent, updateAgent } from '../lib/agentApi';
-import { Button } from '../components/ui/button';
+import { createAgent, updateAgent } from '../../lib/agentApi';
+import { Button } from '../ui/button';
 
 interface AgentFormProps {
   userId: string;

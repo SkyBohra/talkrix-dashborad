@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { fetchAgentsByUser, deleteAgent } from '../lib/agentApi';
-import { Button } from '../components/ui/button';
+import { fetchAgentsByUser, deleteAgent } from '../../lib/agentApi';
+import { Button } from '../ui/button';
 
 interface AgentListProps {
   userId: string;
