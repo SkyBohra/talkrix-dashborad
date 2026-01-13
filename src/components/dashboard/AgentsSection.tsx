@@ -1,8 +1,27 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { Bot, Plus, Pencil, Trash2, X, Save, Play, Pause, Loader2 } from "lucide-react";
-import { createAgent, fetchAgentsByUser, updateAgent, deleteAgent } from "../../lib/agentApi";
+import React, { useState, useEffect, useRef, useCallback } from "react";
+import { Bot, Plus, Pencil, Trash2, X, Save, Play, Pause, Loader2, Search, Mic } from "lucide-react";
+import { createAgent, fetchAgentsByUser, updateAgent, deleteAgent, fetchVoices } from "../../lib/agentApi";
+
+interface Voice {
+    voiceId: string;
+    name: string;
+    description: string;
+    primaryLanguage: string | null;
+    previewUrl: string;
+    provider: string;
+}
+
+// Debounce hook
+function useDebounce<T>(value: T, delay: number): T {
+    const [debouncedValue, setDebouncedValue] = useState<T>(value);
+    useEffect(() => {
+        const handler = setTimeout(() => setDebouncedValue(value), delay);
+        return () => clearTimeout(handler);
+    }, [value, delay]);
+    return debouncedValue;
+}
 
 interface Agent {
     _id: string;
@@ -72,15 +91,6 @@ const defaultFormData: FormData = {
     inactivityMessage3Text: "Thank you for calling. Have a great day. Goodbye.",
 };
 
-const voiceOptions = [
-    "Crhysa",
-    "Mark",
-    "Jessica",
-    "David",
-    "Sarah",
-    "James",
-];
-
 export default function AgentsSection() {
     const [agents, setAgents] = useState<Agent[]>([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -89,6 +99,17 @@ export default function AgentsSection() {
     const [loading, setLoading] = useState(false);
     const [fetchLoading, setFetchLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
+
+    // Voice selector state
+    const [voices, setVoices] = useState<Voice[]>([]);
+    const [voicesLoading, setVoicesLoading] = useState(false);
+    const [selectedVoice, setSelectedVoice] = useState<Voice | null>(null);
+    const [voiceSearch, setVoiceSearch] = useState('');
+    const [isVoiceDropdownOpen, setIsVoiceDropdownOpen] = useState(false);
+    const [playingVoiceId, setPlayingVoiceId] = useState<string | null>(null);
+    const [audioRef, setAudioRef] = useState<HTMLAudioElement | null>(null);
+    const voiceDropdownRef = useRef<HTMLDivElement>(null);
+    const debouncedVoiceSearch = useDebounce(voiceSearch, 300);
 
     // Get userId from localStorage (set during login)
     const getUserId = () => {
@@ -128,14 +149,96 @@ export default function AgentsSection() {
         loadAgents();
     }, []);
 
+    // Voice loading function
+    const loadVoices = useCallback(async (search?: string) => {
+        setVoicesLoading(true);
+        try {
+            const res = await fetchVoices(search);
+            if (res.success && res.data?.results) {
+                setVoices(res.data.results);
+            }
+        } catch (error) {
+            console.error('Failed to fetch voices:', error);
+        } finally {
+            setVoicesLoading(false);
+        }
+    }, []);
+
+    // Server-side search when debounced search changes
+    useEffect(() => {
+        if (isVoiceDropdownOpen) {
+            loadVoices(debouncedVoiceSearch || undefined);
+        }
+    }, [debouncedVoiceSearch, isVoiceDropdownOpen, loadVoices]);
+
+    // Close voice dropdown when clicking outside
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (voiceDropdownRef.current && !voiceDropdownRef.current.contains(event.target as Node)) {
+                setIsVoiceDropdownOpen(false);
+            }
+        };
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, []);
+
+    // Handle voice preview playback
+    const handlePlayPreview = (voice: Voice) => {
+        if (audioRef) {
+            audioRef.pause();
+            audioRef.currentTime = 0;
+        }
+
+        if (playingVoiceId === voice.voiceId) {
+            setPlayingVoiceId(null);
+            setAudioRef(null);
+            return;
+        }
+
+        const audio = new Audio(voice.previewUrl);
+        audio.onended = () => {
+            setPlayingVoiceId(null);
+            setAudioRef(null);
+        };
+        audio.onerror = () => {
+            setPlayingVoiceId(null);
+            setAudioRef(null);
+        };
+        audio.play();
+        setAudioRef(audio);
+        setPlayingVoiceId(voice.voiceId);
+    };
+
+    // Handle voice selection
+    const handleVoiceSelect = (voice: Voice) => {
+        setSelectedVoice(voice);
+        setVoiceSearch(voice.name);
+        setFormData({ ...formData, voice: voice.voiceId });
+        setIsVoiceDropdownOpen(false);
+    };
+
+    // Provider color mapping for voice dropdown
+    const getProviderColor = (provider: string) => {
+        const colors: Record<string, { color: string; bg: string }> = {
+            "Eleven Labs": { color: "#22c55e", bg: "rgba(34, 197, 94, 0.1)" },
+            "Cartesia": { color: "#6366f1", bg: "rgba(99, 102, 241, 0.1)" },
+            "Inworld": { color: "#f59e0b", bg: "rgba(245, 158, 11, 0.1)" },
+            "Google": { color: "#4285f4", bg: "rgba(66, 133, 244, 0.1)" },
+            "LMNT": { color: "#a855f7", bg: "rgba(168, 85, 247, 0.1)" },
+        };
+        return colors[provider] || { color: "#9ca3af", bg: "rgba(156, 163, 175, 0.1)" };
+    };
+
     const openCreateModal = () => {
         setEditingAgent(null);
         setFormData(defaultFormData);
+        setSelectedVoice(null);
+        setVoiceSearch('');
         setError(null);
         setIsModalOpen(true);
     };
 
-    const openEditModal = (agent: Agent) => {
+    const openEditModal = async (agent: Agent) => {
         setEditingAgent(agent);
         setFormData({
             name: agent.name,
@@ -156,6 +259,30 @@ export default function AgentsSection() {
             inactivityMessage3Duration: agent.callTemplate?.inactivityMessages?.[2]?.duration || "10s",
             inactivityMessage3Text: agent.callTemplate?.inactivityMessages?.[2]?.message || "",
         });
+        
+        // Try to find the existing voice
+        if (agent.callTemplate?.voice) {
+            setVoiceSearch(agent.callTemplate.voice);
+            // Search for the voice to get full details
+            try {
+                const res = await fetchVoices(agent.callTemplate.voice);
+                if (res.success && res.data?.results) {
+                    const existingVoice = res.data.results.find(
+                        (v: Voice) => v.voiceId === agent.callTemplate.voice || v.name === agent.callTemplate.voice
+                    );
+                    if (existingVoice) {
+                        setSelectedVoice(existingVoice);
+                        setVoiceSearch(existingVoice.name);
+                    }
+                }
+            } catch (err) {
+                console.error('Failed to fetch existing voice:', err);
+            }
+        } else {
+            setSelectedVoice(null);
+            setVoiceSearch('');
+        }
+        
         setError(null);
         setIsModalOpen(true);
     };
@@ -566,29 +693,260 @@ export default function AgentsSection() {
 
                             {/* Voice and Temperature */}
                             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }}>
-                                <div>
+                                <div ref={voiceDropdownRef} style={{ position: "relative" }}>
                                     <label style={{ display: "block", fontSize: "13px", color: "rgba(255, 255, 255, 0.6)", marginBottom: "8px" }}>
                                         Voice
                                     </label>
-                                    <select
-                                        value={formData.voice}
-                                        onChange={(e) => setFormData({ ...formData, voice: e.target.value })}
-                                        style={{
-                                            width: "100%",
-                                            padding: "12px 16px",
-                                            borderRadius: "10px",
-                                            border: "1px solid rgba(255, 255, 255, 0.1)",
-                                            background: "rgba(255, 255, 255, 0.05)",
-                                            color: "white",
-                                            fontSize: "14px",
-                                            outline: "none",
-                                            boxSizing: "border-box",
-                                        }}
-                                    >
-                                        {voiceOptions.map(voice => (
-                                            <option key={voice} value={voice}>{voice}</option>
-                                        ))}
-                                    </select>
+                                    <div style={{ position: "relative" }}>
+                                        <Search
+                                            size={16}
+                                            style={{
+                                                position: "absolute",
+                                                left: "12px",
+                                                top: "50%",
+                                                transform: "translateY(-50%)",
+                                                color: "rgba(255,255,255,0.4)",
+                                                pointerEvents: "none",
+                                            }}
+                                        />
+                                        <input
+                                            type="text"
+                                            value={voiceSearch}
+                                            onChange={(e) => {
+                                                setVoiceSearch(e.target.value);
+                                                setIsVoiceDropdownOpen(true);
+                                                if (!e.target.value) {
+                                                    setSelectedVoice(null);
+                                                    setFormData({ ...formData, voice: '' });
+                                                }
+                                            }}
+                                            onFocus={() => {
+                                                setIsVoiceDropdownOpen(true);
+                                                if (!voices.length) loadVoices();
+                                            }}
+                                            placeholder="Search voices..."
+                                            style={{
+                                                width: "100%",
+                                                padding: "12px 40px 12px 36px",
+                                                borderRadius: "10px",
+                                                border: "1px solid rgba(255, 255, 255, 0.1)",
+                                                background: "rgba(255, 255, 255, 0.05)",
+                                                color: "white",
+                                                fontSize: "14px",
+                                                outline: "none",
+                                                boxSizing: "border-box",
+                                            }}
+                                        />
+                                        {voicesLoading ? (
+                                            <Loader2
+                                                size={16}
+                                                style={{
+                                                    position: "absolute",
+                                                    right: "12px",
+                                                    top: "50%",
+                                                    transform: "translateY(-50%)",
+                                                    color: "#a855f7",
+                                                    animation: "spin 1s linear infinite",
+                                                }}
+                                            />
+                                        ) : (
+                                            <button
+                                                type="button"
+                                                onClick={() => {
+                                                    setIsVoiceDropdownOpen(!isVoiceDropdownOpen);
+                                                    if (!voices.length) loadVoices();
+                                                }}
+                                                style={{
+                                                    position: "absolute",
+                                                    right: "8px",
+                                                    top: "50%",
+                                                    transform: "translateY(-50%)",
+                                                    background: "transparent",
+                                                    border: "none",
+                                                    cursor: "pointer",
+                                                    padding: "4px",
+                                                    display: "flex",
+                                                    alignItems: "center",
+                                                }}
+                                            >
+                                                <svg
+                                                    width="16"
+                                                    height="16"
+                                                    viewBox="0 0 24 24"
+                                                    fill="none"
+                                                    stroke="rgba(255,255,255,0.4)"
+                                                    strokeWidth="2"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round"
+                                                >
+                                                    <path d={isVoiceDropdownOpen ? "M18 15l-6-6-6 6" : "M6 9l6 6 6-6"} />
+                                                </svg>
+                                            </button>
+                                        )}
+                                    </div>
+
+                                    {/* Voice Dropdown */}
+                                    {isVoiceDropdownOpen && (
+                                        <div
+                                            style={{
+                                                position: "absolute",
+                                                top: "100%",
+                                                left: 0,
+                                                right: 0,
+                                                marginTop: "4px",
+                                                background: "rgba(20, 20, 30, 0.98)",
+                                                border: "1px solid rgba(255, 255, 255, 0.15)",
+                                                borderRadius: "12px",
+                                                boxShadow: "0 8px 32px rgba(0, 0, 0, 0.5)",
+                                                maxHeight: "280px",
+                                                overflowY: "auto",
+                                                zIndex: 100,
+                                            }}
+                                        >
+                                            {voicesLoading ? (
+                                                <div style={{ padding: "16px", textAlign: "center", color: "rgba(255,255,255,0.5)" }}>
+                                                    <Loader2 size={20} style={{ animation: "spin 1s linear infinite", marginRight: "8px" }} />
+                                                    Searching voices...
+                                                </div>
+                                            ) : voices.length === 0 ? (
+                                                <div style={{ padding: "16px", textAlign: "center", color: "rgba(255,255,255,0.5)" }}>
+                                                    No voices found
+                                                </div>
+                                            ) : (
+                                                voices.map((voice) => {
+                                                    const providerStyle = getProviderColor(voice.provider);
+                                                    const isPlaying = playingVoiceId === voice.voiceId;
+                                                    const isSelected = selectedVoice?.voiceId === voice.voiceId;
+                                                    
+                                                    return (
+                                                        <div
+                                                            key={voice.voiceId}
+                                                            onClick={() => handleVoiceSelect(voice)}
+                                                            style={{
+                                                                padding: "12px 16px",
+                                                                cursor: "pointer",
+                                                                borderBottom: "1px solid rgba(255, 255, 255, 0.05)",
+                                                                background: isSelected ? "rgba(168, 85, 247, 0.15)" : "transparent",
+                                                                display: "flex",
+                                                                alignItems: "center",
+                                                                justifyContent: "space-between",
+                                                                transition: "background 0.15s ease",
+                                                            }}
+                                                            onMouseEnter={(e) => {
+                                                                if (!isSelected) e.currentTarget.style.background = "rgba(255,255,255,0.05)";
+                                                            }}
+                                                            onMouseLeave={(e) => {
+                                                                if (!isSelected) e.currentTarget.style.background = "transparent";
+                                                            }}
+                                                        >
+                                                            <div style={{ flex: 1, minWidth: 0 }}>
+                                                                <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "2px" }}>
+                                                                    <span style={{ fontWeight: "500", color: "white", fontSize: "14px" }}>
+                                                                        {voice.name}
+                                                                    </span>
+                                                                    {isSelected && (
+                                                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="#a855f7">
+                                                                            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" />
+                                                                        </svg>
+                                                                    )}
+                                                                </div>
+                                                                <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                                                                    <span
+                                                                        style={{
+                                                                            padding: "2px 6px",
+                                                                            borderRadius: "4px",
+                                                                            fontSize: "11px",
+                                                                            fontWeight: "500",
+                                                                            color: providerStyle.color,
+                                                                            background: providerStyle.bg,
+                                                                        }}
+                                                                    >
+                                                                        {voice.provider}
+                                                                    </span>
+                                                                    {voice.primaryLanguage && (
+                                                                        <span style={{ fontSize: "11px", color: "rgba(255,255,255,0.4)" }}>
+                                                                            {voice.primaryLanguage}
+                                                                        </span>
+                                                                    )}
+                                                                </div>
+                                                            </div>
+                                                            {voice.previewUrl && (
+                                                                <button
+                                                                    type="button"
+                                                                    onClick={(e) => {
+                                                                        e.stopPropagation();
+                                                                        handlePlayPreview(voice);
+                                                                    }}
+                                                                    style={{
+                                                                        width: "32px",
+                                                                        height: "32px",
+                                                                        borderRadius: "50%",
+                                                                        background: isPlaying
+                                                                            ? "linear-gradient(135deg, #ec4899 0%, #a855f7 100%)"
+                                                                            : "rgba(168, 85, 247, 0.2)",
+                                                                        border: "none",
+                                                                        display: "flex",
+                                                                        alignItems: "center",
+                                                                        justifyContent: "center",
+                                                                        cursor: "pointer",
+                                                                        marginLeft: "8px",
+                                                                        flexShrink: 0,
+                                                                        transition: "all 0.2s ease",
+                                                                    }}
+                                                                >
+                                                                    {isPlaying ? (
+                                                                        <Pause size={14} color="white" />
+                                                                    ) : (
+                                                                        <Play size={14} color="white" style={{ marginLeft: "2px" }} />
+                                                                    )}
+                                                                </button>
+                                                            )}
+                                                        </div>
+                                                    );
+                                                })
+                                            )}
+                                        </div>
+                                    )}
+
+                                    {/* Selected voice indicator */}
+                                    {selectedVoice && (
+                                        <div
+                                            style={{
+                                                marginTop: "8px",
+                                                padding: "8px 12px",
+                                                background: "rgba(168, 85, 247, 0.1)",
+                                                borderRadius: "8px",
+                                                display: "flex",
+                                                alignItems: "center",
+                                                justifyContent: "space-between",
+                                            }}
+                                        >
+                                            <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                                                <Mic size={14} color="#a855f7" />
+                                                <span style={{ fontSize: "12px", color: "white" }}>{selectedVoice.name}</span>
+                                                <span style={{ fontSize: "11px", color: "rgba(255,255,255,0.4)" }}>
+                                                    ({selectedVoice.provider})
+                                                </span>
+                                            </div>
+                                            <button
+                                                type="button"
+                                                onClick={() => {
+                                                    setSelectedVoice(null);
+                                                    setVoiceSearch('');
+                                                    setFormData({ ...formData, voice: '' });
+                                                }}
+                                                style={{
+                                                    background: "transparent",
+                                                    border: "none",
+                                                    cursor: "pointer",
+                                                    padding: "2px",
+                                                    display: "flex",
+                                                }}
+                                            >
+                                                <X size={14} color="rgba(255,255,255,0.5)" />
+                                            </button>
+                                        </div>
+                                    )}
                                 </div>
 
                                 <div>
