@@ -385,7 +385,7 @@ export default function Home() {
                         </div>
                         <div style={{ display: 'flex', gap: '16px' }}>
                             <a 
-                                href="http://localhost:3001/login"
+                                href={`${process.env.NEXT_PUBLIC_VOICE_AI_URL || 'http://localhost:3001'}/login`}
                                 style={{ 
                                     flex: 1,
                                     height: '52px', 
@@ -407,7 +407,7 @@ export default function Home() {
                                 Login <ArrowRight style={{ width: '18px', height: '18px' }} />
                             </a>
                             <a 
-                                href="http://localhost:3001/signup"
+                                href={`${process.env.NEXT_PUBLIC_VOICE_AI_URL || 'http://localhost:3001'}/signup`}
                                 style={{ 
                                     flex: 1,
                                     height: '52px', 
@@ -478,7 +478,7 @@ export default function Home() {
                         </div>
                         <div style={{ display: 'flex', gap: '16px' }}>
                             <a 
-                                href="http://localhost:3003/login"
+                                href={`${process.env.NEXT_PUBLIC_AI_TEACHER_URL || 'http://localhost:3003'}/login`}
                                 style={{ 
                                     flex: 1,
                                     height: '52px', 
@@ -500,7 +500,7 @@ export default function Home() {
                                 Login <ArrowRight style={{ width: '18px', height: '18px' }} />
                             </a>
                             <a 
-                                href="http://localhost:3003/signup"
+                                href={`${process.env.NEXT_PUBLIC_AI_TEACHER_URL || 'http://localhost:3003'}/signup`}
                                 style={{ 
                                     flex: 1,
                                     height: '52px', 
