@@ -56,7 +56,12 @@ export default function Home() {
                 </div>
 
                 <button 
-                    onClick={() => router.push('/login')}
+                    onClick={() => {
+                        const productsSection = document.getElementById('products');
+                        if (productsSection) {
+                            productsSection.scrollIntoView({ behavior: 'smooth' });
+                        }
+                    }}
                     style={{ 
                         background: 'linear-gradient(135deg, #a855f7 0%, #6366f1 100%)', 
                         color: 'white', 
@@ -79,7 +84,7 @@ export default function Home() {
                         e.currentTarget.style.boxShadow = '0 4px 20px rgba(168, 85, 247, 0.3)';
                     }}
                 >
-                    OPEN DASHBOARD
+                    GET STARTED
                 </button>
             </nav>
 
@@ -121,7 +126,12 @@ export default function Home() {
                 {/* CTA Buttons */}
                 <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '80px' }}>
                     <button 
-                        onClick={() => router.push('/signup')}
+                        onClick={() => {
+                            const productsSection = document.getElementById('products');
+                            if (productsSection) {
+                                productsSection.scrollIntoView({ behavior: 'smooth' });
+                            }
+                        }}
                         style={{ 
                             height: '60px', 
                             borderRadius: '50px', 
@@ -149,7 +159,7 @@ export default function Home() {
                             e.currentTarget.style.boxShadow = '0 4px 20px rgba(168, 85, 247, 0.3)';
                         }}
                     >
-                        SIGN UP
+                        GET STARTED
                         <Sparkles style={{ width: '18px', height: '18px' }} />
                     </button>
 
@@ -303,6 +313,215 @@ export default function Home() {
                             title="Deploy & scale"
                             description="Launch globally with one click. Auto-scale from 1 to 1 million concurrent calls."
                         />
+                    </div>
+                </div>
+            </section>
+
+            {/* Our Products Section */}
+            <section id="products" style={{ 
+                position: 'relative',
+                zIndex: 10,
+                padding: '120px 48px',
+                maxWidth: '1400px',
+                margin: '0 auto'
+            }}>
+                <div style={{ textAlign: 'center', marginBottom: '80px' }}>
+                    <p style={{ color: '#a855f7', fontSize: '14px', fontWeight: '600', letterSpacing: '2px', marginBottom: '16px' }}>
+                        OUR PRODUCTS
+                    </p>
+                    <h2 style={{ fontSize: '48px', fontWeight: '300', color: 'white', letterSpacing: '-2px' }}>
+                        Choose your AI solution
+                    </h2>
+                    <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '18px', marginTop: '16px', maxWidth: '600px', margin: '16px auto 0' }}>
+                        Two powerful platforms designed for different needs. Get started with the one that fits your use case.
+                    </p>
+                </div>
+
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '32px' }}>
+                    {/* Voice AI Product Card */}
+                    <div
+                        style={{
+                            background: 'linear-gradient(135deg, rgba(168, 85, 247, 0.1) 0%, rgba(99, 102, 241, 0.1) 100%)',
+                            border: '1px solid rgba(168, 85, 247, 0.3)',
+                            borderRadius: '24px',
+                            padding: '48px',
+                            transition: 'all 0.3s ease',
+                            cursor: 'pointer',
+                        }}
+                        onMouseEnter={(e) => {
+                            e.currentTarget.style.borderColor = 'rgba(168, 85, 247, 0.6)';
+                            e.currentTarget.style.transform = 'translateY(-4px)';
+                            e.currentTarget.style.boxShadow = '0 20px 40px rgba(168, 85, 247, 0.2)';
+                        }}
+                        onMouseLeave={(e) => {
+                            e.currentTarget.style.borderColor = 'rgba(168, 85, 247, 0.3)';
+                            e.currentTarget.style.transform = 'translateY(0)';
+                            e.currentTarget.style.boxShadow = 'none';
+                        }}
+                    >
+                        <div style={{ 
+                            width: '72px', 
+                            height: '72px', 
+                            borderRadius: '18px', 
+                            background: 'linear-gradient(135deg, #a855f7 0%, #6366f1 100%)', 
+                            display: 'flex', 
+                            alignItems: 'center', 
+                            justifyContent: 'center',
+                            marginBottom: '24px',
+                            boxShadow: '0 12px 40px rgba(168, 85, 247, 0.3)'
+                        }}>
+                            <Mic style={{ width: '32px', height: '32px', color: 'white' }} />
+                        </div>
+                        <h3 style={{ fontSize: '28px', fontWeight: '600', color: 'white', marginBottom: '16px' }}>
+                            Voice AI
+                        </h3>
+                        <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '16px', lineHeight: '1.6', marginBottom: '32px' }}>
+                            Create intelligent voice agents for customer support, sales, and automation. Build conversational AI that sounds natural and responds in real-time.
+                        </p>
+                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '32px' }}>
+                            <span style={{ padding: '6px 14px', backgroundColor: 'rgba(168, 85, 247, 0.2)', borderRadius: '20px', fontSize: '13px', color: '#c084fc' }}>🎙️ Voice Agents</span>
+                            <span style={{ padding: '6px 14px', backgroundColor: 'rgba(168, 85, 247, 0.2)', borderRadius: '20px', fontSize: '13px', color: '#c084fc' }}>🤖 AI Calls</span>
+                            <span style={{ padding: '6px 14px', backgroundColor: 'rgba(168, 85, 247, 0.2)', borderRadius: '20px', fontSize: '13px', color: '#c084fc' }}>⚡ Real-time</span>
+                        </div>
+                        <div style={{ display: 'flex', gap: '16px' }}>
+                            <a 
+                                href="http://localhost:3001/login"
+                                style={{ 
+                                    flex: 1,
+                                    height: '52px', 
+                                    borderRadius: '26px', 
+                                    background: 'linear-gradient(135deg, #a855f7 0%, #6366f1 100%)', 
+                                    color: 'white', 
+                                    fontWeight: '600',
+                                    fontSize: '14px',
+                                    border: 'none',
+                                    cursor: 'pointer',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    gap: '8px',
+                                    textDecoration: 'none',
+                                    transition: 'all 0.2s ease'
+                                }}
+                            >
+                                Login <ArrowRight style={{ width: '18px', height: '18px' }} />
+                            </a>
+                            <a 
+                                href="http://localhost:3001/signup"
+                                style={{ 
+                                    flex: 1,
+                                    height: '52px', 
+                                    borderRadius: '26px', 
+                                    background: 'transparent', 
+                                    color: 'white', 
+                                    fontWeight: '600',
+                                    fontSize: '14px',
+                                    border: '1px solid rgba(168, 85, 247, 0.5)',
+                                    cursor: 'pointer',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    gap: '8px',
+                                    textDecoration: 'none',
+                                    transition: 'all 0.2s ease'
+                                }}
+                            >
+                                Sign Up
+                            </a>
+                        </div>
+                    </div>
+
+                    {/* AI Teacher Product Card */}
+                    <div
+                        style={{
+                            background: 'linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, rgba(22, 163, 74, 0.1) 100%)',
+                            border: '1px solid rgba(34, 197, 94, 0.3)',
+                            borderRadius: '24px',
+                            padding: '48px',
+                            transition: 'all 0.3s ease',
+                            cursor: 'pointer',
+                        }}
+                        onMouseEnter={(e) => {
+                            e.currentTarget.style.borderColor = 'rgba(34, 197, 94, 0.6)';
+                            e.currentTarget.style.transform = 'translateY(-4px)';
+                            e.currentTarget.style.boxShadow = '0 20px 40px rgba(34, 197, 94, 0.2)';
+                        }}
+                        onMouseLeave={(e) => {
+                            e.currentTarget.style.borderColor = 'rgba(34, 197, 94, 0.3)';
+                            e.currentTarget.style.transform = 'translateY(0)';
+                            e.currentTarget.style.boxShadow = 'none';
+                        }}
+                    >
+                        <div style={{ 
+                            width: '72px', 
+                            height: '72px', 
+                            borderRadius: '18px', 
+                            background: 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)', 
+                            display: 'flex', 
+                            alignItems: 'center', 
+                            justifyContent: 'center',
+                            marginBottom: '24px',
+                            boxShadow: '0 12px 40px rgba(34, 197, 94, 0.3)'
+                        }}>
+                            <Brain style={{ width: '32px', height: '32px', color: 'white' }} />
+                        </div>
+                        <h3 style={{ fontSize: '28px', fontWeight: '600', color: 'white', marginBottom: '16px' }}>
+                            AI Teacher
+                        </h3>
+                        <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '16px', lineHeight: '1.6', marginBottom: '32px' }}>
+                            Build intelligent tutoring systems and educational AI assistants. Create personalized learning experiences that adapt to each student.
+                        </p>
+                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '32px' }}>
+                            <span style={{ padding: '6px 14px', backgroundColor: 'rgba(34, 197, 94, 0.2)', borderRadius: '20px', fontSize: '13px', color: '#86efac' }}>📚 Smart Tutoring</span>
+                            <span style={{ padding: '6px 14px', backgroundColor: 'rgba(34, 197, 94, 0.2)', borderRadius: '20px', fontSize: '13px', color: '#86efac' }}>🎓 Personalized</span>
+                            <span style={{ padding: '6px 14px', backgroundColor: 'rgba(34, 197, 94, 0.2)', borderRadius: '20px', fontSize: '13px', color: '#86efac' }}>⚡ Interactive</span>
+                        </div>
+                        <div style={{ display: 'flex', gap: '16px' }}>
+                            <a 
+                                href="http://localhost:3003/login"
+                                style={{ 
+                                    flex: 1,
+                                    height: '52px', 
+                                    borderRadius: '26px', 
+                                    background: 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)', 
+                                    color: 'white', 
+                                    fontWeight: '600',
+                                    fontSize: '14px',
+                                    border: 'none',
+                                    cursor: 'pointer',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    gap: '8px',
+                                    textDecoration: 'none',
+                                    transition: 'all 0.2s ease'
+                                }}
+                            >
+                                Login <ArrowRight style={{ width: '18px', height: '18px' }} />
+                            </a>
+                            <a 
+                                href="http://localhost:3003/signup"
+                                style={{ 
+                                    flex: 1,
+                                    height: '52px', 
+                                    borderRadius: '26px', 
+                                    background: 'transparent', 
+                                    color: 'white', 
+                                    fontWeight: '600',
+                                    fontSize: '14px',
+                                    border: '1px solid rgba(34, 197, 94, 0.5)',
+                                    cursor: 'pointer',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    gap: '8px',
+                                    textDecoration: 'none',
+                                    transition: 'all 0.2s ease'
+                                }}
+                            >
+                                Sign Up
+                            </a>
+                        </div>
                     </div>
                 </div>
             </section>
