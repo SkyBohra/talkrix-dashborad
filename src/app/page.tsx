@@ -978,11 +978,14 @@ function StepCard({ number, title, description }: { number: string, title: strin
     return (
         <div style={{ textAlign: 'center' }}>
             <div style={{ 
-                fontSize: '64px', 
-                fontWeight: '200', 
-                color: 'rgba(168, 85, 247, 0.3)', 
+                fontSize: '72px', 
+                fontWeight: '700', 
+                background: 'linear-gradient(135deg, #a855f7 0%, #6366f1 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
                 marginBottom: '24px',
-                letterSpacing: '-4px'
+                letterSpacing: '-2px'
             }}>
                 {number}
             </div>
