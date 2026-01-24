@@ -35,23 +35,25 @@ export default function Home() {
             }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '48px' }}>
                     {/* Logo */}
-                    <div style={{ 
-                        fontWeight: '800', 
-                        fontSize: '24px', 
-                        color: 'white', 
-                        letterSpacing: '-1px',
-                        fontFamily: 'system-ui, -apple-system, sans-serif'
-                    }}>
-                        TALKRIX
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                        <span style={{ 
+                            fontWeight: '800', 
+                            fontSize: '24px', 
+                            color: 'white', 
+                            letterSpacing: '-1px',
+                            fontFamily: 'system-ui, -apple-system, sans-serif'
+                        }}>
+                            TALKRIX
+                        </span>
                     </div>
                     
                     {/* Nav Links */}
                     <div style={{ display: 'flex', alignItems: 'center', gap: '32px' }}>
-                        <NavLink text="CUSTOM AGENTS" href="#features" />
-                        <NavLink text="DOCS" hasArrow />
-                        <NavLink text="RESOURCES" hasChevron />
-                        <NavLink text="CAREERS" />
-                        <NavLink text="ENTERPRISE" />
+                        <NavLink text="FEATURES" href="#features" />
+                        <NavLink text="DOCS" href="/docs" hasArrow />
+                        <NavLink text="RESOURCES" href="/resources" />
+                        <NavLink text="CAREERS" href="/careers" />
+                        {/* <NavLink text="ENTERPRISE" /> */}
                     </div>
                 </div>
 
@@ -124,7 +126,7 @@ export default function Home() {
                     lineHeight: '1',
                     fontFamily: 'system-ui, -apple-system, sans-serif'
                 }}>
-                    Voice AI that
+                    Automate the routine.
                 </h1>
                 <h1 style={{ 
                     fontSize: 'clamp(56px, 12vw, 140px)', 
@@ -135,7 +137,7 @@ export default function Home() {
                     lineHeight: '1',
                     fontFamily: 'system-ui, -apple-system, sans-serif'
                 }}>
-                    <span style={{ color: '#a855f7' }}>thinks</span>, not just <span style={{ color: '#22c55e' }}>talks</span>
+                    <span style={{ color: '#a855f7' }}>Focus</span> on the <span style={{ color: '#22c55e' }}>rest.</span>
                 </h1>
                 <p style={{
                     fontSize: '20px',
@@ -416,19 +418,15 @@ export default function Home() {
                             e.currentTarget.style.boxShadow = 'none';
                         }}
                     >
-                        <div style={{ 
-                            width: '72px', 
-                            height: '72px', 
-                            borderRadius: '18px', 
-                            background: 'linear-gradient(135deg, #a855f7 0%, #6366f1 100%)', 
-                            display: 'flex', 
-                            alignItems: 'center', 
-                            justifyContent: 'center',
-                            marginBottom: '24px',
-                            boxShadow: '0 12px 40px rgba(168, 85, 247, 0.3)'
-                        }}>
-                            <Mic style={{ width: '32px', height: '32px', color: 'white' }} />
-                        </div>
+                        <img 
+                            src="/images/voice-ai-logo.svg" 
+                            alt="Voice AI" 
+                            style={{ 
+                                width: '72px', 
+                                height: '72px', 
+                                marginBottom: '24px'
+                            }}
+                        />
                         <h3 style={{ fontSize: '28px', fontWeight: '600', color: 'white', marginBottom: '16px' }}>
                             Voice AI
                         </h3>
@@ -509,19 +507,15 @@ export default function Home() {
                             e.currentTarget.style.boxShadow = 'none';
                         }}
                     >
-                        <div style={{ 
-                            width: '72px', 
-                            height: '72px', 
-                            borderRadius: '18px', 
-                            background: 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)', 
-                            display: 'flex', 
-                            alignItems: 'center', 
-                            justifyContent: 'center',
-                            marginBottom: '24px',
-                            boxShadow: '0 12px 40px rgba(34, 197, 94, 0.3)'
-                        }}>
-                            <Brain style={{ width: '32px', height: '32px', color: 'white' }} />
-                        </div>
+                        <img 
+                            src="/images/ai-teacher-logo.svg" 
+                            alt="AI Teacher" 
+                            style={{ 
+                                width: '72px', 
+                                height: '72px', 
+                                marginBottom: '24px'
+                            }}
+                        />
                         <h3 style={{ fontSize: '28px', fontWeight: '600', color: 'white', marginBottom: '16px' }}>
                             AI Teacher
                         </h3>
