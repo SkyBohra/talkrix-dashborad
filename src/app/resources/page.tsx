@@ -342,20 +342,6 @@ export default function ResourcesPage() {
 
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '24px' }}>
                     <WebinarCard 
-                        title="Voice AI in 2026: Trends & Predictions"
-                        date="Feb 5, 2026"
-                        time="2:00 PM IST"
-                        speakers={['Satish Yadav', 'Guest Speaker']}
-                        isLive={false}
-                    />
-                    <WebinarCard 
-                        title="Building Enterprise Voice Solutions"
-                        date="Feb 12, 2026"
-                        time="3:00 PM IST"
-                        speakers={['Ravi Biyani', 'Tech Team']}
-                        isLive={false}
-                    />
-                    <WebinarCard 
                         title="Talkrix Developer Office Hours"
                         date="Every Thursday"
                         time="11:00 AM IST"
@@ -363,10 +349,26 @@ export default function ResourcesPage() {
                         isLive={true}
                     />
                     <WebinarCard 
-                        title="Voice AI Security Best Practices"
-                        date="Feb 20, 2026"
-                        time="4:00 PM IST"
-                        speakers={['Security Team']}
+                        title="API Integration Office Hours"
+                        date="Jan 16, 2026"
+                        time="11:00 AM IST"
+                        speakers={['Engineering Team']}
+                        isLive={false}
+                        isDone={true}
+                    />
+                    <WebinarCard 
+                        title="Voice Agent Setup Office Hours"
+                        date="Jan 23, 2026"
+                        time="11:00 AM IST"
+                        speakers={['Developer Advocates']}
+                        isLive={false}
+                        isDone={true}
+                    />
+                    <WebinarCard 
+                        title="Advanced Webhooks Office Hours"
+                        date="Jan 30, 2026"
+                        time="11:00 AM IST"
+                        speakers={['Tech Team']}
                         isLive={false}
                     />
                 </div>
@@ -868,18 +870,25 @@ function TemplateCard({ title, description, tags }: { title: string, description
     );
 }
 
-function WebinarCard({ title, date, time, speakers, isLive }: { 
-    title: string, date: string, time: string, speakers: string[], isLive: boolean 
+function WebinarCard({ title, date, time, speakers, isLive, isDone }: { 
+    title: string, date: string, time: string, speakers: string[], isLive: boolean, isDone?: boolean 
 }) {
+    const getBorderColor = () => {
+        if (isDone) return '1px solid rgba(156, 163, 175, 0.3)';
+        if (isLive) return '1px solid rgba(34, 197, 94, 0.3)';
+        return '1px solid rgba(255,255,255,0.08)';
+    };
+
     return (
         <div style={{
             padding: '28px',
             backgroundColor: 'rgba(255,255,255,0.03)',
             borderRadius: '16px',
-            border: isLive ? '1px solid rgba(34, 197, 94, 0.3)' : '1px solid rgba(255,255,255,0.08)',
+            border: getBorderColor(),
             transition: 'all 0.3s ease',
             cursor: 'pointer',
-            position: 'relative'
+            position: 'relative',
+            opacity: isDone ? 0.7 : 1
         }}
         onMouseEnter={(e) => {
             e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.06)';
@@ -909,6 +918,21 @@ function WebinarCard({ title, date, time, speakers, isLive }: {
                     RECURRING
                 </span>
             )}
+            {isDone && (
+                <span style={{
+                    position: 'absolute',
+                    top: '16px',
+                    right: '16px',
+                    padding: '4px 10px',
+                    backgroundColor: 'rgba(156, 163, 175, 0.2)',
+                    borderRadius: '20px',
+                    fontSize: '11px',
+                    color: '#9ca3af',
+                    fontWeight: '600'
+                }}>
+                    COMPLETED
+                </span>
+            )}
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
                 <div style={{
                     width: '44px',
@@ -936,14 +960,14 @@ function WebinarCard({ title, date, time, speakers, isLive }: {
                 width: '100%',
                 height: '40px',
                 borderRadius: '20px',
-                backgroundColor: isLive ? 'rgba(34, 197, 94, 0.2)' : 'rgba(249, 115, 22, 0.2)',
-                color: isLive ? '#22c55e' : '#f97316',
+                backgroundColor: isDone ? 'rgba(156, 163, 175, 0.2)' : isLive ? 'rgba(34, 197, 94, 0.2)' : 'rgba(249, 115, 22, 0.2)',
+                color: isDone ? '#9ca3af' : isLive ? '#22c55e' : '#f97316',
                 fontSize: '13px',
                 fontWeight: '600',
                 border: 'none',
-                cursor: 'pointer'
+                cursor: isDone ? 'default' : 'pointer'
             }}>
-                {isLive ? 'Join Now' : 'Register'}
+                {isDone ? 'View Recording' : isLive ? 'Join Now' : 'Register'}
             </button>
         </div>
     );
