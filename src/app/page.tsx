@@ -418,15 +418,6 @@ export default function Home() {
                             e.currentTarget.style.boxShadow = 'none';
                         }}
                     >
-                        <img 
-                            src="/images/voice-ai-logo.svg" 
-                            alt="Voice AI" 
-                            style={{ 
-                                width: '72px', 
-                                height: '72px', 
-                                marginBottom: '24px'
-                            }}
-                        />
                         <h3 style={{ fontSize: '28px', fontWeight: '600', color: 'white', marginBottom: '16px' }}>
                             Voice AI
                         </h3>
@@ -489,33 +480,32 @@ export default function Home() {
                     {/* AI Teacher Product Card */}
                     <div
                         style={{
-                            background: 'linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, rgba(22, 163, 74, 0.1) 100%)',
-                            border: '1px solid rgba(34, 197, 94, 0.3)',
+                            background: 'linear-gradient(135deg, rgba(34, 197, 94, 0.05) 0%, rgba(22, 163, 74, 0.05) 100%)',
+                            border: '1px solid rgba(34, 197, 94, 0.2)',
                             borderRadius: '24px',
                             padding: '48px',
                             transition: 'all 0.3s ease',
-                            cursor: 'pointer',
-                        }}
-                        onMouseEnter={(e) => {
-                            e.currentTarget.style.borderColor = 'rgba(34, 197, 94, 0.6)';
-                            e.currentTarget.style.transform = 'translateY(-4px)';
-                            e.currentTarget.style.boxShadow = '0 20px 40px rgba(34, 197, 94, 0.2)';
-                        }}
-                        onMouseLeave={(e) => {
-                            e.currentTarget.style.borderColor = 'rgba(34, 197, 94, 0.3)';
-                            e.currentTarget.style.transform = 'translateY(0)';
-                            e.currentTarget.style.boxShadow = 'none';
+                            position: 'relative',
+                            opacity: 0.85,
                         }}
                     >
-                        <img 
-                            src="/images/ai-teacher-logo.svg" 
-                            alt="AI Teacher" 
-                            style={{ 
-                                width: '72px', 
-                                height: '72px', 
-                                marginBottom: '24px'
-                            }}
-                        />
+                        {/* Coming Soon Badge */}
+                        <div style={{
+                            position: 'absolute',
+                            top: '24px',
+                            right: '24px',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '6px',
+                            padding: '8px 16px',
+                            backgroundColor: 'rgba(245, 158, 11, 0.15)',
+                            border: '1px solid rgba(245, 158, 11, 0.3)',
+                            borderRadius: '20px',
+                        }}>
+                            <Clock style={{ width: '14px', height: '14px', color: '#f59e0b' }} />
+                            <span style={{ fontSize: '13px', fontWeight: '600', color: '#f59e0b' }}>Coming Soon</span>
+                        </div>
+
                         <h3 style={{ fontSize: '28px', fontWeight: '600', color: 'white', marginBottom: '16px' }}>
                             AI Teacher
                         </h3>
@@ -523,55 +513,49 @@ export default function Home() {
                             Build intelligent tutoring systems and educational AI assistants. Create personalized learning experiences that adapt to each student.
                         </p>
                         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '32px' }}>
-                            <span style={{ padding: '6px 14px', backgroundColor: 'rgba(34, 197, 94, 0.2)', borderRadius: '20px', fontSize: '13px', color: '#86efac' }}>📚 Smart Tutoring</span>
-                            <span style={{ padding: '6px 14px', backgroundColor: 'rgba(34, 197, 94, 0.2)', borderRadius: '20px', fontSize: '13px', color: '#86efac' }}>🎓 Personalized</span>
-                            <span style={{ padding: '6px 14px', backgroundColor: 'rgba(34, 197, 94, 0.2)', borderRadius: '20px', fontSize: '13px', color: '#86efac' }}>⚡ Interactive</span>
+                            <span style={{ padding: '6px 14px', backgroundColor: 'rgba(34, 197, 94, 0.15)', borderRadius: '20px', fontSize: '13px', color: '#86efac' }}>📚 Smart Tutoring</span>
+                            <span style={{ padding: '6px 14px', backgroundColor: 'rgba(34, 197, 94, 0.15)', borderRadius: '20px', fontSize: '13px', color: '#86efac' }}>🎓 Personalized</span>
+                            <span style={{ padding: '6px 14px', backgroundColor: 'rgba(34, 197, 94, 0.15)', borderRadius: '20px', fontSize: '13px', color: '#86efac' }}>⚡ Interactive</span>
                         </div>
                         <div style={{ display: 'flex', gap: '16px' }}>
-                            <a 
-                                href={`${process.env.NEXT_PUBLIC_AI_TEACHER_URL || 'http://localhost:3003'}/login`}
+                            <div
                                 style={{ 
                                     flex: 1,
                                     height: '52px', 
                                     borderRadius: '26px', 
-                                    background: 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)', 
-                                    color: 'white', 
+                                    background: 'rgba(34, 197, 94, 0.2)', 
+                                    color: 'rgba(255,255,255,0.5)', 
                                     fontWeight: '600',
                                     fontSize: '14px',
                                     border: 'none',
-                                    cursor: 'pointer',
+                                    cursor: 'not-allowed',
                                     display: 'flex',
                                     alignItems: 'center',
                                     justifyContent: 'center',
                                     gap: '8px',
-                                    textDecoration: 'none',
-                                    transition: 'all 0.2s ease'
                                 }}
                             >
-                                Login <ArrowRight style={{ width: '18px', height: '18px' }} />
-                            </a>
-                            <a 
-                                href={`${process.env.NEXT_PUBLIC_AI_TEACHER_URL || 'http://localhost:3003'}/signup`}
+                                Login <ArrowRight style={{ width: '18px', height: '18px', opacity: 0.5 }} />
+                            </div>
+                            <div
                                 style={{ 
                                     flex: 1,
                                     height: '52px', 
                                     borderRadius: '26px', 
                                     background: 'transparent', 
-                                    color: 'white', 
+                                    color: 'rgba(255,255,255,0.5)', 
                                     fontWeight: '600',
                                     fontSize: '14px',
-                                    border: '1px solid rgba(34, 197, 94, 0.5)',
-                                    cursor: 'pointer',
+                                    border: '1px solid rgba(34, 197, 94, 0.2)',
+                                    cursor: 'not-allowed',
                                     display: 'flex',
                                     alignItems: 'center',
                                     justifyContent: 'center',
                                     gap: '8px',
-                                    textDecoration: 'none',
-                                    transition: 'all 0.2s ease'
                                 }}
                             >
                                 Sign Up
-                            </a>
+                            </div>
                         </div>
                     </div>
                 </div>
