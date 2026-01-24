@@ -4,11 +4,72 @@ import { useRouter } from "next/navigation";
 import { ArrowUpRight, Sparkles, ChevronRight, Mic, Brain, Zap, Globe, Shield, Clock, Users, Phone, Code, Cpu, Headphones, MessageSquare, ArrowRight, Check, Linkedin, Twitter, TrendingUp, Target, Rocket } from "lucide-react";
 import Image from "next/image";
 
+// JSON-LD Structured Data for SEO
+const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Talkrix",
+    url: "https://talkrix.com",
+    logo: "https://talkrix.com/icon.svg",
+    description: "Talkrix builds conversational AI voice agents that understand context, reason through problems, and take actions—replacing 80% of routine calls for enterprises.",
+    foundingDate: "2024",
+    sameAs: [
+        "https://twitter.com/talkrix",
+        "https://linkedin.com/company/talkrix"
+    ],
+    offers: [
+        {
+            "@type": "Offer",
+            name: "Voice AI",
+            description: "Create intelligent voice agents for customer support, sales, and automation."
+        },
+        {
+            "@type": "Offer",
+            name: "AI Teacher",
+            description: "Build intelligent tutoring systems and educational AI assistants."
+        }
+    ]
+};
+
+const softwareJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: "Talkrix Voice AI",
+    applicationCategory: "BusinessApplication",
+    operatingSystem: "Web",
+    description: "AI-powered voice agents for enterprise customer support and automation",
+    offers: {
+        "@type": "Offer",
+        price: "0",
+        priceCurrency: "USD",
+        description: "Contact for enterprise pricing"
+    },
+    featureList: [
+        "Real-time voice conversations",
+        "Sub-100ms latency",
+        "50+ languages support",
+        "Enterprise security (SOC2, HIPAA)",
+        "Custom AI agent creation",
+        "CRM and calendar integrations"
+    ]
+};
+
 export default function Home() {
     const router = useRouter();
 
     return (
-        <div style={{ minHeight: '100vh', position: 'relative' }}>
+        <>
+            {/* JSON-LD Structured Data */}
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareJsonLd) }}
+            />
+            
+            <div style={{ minHeight: '100vh', position: 'relative' }}>
             {/* Dot Pattern Overlay */}
             <div style={{
                 position: 'fixed',
@@ -838,6 +899,7 @@ export default function Home() {
                 </div>
             </footer>
         </div>
+        </>
     );
 }
 

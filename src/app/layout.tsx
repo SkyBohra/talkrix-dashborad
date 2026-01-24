@@ -13,8 +13,36 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Talkrix - Next Gen Voice AI",
-  description: "Experience premium real-time voice conversations.",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://talkrix.com'),
+  title: {
+    default: "Talkrix - AI Voice Agents for Enterprise | Automate 80% of Customer Calls",
+    template: "%s | Talkrix"
+  },
+  description: "Talkrix builds conversational AI voice agents that understand context, reason through problems, and take actions. Replace 80% of routine calls with enterprise-grade AI that sounds human. Sub-100ms latency, 50+ languages, HIPAA compliant.",
+  keywords: [
+    "AI voice agents",
+    "conversational AI",
+    "voice automation",
+    "customer support AI",
+    "enterprise voice AI",
+    "AI call center",
+    "voice assistant",
+    "speech AI",
+    "AI customer service",
+    "automated voice calls",
+    "real-time voice AI",
+    "AI teacher",
+    "intelligent tutoring",
+    "voice technology"
+  ],
+  authors: [{ name: "Talkrix", url: "https://talkrix.com" }],
+  creator: "Talkrix",
+  publisher: "Talkrix",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   icons: {
     icon: [
       { url: '/icon.svg', type: 'image/svg+xml' },
@@ -22,6 +50,48 @@ export const metadata: Metadata = {
     ],
     shortcut: '/icon.svg',
     apple: '/icon.svg',
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://talkrix.com',
+    siteName: 'Talkrix',
+    title: 'Talkrix - AI Voice Agents for Enterprise',
+    description: 'Build conversational AI voice agents that automate 80% of customer calls. Sub-100ms latency, 50+ languages, enterprise-grade security.',
+    images: [
+      {
+        url: '/images/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Talkrix - AI Voice Agents for Enterprise',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Talkrix - AI Voice Agents for Enterprise',
+    description: 'Build conversational AI voice agents that automate 80% of customer calls. Sub-100ms latency, 50+ languages.',
+    images: ['/images/og-image.png'],
+    creator: '@talkrix',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  alternates: {
+    canonical: 'https://talkrix.com',
+  },
+  verification: {
+    // Add your verification codes here when you have them
+    // google: 'your-google-verification-code',
+    // yandex: 'your-yandex-verification-code',
   },
 };
 
