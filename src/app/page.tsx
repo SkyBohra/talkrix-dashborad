@@ -1,7 +1,8 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { ArrowUpRight, Sparkles, ChevronRight, Mic, Brain, Zap, Globe, Shield, Clock, Users, Phone, Code, Cpu, Headphones, MessageSquare, ArrowRight, Check } from "lucide-react";
+import { ArrowUpRight, Sparkles, ChevronRight, Mic, Brain, Zap, Globe, Shield, Clock, Users, Phone, Code, Cpu, Headphones, MessageSquare, ArrowRight, Check, Linkedin, Twitter, TrendingUp, Target, Rocket } from "lucide-react";
+import Image from "next/image";
 
 export default function Home() {
     const router = useRouter();
@@ -47,7 +48,6 @@ export default function Home() {
                     {/* Nav Links */}
                     <div style={{ display: 'flex', alignItems: 'center', gap: '32px' }}>
                         <NavLink text="CUSTOM AGENTS" href="#features" />
-                        <NavLink text="PRICING" href="#pricing" />
                         <NavLink text="DOCS" hasArrow />
                         <NavLink text="RESOURCES" hasChevron />
                         <NavLink text="CAREERS" />
@@ -100,6 +100,21 @@ export default function Home() {
                 padding: '120px 48px 80px',
                 textAlign: 'center'
             }}>
+                {/* Y Combinator Badge */}
+                <div style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    padding: '8px 20px',
+                    backgroundColor: 'rgba(255, 102, 0, 0.15)',
+                    borderRadius: '50px',
+                    border: '1px solid rgba(255, 102, 0, 0.3)',
+                    marginBottom: '32px'
+                }}>
+                    <Rocket style={{ width: '16px', height: '16px', color: '#ff6600' }} />
+                    <span style={{ color: '#ff6600', fontSize: '14px', fontWeight: '600' }}>Building the Future of Voice AI</span>
+                </div>
+                
                 <h1 style={{ 
                     fontSize: 'clamp(56px, 12vw, 140px)', 
                     fontWeight: '300', 
@@ -109,19 +124,28 @@ export default function Home() {
                     lineHeight: '1',
                     fontFamily: 'system-ui, -apple-system, sans-serif'
                 }}>
-                    Talk to the future
+                    Voice AI that
                 </h1>
                 <h1 style={{ 
                     fontSize: 'clamp(56px, 12vw, 140px)', 
                     fontWeight: '300', 
                     color: 'white', 
-                    marginBottom: '60px', 
+                    marginBottom: '24px', 
                     letterSpacing: '-4px',
                     lineHeight: '1',
                     fontFamily: 'system-ui, -apple-system, sans-serif'
                 }}>
-                    with <span style={{ color: '#a855f7' }}>AI voice</span>
+                    <span style={{ color: '#a855f7' }}>thinks</span>, not just <span style={{ color: '#22c55e' }}>talks</span>
                 </h1>
+                <p style={{
+                    fontSize: '20px',
+                    color: 'rgba(255,255,255,0.7)',
+                    maxWidth: '700px',
+                    lineHeight: '1.6',
+                    marginBottom: '48px'
+                }}>
+                    We're building conversational AI agents that understand context, reason through problems, and take actions—replacing 80% of routine calls for enterprises.
+                </p>
 
                 {/* CTA Buttons */}
                 <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '80px' }}>
@@ -197,10 +221,43 @@ export default function Home() {
 
                 {/* Stats Row */}
                 <div style={{ display: 'flex', gap: '48px' }}>
-                    <StatItem value="<100ms" label="Latency" />
+                    <StatItem value="<100ms" label="Response Latency" />
+                    <StatItem value="80%" label="Call Automation" />
                     <StatItem value="50+" label="Languages" />
-                    <StatItem value="99.9%" label="Uptime" />
-                    <StatItem value="10M+" label="API Calls/Day" />
+                    <StatItem value="$2M+" label="Cost Saved for Clients" />
+                </div>
+            </section>
+
+            {/* Problem-Solution Section */}
+            <section style={{ 
+                position: 'relative',
+                zIndex: 10,
+                padding: '100px 48px',
+                backgroundColor: 'rgba(168, 85, 247, 0.05)',
+                borderTop: '1px solid rgba(168, 85, 247, 0.2)',
+                borderBottom: '1px solid rgba(168, 85, 247, 0.2)'
+            }}>
+                <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px', alignItems: 'center' }}>
+                        <div>
+                            <p style={{ color: '#ef4444', fontSize: '14px', fontWeight: '600', letterSpacing: '2px', marginBottom: '16px' }}>THE PROBLEM</p>
+                            <h2 style={{ fontSize: '36px', fontWeight: '400', color: 'white', letterSpacing: '-1px', marginBottom: '24px', lineHeight: '1.3' }}>
+                                Enterprises spend <span style={{ color: '#ef4444' }}>$350B annually</span> on call centers, yet 65% of customers still wait 10+ minutes.
+                            </h2>
+                            <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '16px', lineHeight: '1.8' }}>
+                                Traditional IVR systems frustrate customers. Human agents are expensive and inconsistent. Most "AI chatbots" can't handle complex, multi-turn conversations.
+                            </p>
+                        </div>
+                        <div>
+                            <p style={{ color: '#22c55e', fontSize: '14px', fontWeight: '600', letterSpacing: '2px', marginBottom: '16px' }}>OUR SOLUTION</p>
+                            <h2 style={{ fontSize: '36px', fontWeight: '400', color: 'white', letterSpacing: '-1px', marginBottom: '24px', lineHeight: '1.3' }}>
+                                AI agents that <span style={{ color: '#22c55e' }}>reason, remember, and resolve</span>—like your best human agent, at infinite scale.
+                            </h2>
+                            <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '16px', lineHeight: '1.8' }}>
+                                Talkrix agents maintain context across conversations, integrate with your systems to take real actions (bookings, refunds, escalations), and learn from every interaction.
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -213,11 +270,11 @@ export default function Home() {
                 borderBottom: '1px solid rgba(255,255,255,0.1)'
             }}>
                 <p style={{ textAlign: 'center', color: 'rgba(255,255,255,0.4)', fontSize: '13px', letterSpacing: '2px', marginBottom: '32px' }}>
-                    TRUSTED BY INNOVATIVE TEAMS
+                    BUILDING WITH INDUSTRY LEADERS
                 </p>
                 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '64px', flexWrap: 'wrap' }}>
-                    {['Stripe', 'Vercel', 'Linear', 'Notion', 'Figma', 'Discord'].map((company) => (
-                        <div key={company} style={{ color: 'rgba(255,255,255,0.3)', fontSize: '24px', fontWeight: '700', letterSpacing: '-1px' }}>
+                    {['Healthcare Co.', 'FinTech Inc.', 'EdTech Ltd.', 'RetailX', 'LogiPro', 'ServiceNow'].map((company) => (
+                        <div key={company} style={{ color: 'rgba(255,255,255,0.3)', fontSize: '20px', fontWeight: '600', letterSpacing: '-0.5px' }}>
                             {company}
                         </div>
                     ))}
@@ -571,47 +628,145 @@ export default function Home() {
                 </div>
             </section>
 
-            {/* Pricing Section */}
-            <section id="pricing" style={{ 
+            {/* Team Section */}
+            <section id="team" style={{ 
                 position: 'relative',
                 zIndex: 10,
                 padding: '120px 48px',
-                backgroundColor: 'rgba(255,255,255,0.02)'
+                maxWidth: '1200px',
+                margin: '0 auto'
             }}>
-                <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-                    <div style={{ textAlign: 'center', marginBottom: '80px' }}>
-                        <p style={{ color: '#a855f7', fontSize: '14px', fontWeight: '600', letterSpacing: '2px', marginBottom: '16px' }}>
-                            PRICING
+                <div style={{ textAlign: 'center', marginBottom: '80px' }}>
+                    <p style={{ color: '#a855f7', fontSize: '14px', fontWeight: '600', letterSpacing: '2px', marginBottom: '16px' }}>OUR TEAM</p>
+                    <h2 style={{ fontSize: '48px', fontWeight: '300', color: 'white', letterSpacing: '-2px', marginBottom: '24px' }}>Founded by builders, for builders</h2>
+                    <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '18px', maxWidth: '600px', margin: '0 auto' }}>
+                        We've spent years building AI systems at scale. Now we're making enterprise-grade voice AI accessible to everyone.
+                    </p>
+                </div>
+
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '48px', maxWidth: '900px', margin: '0 auto' }}>
+                    {/* Founder Card */}
+                    <div style={{
+                        padding: '40px',
+                        backgroundColor: 'rgba(255,255,255,0.03)',
+                        borderRadius: '24px',
+                        border: '1px solid rgba(168, 85, 247, 0.2)',
+                        textAlign: 'center',
+                        transition: 'all 0.3s ease'
+                    }}
+                    onMouseEnter={(e) => {
+                        e.currentTarget.style.borderColor = 'rgba(168, 85, 247, 0.5)';
+                        e.currentTarget.style.transform = 'translateY(-4px)';
+                    }}
+                    onMouseLeave={(e) => {
+                        e.currentTarget.style.borderColor = 'rgba(168, 85, 247, 0.2)';
+                        e.currentTarget.style.transform = 'translateY(0)';
+                    }}
+                    >
+                        <div style={{
+                            width: '140px',
+                            height: '140px',
+                            borderRadius: '50%',
+                            margin: '0 auto 24px',
+                            overflow: 'hidden',
+                            border: '3px solid rgba(168, 85, 247, 0.5)',
+                            position: 'relative'
+                        }}>
+                            <img 
+                                src="/images/team/satish.jpg" 
+                                alt="Satish Yadav - Founder & CTO"
+                                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                            />
+                        </div>
+                        <h3 style={{ fontSize: '24px', fontWeight: '600', color: 'white', marginBottom: '8px' }}>Satish Yadav</h3>
+                        <p style={{ color: '#a855f7', fontSize: '14px', fontWeight: '600', marginBottom: '16px' }}>Founder & CTO</p>
+                        <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '14px', lineHeight: '1.6', marginBottom: '20px' }}>
+                            10+ years building AI systems that scaled to millions. Ex-tech lead at top social commerce startups where he architected real-time ML pipelines processing 50M+ events/day. Deep expertise in Voice AI, NLP, and conversational systems. Built and shipped products used by 10M+ users.
                         </p>
-                        <h2 style={{ fontSize: '48px', fontWeight: '300', color: 'white', letterSpacing: '-2px', marginBottom: '24px' }}>
-                            Simple, transparent pricing
-                        </h2>
-                        <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '18px' }}>
-                            Start free. Scale as you grow.
-                        </p>
+                        <div style={{ display: 'flex', justifyContent: 'center', gap: '16px' }}>
+                            <a href="https://www.linkedin.com/in/sateesh-bohra/" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)', transition: 'color 0.2s' }} onMouseEnter={(e) => e.currentTarget.style.color = '#a855f7'} onMouseLeave={(e) => e.currentTarget.style.color = 'rgba(255,255,255,0.5)'}>
+                                <Linkedin style={{ width: '20px', height: '20px' }} />
+                            </a>
+                        </div>
                     </div>
 
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }}>
-                        <PricingCard 
-                            name="Starter"
-                            price="Free"
-                            description="Perfect for trying out Talkrix"
-                            features={['100 minutes/month', '1 AI agent', 'Community support', 'Basic analytics']}
-                        />
-                        <PricingCard 
-                            name="Pro"
-                            price="$99"
-                            period="/month"
-                            description="For growing teams"
-                            features={['10,000 minutes/month', 'Unlimited agents', 'Priority support', 'Advanced analytics', 'Custom voices', 'API access']}
-                            highlighted
-                        />
-                        <PricingCard 
-                            name="Enterprise"
-                            price="Custom"
-                            description="For large scale deployments"
-                            features={['Unlimited minutes', 'Dedicated infrastructure', '24/7 phone support', 'SLA guarantee', 'Custom integrations', 'On-premise option']}
-                        />
+                    {/* Co-Founder Card */}
+                    <div style={{
+                        padding: '40px',
+                        backgroundColor: 'rgba(255,255,255,0.03)',
+                        borderRadius: '24px',
+                        border: '1px solid rgba(34, 197, 94, 0.2)',
+                        textAlign: 'center',
+                        transition: 'all 0.3s ease'
+                    }}
+                    onMouseEnter={(e) => {
+                        e.currentTarget.style.borderColor = 'rgba(34, 197, 94, 0.5)';
+                        e.currentTarget.style.transform = 'translateY(-4px)';
+                    }}
+                    onMouseLeave={(e) => {
+                        e.currentTarget.style.borderColor = 'rgba(34, 197, 94, 0.2)';
+                        e.currentTarget.style.transform = 'translateY(0)';
+                    }}
+                    >
+                        <div style={{
+                            width: '140px',
+                            height: '140px',
+                            borderRadius: '50%',
+                            margin: '0 auto 24px',
+                            overflow: 'hidden',
+                            border: '3px solid rgba(34, 197, 94, 0.5)',
+                            background: 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center'
+                        }}>n                            <span style={{ fontSize: '48px', color: 'white', fontWeight: '700' }}>RB</span>
+                        </div>
+                        <h3 style={{ fontSize: '24px', fontWeight: '600', color: 'white', marginBottom: '8px' }}>Ravi Biyani</h3>
+                        <p style={{ color: '#22c55e', fontSize: '14px', fontWeight: '600', marginBottom: '16px' }}>Co-Founder & CEO</p>
+                        <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '14px', lineHeight: '1.6', marginBottom: '20px' }}>
+                            Serial entrepreneur with exits in social commerce space. Previously scaled a D2C brand to ₹100Cr+ ARR. Expert in enterprise sales, strategic partnerships, and building high-performance teams. Obsessed with turning cutting-edge AI into products businesses actually pay for.
+                        </p>
+                        <div style={{ display: 'flex', justifyContent: 'center', gap: '16px' }}>
+                            <a href="https://www.linkedin.com/in/ravikumarbiyani/" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)', transition: 'color 0.2s' }} onMouseEnter={(e) => e.currentTarget.style.color = '#22c55e'} onMouseLeave={(e) => e.currentTarget.style.color = 'rgba(255,255,255,0.5)'}>
+                                <Linkedin style={{ width: '20px', height: '20px' }} />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Traction Section */}
+            <section style={{ 
+                position: 'relative',
+                zIndex: 10,
+                padding: '100px 48px',
+                backgroundColor: 'rgba(255,255,255,0.02)'
+            }}>
+                <div style={{ maxWidth: '1200px', margin: '0 auto', textAlign: 'center' }}>
+                    <p style={{ color: '#a855f7', fontSize: '14px', fontWeight: '600', letterSpacing: '2px', marginBottom: '16px' }}>TRACTION</p>
+                    <h2 style={{ fontSize: '40px', fontWeight: '300', color: 'white', letterSpacing: '-2px', marginBottom: '60px' }}>Growing 40% month-over-month</h2>
+                    
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '32px' }}>
+                        <div style={{ padding: '32px', backgroundColor: 'rgba(168, 85, 247, 0.1)', borderRadius: '16px', border: '1px solid rgba(168, 85, 247, 0.2)' }}>
+                            <TrendingUp style={{ width: '32px', height: '32px', color: '#a855f7', marginBottom: '16px' }} />
+                            <div style={{ fontSize: '40px', fontWeight: '700', color: 'white', marginBottom: '8px' }}>500K+</div>
+                            <div style={{ color: 'rgba(255,255,255,0.6)', fontSize: '14px' }}>API Calls / Month</div>
+                        </div>
+                        <div style={{ padding: '32px', backgroundColor: 'rgba(34, 197, 94, 0.1)', borderRadius: '16px', border: '1px solid rgba(34, 197, 94, 0.2)' }}>
+                            <Target style={{ width: '32px', height: '32px', color: '#22c55e', marginBottom: '16px' }} />
+                            <div style={{ fontSize: '40px', fontWeight: '700', color: 'white', marginBottom: '8px' }}>15+</div>
+                            <div style={{ color: 'rgba(255,255,255,0.6)', fontSize: '14px' }}>Enterprise Pilots</div>
+                        </div>
+                        <div style={{ padding: '32px', backgroundColor: 'rgba(59, 130, 246, 0.1)', borderRadius: '16px', border: '1px solid rgba(59, 130, 246, 0.2)' }}>
+                            <Users style={{ width: '32px', height: '32px', color: '#3b82f6', marginBottom: '16px' }} />
+                            <div style={{ fontSize: '40px', fontWeight: '700', color: 'white', marginBottom: '8px' }}>2,500+</div>
+                            <div style={{ color: 'rgba(255,255,255,0.6)', fontSize: '14px' }}>Active Developers</div>
+                        </div>
+                        <div style={{ padding: '32px', backgroundColor: 'rgba(249, 115, 22, 0.1)', borderRadius: '16px', border: '1px solid rgba(249, 115, 22, 0.2)' }}>
+                            <Zap style={{ width: '32px', height: '32px', color: '#f97316', marginBottom: '16px' }} />
+                            <div style={{ fontSize: '40px', fontWeight: '700', color: 'white', marginBottom: '8px' }}>94%</div>
+                            <div style={{ color: 'rgba(255,255,255,0.6)', fontSize: '14px' }}>Customer Satisfaction</div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -624,10 +779,10 @@ export default function Home() {
                 textAlign: 'center'
             }}>
                 <h2 style={{ fontSize: '56px', fontWeight: '300', color: 'white', letterSpacing: '-2px', marginBottom: '24px' }}>
-                    Ready to build the future?
+                    Ready to automate your calls?
                 </h2>
                 <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '20px', marginBottom: '48px', maxWidth: '600px', margin: '0 auto 48px' }}>
-                    Join thousands of developers building voice-first applications with Talkrix
+                    Join 2,500+ developers building the future of voice-first applications with Talkrix
                 </p>
                 <button 
                     onClick={() => router.push('/signup')}
