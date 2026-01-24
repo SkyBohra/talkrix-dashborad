@@ -111,8 +111,8 @@ export default function DocsPage() {
 
                     <div style={{ marginTop: '32px', padding: '20px', backgroundColor: 'rgba(168, 85, 247, 0.1)', borderRadius: '12px', border: '1px solid rgba(168, 85, 247, 0.2)' }}>
                         <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.8)', marginBottom: '12px' }}>Need help?</p>
-                        <a href="mailto:support@talkrix.com" style={{ color: '#a855f7', fontSize: '13px', textDecoration: 'none' }}>
-                            support@talkrix.com
+                        <a href="mailto:founders@talkrix.com" style={{ color: '#a855f7', fontSize: '13px', textDecoration: 'none' }}>
+                            founders@talkrix.com
                         </a>
                     </div>
                 </aside>
@@ -140,7 +140,7 @@ export default function DocsPage() {
                             <div style={{ marginBottom: '24px' }}>
                                 <h3 style={{ fontSize: '16px', fontWeight: '600', marginBottom: '12px', color: '#a855f7' }}>1. Get your API Key</h3>
                                 <p style={{ color: 'rgba(255,255,255,0.7)', marginBottom: '16px' }}>
-                                    Sign up at <a href="https://voice.talkrix.com" style={{ color: '#a855f7' }}>voice.talkrix.com</a> and get your API key from the dashboard.
+                                    Sign up at <a href="https://app.talkrix.com" style={{ color: '#a855f7' }}>app.talkrix.com</a> and get your API key from the dashboard.
                                 </p>
                             </div>
 
