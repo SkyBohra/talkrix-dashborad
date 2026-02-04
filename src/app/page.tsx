@@ -11,7 +11,7 @@ const jsonLd = {
     name: "Talkrix",
     url: "https://talkrix.com",
     logo: "https://talkrix.com/icon.svg",
-    description: "Talkrix builds conversational AI voice agents that understand context, reason through problems, and take actions—replacing 80% of routine calls for enterprises.",
+    description: "Talkrix is the AI sales operations platform for Loan & Real Estate. AI calling, WhatsApp automation, and CRM integration that helps DSAs, Loan Agencies, and NBFC sales teams convert more leads and recover more revenue.",
     foundingDate: "2024",
     sameAs: [
         "https://twitter.com/talkrix",
@@ -20,13 +20,13 @@ const jsonLd = {
     offers: [
         {
             "@type": "Offer",
-            name: "Voice AI",
-            description: "Create intelligent voice agents for customer support, sales, and automation."
+            name: "AI Sales Operations Platform",
+            description: "AI Calling + WhatsApp + CRM Automation for Loan & Real Estate sales teams."
         },
         {
             "@type": "Offer",
             name: "AI Teacher",
-            description: "Build intelligent tutoring systems and educational AI assistants."
+            description: "Intelligent tutoring systems that adapt to each student in real-time."
         }
     ]
 };
@@ -34,23 +34,23 @@ const jsonLd = {
 const softwareJsonLd = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    name: "Talkrix Voice AI",
+    name: "Talkrix",
     applicationCategory: "BusinessApplication",
     operatingSystem: "Web",
-    description: "AI-powered voice agents for enterprise customer support and automation",
+    description: "AI Sales Operations for Loan & Real Estate. Convert more leads, recover more revenue with AI Calling, WhatsApp automation, and deep CRM integration.",
     offers: {
         "@type": "Offer",
         price: "0",
         priceCurrency: "USD",
-        description: "Contact for enterprise pricing"
+        description: "Free trial available. Pay-per-conversion pricing."
     },
     featureList: [
-        "Real-time voice conversations",
-        "Sub-100ms latency",
-        "50+ languages support",
-        "Enterprise security (SOC2, HIPAA)",
-        "Custom AI agent creation",
-        "CRM and calendar integrations"
+        "AI-powered calling for lead qualification",
+        "WhatsApp Business API automation",
+        "Deep CRM integration (Salesforce, Zoho, custom)",
+        "Revenue recovery campaigns",
+        "Multi-language support (Hindi, English, Regional)",
+        "Real-time analytics and conversion tracking"
     ]
 };
 
@@ -163,23 +163,23 @@ export default function Home() {
                 padding: '120px 48px 80px',
                 textAlign: 'center'
             }}>
-                {/* Y Combinator Badge */}
+                {/* Traction Badge */}
                 <div style={{
                     display: 'inline-flex',
                     alignItems: 'center',
                     gap: '8px',
                     padding: '8px 20px',
-                    backgroundColor: 'rgba(255, 102, 0, 0.15)',
+                    backgroundColor: 'rgba(34, 197, 94, 0.15)',
                     borderRadius: '50px',
-                    border: '1px solid rgba(255, 102, 0, 0.3)',
+                    border: '1px solid rgba(34, 197, 94, 0.3)',
                     marginBottom: '32px'
                 }}>
-                    <Rocket style={{ width: '16px', height: '16px', color: '#ff6600' }} />
-                    <span style={{ color: '#ff6600', fontSize: '14px', fontWeight: '600' }}>Building the Future of Voice AI</span>
+                    <TrendingUp style={{ width: '16px', height: '16px', color: '#22c55e' }} />
+                    <span style={{ color: '#22c55e', fontSize: '14px', fontWeight: '600' }}>15+ NBFC & DSA partners • 40% MoM growth</span>
                 </div>
                 
                 <h1 style={{ 
-                    fontSize: 'clamp(56px, 12vw, 140px)', 
+                    fontSize: 'clamp(48px, 10vw, 120px)', 
                     fontWeight: '300', 
                     color: 'white', 
                     marginBottom: '0', 
@@ -187,10 +187,10 @@ export default function Home() {
                     lineHeight: '1',
                     fontFamily: 'system-ui, -apple-system, sans-serif'
                 }}>
-                    Automate the routine.
+                    AI Sales Operations
                 </h1>
                 <h1 style={{ 
-                    fontSize: 'clamp(56px, 12vw, 140px)', 
+                    fontSize: 'clamp(48px, 10vw, 120px)', 
                     fontWeight: '300', 
                     color: 'white', 
                     marginBottom: '24px', 
@@ -198,16 +198,16 @@ export default function Home() {
                     lineHeight: '1',
                     fontFamily: 'system-ui, -apple-system, sans-serif'
                 }}>
-                    <span style={{ color: '#a855f7' }}>Focus</span> on the <span style={{ color: '#22c55e' }}>rest.</span>
+                    for <span style={{ color: '#a855f7' }}>Loan & Real Estate</span>
                 </h1>
                 <p style={{
-                    fontSize: '20px',
+                    fontSize: '22px',
                     color: 'rgba(255,255,255,0.7)',
-                    maxWidth: '700px',
+                    maxWidth: '800px',
                     lineHeight: '1.6',
                     marginBottom: '48px'
                 }}>
-                    We're building conversational AI agents that understand context, reason through problems, and take actions—replacing 80% of routine calls for enterprises.
+                    <strong style={{ color: 'white' }}>AI Calling + WhatsApp + CRM Automation</strong> that helps DSAs, Loan Agencies, and NBFC sales teams <strong style={{ color: '#22c55e' }}>convert 3x more leads</strong> and <strong style={{ color: '#22c55e' }}>recover 40% more revenue</strong>.
                 </p>
 
                 {/* CTA Buttons */}
@@ -251,6 +251,7 @@ export default function Home() {
                     </button>
 
                     <button 
+                        onClick={() => router.push('/docs')}
                         style={{ 
                             height: '60px', 
                             borderRadius: '50px', 
@@ -284,10 +285,10 @@ export default function Home() {
 
                 {/* Stats Row */}
                 <div style={{ display: 'flex', gap: '48px' }}>
-                    <StatItem value="<100ms" label="Response Latency" />
-                    <StatItem value="80%" label="Call Automation" />
-                    <StatItem value="50+" label="Languages" />
-                    <StatItem value="$2M+" label="Cost Saved for Clients" />
+                    <StatItem value="3x" label="Lead Conversion" />
+                    <StatItem value="40%" label="Revenue Recovered" />
+                    <StatItem value="15+" label="NBFC Partners" />
+                    <StatItem value="₹50L+" label="Monthly GMV Influenced" />
                 </div>
             </section>
 
@@ -303,21 +304,27 @@ export default function Home() {
                 <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px', alignItems: 'center' }}>
                         <div>
-                            <p style={{ color: '#ef4444', fontSize: '14px', fontWeight: '600', letterSpacing: '2px', marginBottom: '16px' }}>THE PROBLEM</p>
+                            <p style={{ color: '#ef4444', fontSize: '14px', fontWeight: '600', letterSpacing: '2px', marginBottom: '16px' }}>THE REVENUE LEAK</p>
                             <h2 style={{ fontSize: '36px', fontWeight: '400', color: 'white', letterSpacing: '-1px', marginBottom: '24px', lineHeight: '1.3' }}>
-                                Enterprises spend <span style={{ color: '#ef4444' }}>$350B annually</span> on call centers, yet 65% of customers still wait 10+ minutes.
+                                Your sales team is <span style={{ color: '#ef4444' }}>leaving money on the table</span>.
                             </h2>
+                            <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '16px', lineHeight: '1.8', marginBottom: '16px' }}>
+                                <strong style={{ color: 'white' }}>70% of loan leads go cold</strong> because your team can't follow up fast enough. DSAs juggle 100+ leads manually. WhatsApp replies are inconsistent. CRM data is always outdated.
+                            </p>
                             <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '16px', lineHeight: '1.8' }}>
-                                Traditional IVR systems frustrate customers. Human agents are expensive and inconsistent. Most "AI chatbots" can't handle complex, multi-turn conversations.
+                                Every missed call = lost commission. Every delayed follow-up = competitor's win.
                             </p>
                         </div>
                         <div>
-                            <p style={{ color: '#22c55e', fontSize: '14px', fontWeight: '600', letterSpacing: '2px', marginBottom: '16px' }}>OUR SOLUTION</p>
+                            <p style={{ color: '#22c55e', fontSize: '14px', fontWeight: '600', letterSpacing: '2px', marginBottom: '16px' }}>THE TALKRIX SOLUTION</p>
                             <h2 style={{ fontSize: '36px', fontWeight: '400', color: 'white', letterSpacing: '-1px', marginBottom: '24px', lineHeight: '1.3' }}>
-                                AI agents that <span style={{ color: '#22c55e' }}>reason, remember, and resolve</span>—like your best human agent, at infinite scale.
+                                <span style={{ color: '#22c55e' }}>AI that sells</span> while you sleep.
                             </h2>
+                            <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '16px', lineHeight: '1.8', marginBottom: '16px' }}>
+                                Talkrix <strong style={{ color: 'white' }}>calls every lead in 30 seconds</strong>, qualifies them with smart questions, <strong style={{ color: 'white' }}>sends personalized WhatsApp follow-ups</strong>, and updates your CRM automatically.
+                            </p>
                             <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '16px', lineHeight: '1.8' }}>
-                                Talkrix agents maintain context across conversations, integrate with your systems to take real actions (bookings, refunds, escalations), and learn from every interaction.
+                                Your best closer—working 24/7, in Hindi, English, and regional languages.
                             </p>
                         </div>
                     </div>
@@ -333,12 +340,12 @@ export default function Home() {
                 borderBottom: '1px solid rgba(255,255,255,0.1)'
             }}>
                 <p style={{ textAlign: 'center', color: 'rgba(255,255,255,0.4)', fontSize: '13px', letterSpacing: '2px', marginBottom: '32px' }}>
-                    BUILDING WITH INDUSTRY LEADERS
+                    BUILT FOR
                 </p>
                 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '64px', flexWrap: 'wrap' }}>
-                    {['Healthcare Co.', 'FinTech Inc.', 'EdTech Ltd.', 'RetailX', 'LogiPro', 'ServiceNow'].map((company) => (
-                        <div key={company} style={{ color: 'rgba(255,255,255,0.3)', fontSize: '20px', fontWeight: '600', letterSpacing: '-0.5px' }}>
-                            {company}
+                    {['DSAs', 'Loan Agencies', 'NBFCs', 'Real Estate Brokers', 'Housing Finance', 'Insurance Agents'].map((industry) => (
+                        <div key={industry} style={{ color: 'rgba(255,255,255,0.5)', fontSize: '18px', fontWeight: '600', letterSpacing: '0.5px' }}>
+                            {industry}
                         </div>
                     ))}
                 </div>
@@ -354,48 +361,46 @@ export default function Home() {
             }}>
                 <div style={{ textAlign: 'center', marginBottom: '80px' }}>
                     <p style={{ color: '#a855f7', fontSize: '14px', fontWeight: '600', letterSpacing: '2px', marginBottom: '16px' }}>
-                        FEATURES
+                        THE COMPLETE STACK
                     </p>
                     <h2 style={{ fontSize: '48px', fontWeight: '300', color: 'white', letterSpacing: '-2px', marginBottom: '24px' }}>
-                        Everything you need to build
-                        <br />
-                        <span style={{ color: '#a855f7' }}>voice-first experiences</span>
+                        <span style={{ color: '#a855f7' }}>AI Calling</span> + <span style={{ color: '#22c55e' }}>WhatsApp</span> + <span style={{ color: '#3b82f6' }}>CRM</span>
                     </h2>
-                    <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '18px', maxWidth: '600px', margin: '0 auto' }}>
-                        Connect, communicate, and create with intelligent voice technology that understands you
+                    <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '18px', maxWidth: '700px', margin: '0 auto' }}>
+                        Everything your sales team needs to convert more leads and recover more revenue—fully automated, deeply integrated.
                     </p>
                 </div>
 
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }}>
                     <FeatureCard 
-                        icon={<Mic />}
-                        title="Real-time Voice"
-                        description="Crystal clear 48kHz audio with adaptive bitrate. Voice activity detection under 100ms."
+                        icon={<Phone />}
+                        title="AI Calling That Converts"
+                        description="Instant lead follow-up in 30 seconds. Smart qualification questions. Natural Hindi, English, and regional language support."
                     />
                     <FeatureCard 
-                        icon={<Brain />}
-                        title="AI-Powered"
-                        description="Powered by GPT-4, Claude, and custom models. Natural conversations indistinguishable from humans."
+                        icon={<MessageSquare />}
+                        title="WhatsApp Automation"
+                        description="Personalized follow-ups, document collection, and payment reminders. Integrated with WhatsApp Business API."
                     />
                     <FeatureCard 
-                        icon={<Zap />}
-                        title="Lightning Fast"
-                        description="Sub-100ms latency globally. Instant speech-to-text, LLM inference, and text-to-speech."
+                        icon={<Cpu />}
+                        title="Deep CRM Integration"
+                        description="Auto-sync with Salesforce, Zoho, LeadSquared, or your custom CRM. No more manual data entry."
                     />
                     <FeatureCard 
-                        icon={<Globe />}
-                        title="50+ Languages"
-                        description="Multilingual support with automatic language detection and real-time translation."
+                        icon={<TrendingUp />}
+                        title="Revenue Recovery"
+                        description="Automated EMI reminders, payment follow-ups, and collection campaigns. Recover 40% more with AI persistence."
+                    />
+                    <FeatureCard 
+                        icon={<Target />}
+                        title="Lead Scoring & Routing"
+                        description="AI qualifies leads in real-time and routes hot leads to your best closers. No more wasted time on cold leads."
                     />
                     <FeatureCard 
                         icon={<Shield />}
-                        title="Enterprise Security"
-                        description="End-to-end encryption, SOC2 Type II, HIPAA compliant. Your data never leaves your control."
-                    />
-                    <FeatureCard 
-                        icon={<Code />}
-                        title="Developer First"
-                        description="Simple REST APIs, WebSocket streams, and SDKs for React, Python, Node.js, and more."
+                        title="Compliance Built-In"
+                        description="TRAI DND compliance, call recording, consent management. Built for regulated financial services."
                     />
                 </div>
             </section>
@@ -413,25 +418,25 @@ export default function Home() {
                             HOW IT WORKS
                         </p>
                         <h2 style={{ fontSize: '48px', fontWeight: '300', color: 'white', letterSpacing: '-2px' }}>
-                            Three steps to go live
+                            Go live in 48 hours
                         </h2>
                     </div>
 
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '48px' }}>
                         <StepCard 
                             number="01"
-                            title="Create your agent"
-                            description="Define your AI agent's personality, voice, and capabilities using our intuitive dashboard or API."
+                            title="Connect your leads"
+                            description="Integrate with your CRM, upload CSV, or connect via API. We'll start calling within minutes of lead arrival."
                         />
                         <StepCard 
                             number="02"
-                            title="Connect your systems"
-                            description="Integrate with your existing tools—CRM, calendar, databases—with pre-built connectors."
+                            title="Customize your AI agent"
+                            description="Set your qualification criteria, script tone, and follow-up sequences. Train on your product knowledge in hours."
                         />
                         <StepCard 
                             number="03"
-                            title="Deploy & scale"
-                            description="Launch globally with one click. Auto-scale from 1 to 1 million concurrent calls."
+                            title="Watch conversions grow"
+                            description="AI calls, qualifies, and nurtures leads 24/7. Hot leads get routed to your closers. Track everything in real-time."
                         />
                     </div>
                 </div>
@@ -447,13 +452,13 @@ export default function Home() {
             }}>
                 <div style={{ textAlign: 'center', marginBottom: '80px' }}>
                     <p style={{ color: '#a855f7', fontSize: '14px', fontWeight: '600', letterSpacing: '2px', marginBottom: '16px' }}>
-                        OUR PRODUCTS
+                        PLATFORM
                     </p>
                     <h2 style={{ fontSize: '48px', fontWeight: '300', color: 'white', letterSpacing: '-2px' }}>
-                        Choose your AI solution
+                        Two markets. One platform.
                     </h2>
                     <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '18px', marginTop: '16px', maxWidth: '600px', margin: '16px auto 0' }}>
-                        Two powerful platforms designed for different needs. Get started with the one that fits your use case.
+                        Enterprise voice automation today. AI-powered education tomorrow. Get started with the solution that fits your needs.
                     </p>
                 </div>
 
@@ -480,10 +485,10 @@ export default function Home() {
                         }}
                     >
                         <h3 style={{ fontSize: '28px', fontWeight: '600', color: 'white', marginBottom: '16px' }}>
-                            Voice AI
+                            Voice AI Platform
                         </h3>
                         <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '16px', lineHeight: '1.6', marginBottom: '32px' }}>
-                            Create intelligent voice agents for customer support, sales, and automation. Build conversational AI that sounds natural and responds in real-time.
+                            Deploy AI voice agents for customer support, sales, and operations. Replace 80% of routine calls while improving customer satisfaction. Enterprise-ready today.
                         </p>
                         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '32px' }}>
                             <span style={{ padding: '6px 14px', backgroundColor: 'rgba(168, 85, 247, 0.2)', borderRadius: '20px', fontSize: '13px', color: '#c084fc' }}>🎙️ Voice Agents</span>
@@ -635,34 +640,34 @@ export default function Home() {
                         USE CASES
                     </p>
                     <h2 style={{ fontSize: '48px', fontWeight: '300', color: 'white', letterSpacing: '-2px' }}>
-                        Built for every industry
+                        Built for Loan & Real Estate
                     </h2>
                 </div>
 
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '24px' }}>
                     <UseCaseCard 
                         icon={<Phone />}
-                        title="Customer Support"
-                        description="24/7 voice support that resolves 80% of inquiries automatically. Seamless handoff to humans when needed."
-                        stats="80% resolution rate"
+                        title="Lead Qualification"
+                        description="Instant follow-up on every lead. AI qualifies for loan eligibility, budget, timeline—and routes hot leads to your closers in real-time."
+                        stats="3x conversion rate"
+                    />
+                    <UseCaseCard 
+                        icon={<TrendingUp />}
+                        title="Revenue Recovery"
+                        description="Automated EMI reminders, payment follow-ups, and soft collection calls. Persistent, polite, and effective—24/7."
+                        stats="40% more recovered"
                     />
                     <UseCaseCard 
                         icon={<Users />}
-                        title="Sales & Outreach"
-                        description="AI agents that qualify leads, book meetings, and follow up—all with a natural, human touch."
-                        stats="3x more meetings"
-                    />
-                    <UseCaseCard 
-                        icon={<Headphones />}
-                        title="Virtual Assistants"
-                        description="Personal AI assistants for scheduling, reminders, information lookup, and task management."
-                        stats="10M+ tasks/month"
+                        title="Property Site Visits"
+                        description="Book site visits, send location details via WhatsApp, and confirm attendance. Reduce no-shows by 60%."
+                        stats="60% fewer no-shows"
                     />
                     <UseCaseCard 
                         icon={<MessageSquare />}
-                        title="Healthcare"
-                        description="HIPAA-compliant voice agents for appointment scheduling, symptom checking, and patient follow-ups."
-                        stats="HIPAA Certified"
+                        title="Document Collection"
+                        description="Request and collect KYC documents via WhatsApp. Auto-verify and sync to your LOS. Cut processing time in half."
+                        stats="2x faster processing"
                     />
                 </div>
             </section>
@@ -676,10 +681,10 @@ export default function Home() {
                 margin: '0 auto'
             }}>
                 <div style={{ textAlign: 'center', marginBottom: '80px' }}>
-                    <p style={{ color: '#a855f7', fontSize: '14px', fontWeight: '600', letterSpacing: '2px', marginBottom: '16px' }}>OUR TEAM</p>
-                    <h2 style={{ fontSize: '48px', fontWeight: '300', color: 'white', letterSpacing: '-2px', marginBottom: '24px' }}>Founded by builders, for builders</h2>
-                    <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '18px', maxWidth: '600px', margin: '0 auto' }}>
-                        We've spent years building AI systems at scale. Now we're making enterprise-grade voice AI accessible to everyone.
+                    <p style={{ color: '#a855f7', fontSize: '14px', fontWeight: '600', letterSpacing: '2px', marginBottom: '16px' }}>THE TEAM</p>
+                    <h2 style={{ fontSize: '48px', fontWeight: '300', color: 'white', letterSpacing: '-2px', marginBottom: '24px' }}>Built by operators, for operators</h2>
+                    <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '18px', maxWidth: '700px', margin: '0 auto' }}>
+                        We've scaled sales teams in lending and real estate. We know the pain. Now we're building the AI tools we wish we had.
                     </p>
                 </div>
 
@@ -720,7 +725,7 @@ export default function Home() {
                         <h3 style={{ fontSize: '24px', fontWeight: '600', color: 'white', marginBottom: '8px' }}>Satish Yadav</h3>
                         <p style={{ color: '#a855f7', fontSize: '14px', fontWeight: '600', marginBottom: '16px' }}>Founder & CTO</p>
                         <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '14px', lineHeight: '1.6', marginBottom: '20px' }}>
-                            10+ years building AI systems that scaled to millions. Ex-tech lead at top social commerce startups where he architected real-time ML pipelines processing 50M+ events/day. Deep expertise in Voice AI, NLP, and conversational systems. Built and shipped products used by 10M+ users.
+                            10+ years building AI systems at scale. Ex-tech lead at top social commerce startups, where he architected real-time ML pipelines processing 50M+ events/day. Deep expertise in Voice AI, NLP, and conversational systems. Built products used by 10M+ users.
                         </p>
                         <div style={{ display: 'flex', justifyContent: 'center', gap: '16px' }}>
                             <a href="https://www.linkedin.com/in/sateesh-bohra/" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)', transition: 'color 0.2s' }} onMouseEnter={(e) => e.currentTarget.style.color = '#a855f7'} onMouseLeave={(e) => e.currentTarget.style.color = 'rgba(255,255,255,0.5)'}>
@@ -763,7 +768,7 @@ export default function Home() {
                         <h3 style={{ fontSize: '24px', fontWeight: '600', color: 'white', marginBottom: '8px' }}>Ravi Biyani</h3>
                         <p style={{ color: '#22c55e', fontSize: '14px', fontWeight: '600', marginBottom: '16px' }}>Co-Founder & CEO</p>
                         <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '14px', lineHeight: '1.6', marginBottom: '20px' }}>
-                            Serial entrepreneur with exits in social commerce space. Previously scaled a D2C brand to ₹100Cr+ ARR. Expert in enterprise sales, strategic partnerships, and building high-performance teams. Obsessed with turning cutting-edge AI into products businesses actually pay for.
+                            Serial entrepreneur with exits in social commerce. Previously scaled a D2C brand to ₹100Cr+ ARR. Expert in enterprise sales, partnerships, and building high-performance teams. Obsessed with turning cutting-edge AI into products businesses pay for.
                         </p>
                         <div style={{ display: 'flex', justifyContent: 'center', gap: '16px' }}>
                             <a href="https://www.linkedin.com/in/ravikumarbiyani/" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)', transition: 'color 0.2s' }} onMouseEnter={(e) => e.currentTarget.style.color = '#22c55e'} onMouseLeave={(e) => e.currentTarget.style.color = 'rgba(255,255,255,0.5)'}>
@@ -783,28 +788,31 @@ export default function Home() {
             }}>
                 <div style={{ maxWidth: '1200px', margin: '0 auto', textAlign: 'center' }}>
                     <p style={{ color: '#a855f7', fontSize: '14px', fontWeight: '600', letterSpacing: '2px', marginBottom: '16px' }}>TRACTION</p>
-                    <h2 style={{ fontSize: '40px', fontWeight: '300', color: 'white', letterSpacing: '-2px', marginBottom: '60px' }}>Growing 40% month-over-month</h2>
+                    <h2 style={{ fontSize: '40px', fontWeight: '300', color: 'white', letterSpacing: '-2px', marginBottom: '24px' }}>Proven results with NBFCs & DSAs</h2>
+                    <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '18px', marginBottom: '60px', maxWidth: '600px', margin: '0 auto 60px' }}>
+                        Real numbers from real lending and real estate partners. Growing 40% month-over-month.
+                    </p>
                     
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '32px' }}>
                         <div style={{ padding: '32px', backgroundColor: 'rgba(168, 85, 247, 0.1)', borderRadius: '16px', border: '1px solid rgba(168, 85, 247, 0.2)' }}>
                             <TrendingUp style={{ width: '32px', height: '32px', color: '#a855f7', marginBottom: '16px' }} />
-                            <div style={{ fontSize: '40px', fontWeight: '700', color: 'white', marginBottom: '8px' }}>500K+</div>
-                            <div style={{ color: 'rgba(255,255,255,0.6)', fontSize: '14px' }}>API Calls / Month</div>
+                            <div style={{ fontSize: '40px', fontWeight: '700', color: 'white', marginBottom: '8px' }}>3x</div>
+                            <div style={{ color: 'rgba(255,255,255,0.6)', fontSize: '14px' }}>Lead Conversion Rate</div>
                         </div>
                         <div style={{ padding: '32px', backgroundColor: 'rgba(34, 197, 94, 0.1)', borderRadius: '16px', border: '1px solid rgba(34, 197, 94, 0.2)' }}>
                             <Target style={{ width: '32px', height: '32px', color: '#22c55e', marginBottom: '16px' }} />
                             <div style={{ fontSize: '40px', fontWeight: '700', color: 'white', marginBottom: '8px' }}>15+</div>
-                            <div style={{ color: 'rgba(255,255,255,0.6)', fontSize: '14px' }}>Enterprise Pilots</div>
+                            <div style={{ color: 'rgba(255,255,255,0.6)', fontSize: '14px' }}>NBFC & DSA Partners</div>
                         </div>
                         <div style={{ padding: '32px', backgroundColor: 'rgba(59, 130, 246, 0.1)', borderRadius: '16px', border: '1px solid rgba(59, 130, 246, 0.2)' }}>
                             <Users style={{ width: '32px', height: '32px', color: '#3b82f6', marginBottom: '16px' }} />
-                            <div style={{ fontSize: '40px', fontWeight: '700', color: 'white', marginBottom: '8px' }}>2,500+</div>
-                            <div style={{ color: 'rgba(255,255,255,0.6)', fontSize: '14px' }}>Active Developers</div>
+                            <div style={{ fontSize: '40px', fontWeight: '700', color: 'white', marginBottom: '8px' }}>₹50L+</div>
+                            <div style={{ color: 'rgba(255,255,255,0.6)', fontSize: '14px' }}>Monthly GMV Influenced</div>
                         </div>
                         <div style={{ padding: '32px', backgroundColor: 'rgba(249, 115, 22, 0.1)', borderRadius: '16px', border: '1px solid rgba(249, 115, 22, 0.2)' }}>
                             <Zap style={{ width: '32px', height: '32px', color: '#f97316', marginBottom: '16px' }} />
-                            <div style={{ fontSize: '40px', fontWeight: '700', color: 'white', marginBottom: '8px' }}>94%</div>
-                            <div style={{ color: 'rgba(255,255,255,0.6)', fontSize: '14px' }}>Customer Satisfaction</div>
+                            <div style={{ fontSize: '40px', fontWeight: '700', color: 'white', marginBottom: '8px' }}>40%</div>
+                            <div style={{ color: 'rgba(255,255,255,0.6)', fontSize: '14px' }}>Revenue Recovered</div>
                         </div>
                     </div>
                 </div>
@@ -818,10 +826,10 @@ export default function Home() {
                 textAlign: 'center'
             }}>
                 <h2 style={{ fontSize: '56px', fontWeight: '300', color: 'white', letterSpacing: '-2px', marginBottom: '24px' }}>
-                    Ready to automate your calls?
+                    Ready to 3x your conversions?
                 </h2>
-                <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '20px', marginBottom: '48px', maxWidth: '600px', margin: '0 auto 48px' }}>
-                    Join 2,500+ developers building the future of voice-first applications with Talkrix
+                <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '20px', marginBottom: '48px', maxWidth: '650px', margin: '0 auto 48px' }}>
+                    Join 15+ NBFCs and DSAs already using Talkrix to convert more leads and recover more revenue. Go live in 48 hours.
                 </p>
                 <button 
                     onClick={() => router.push('/signup')}
@@ -871,7 +879,7 @@ export default function Home() {
                                 TALKRIX
                             </div>
                             <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '14px', lineHeight: '1.6', maxWidth: '300px' }}>
-                                Building the future of voice AI. Enterprise-grade infrastructure for developers.
+                                AI Sales Operations for Loan & Real Estate. Convert more leads. Recover more revenue.
                             </p>
                         </div>
                         <FooterColumn title="Product" links={['Features', 'Pricing', 'Documentation', 'API Reference', 'Changelog']} />

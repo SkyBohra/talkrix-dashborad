@@ -131,7 +131,7 @@ export default function DocsPage() {
                             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '20px', marginBottom: '48px' }}>
                                 <FeatureBox icon={<Zap />} title="Sub-100ms Latency" description="Real-time voice interactions with minimal delay" />
                                 <FeatureBox icon={<Globe />} title="50+ Languages" description="Multilingual support out of the box" />
-                                <FeatureBox icon={<Brain />} title="GPT-4 Powered" description="Advanced reasoning and natural conversations" />
+                                <FeatureBox icon={<Brain />} title="Fine-Tuned AI Models" description="Advanced reasoning and natural conversations" />
                                 <FeatureBox icon={<Shield />} title="Enterprise Security" description="SOC2 Type II, HIPAA compliant" />
                             </div>
 
