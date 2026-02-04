@@ -1004,7 +1004,12 @@ export default function Home() {
                     Join 15+ NBFCs and DSAs already using Talkrix to convert more leads and recover more revenue.
                 </p>
                 <button 
-                    onClick={() => router.push('/signup')}
+                    onClick={() => {
+                        const productsSection = document.getElementById('products');
+                        if (productsSection) {
+                            productsSection.scrollIntoView({ behavior: 'smooth' });
+                        }
+                    }}
                     style={{ 
                         height: isMobile ? '52px' : '64px', 
                         borderRadius: '50px', 
@@ -1322,18 +1327,25 @@ function PricingCard({ name, price, period, description, features, highlighted }
                     </li>
                 ))}
             </ul>
-            <button style={{ 
-                width: '100%',
-                height: '48px', 
-                borderRadius: '50px', 
-                background: highlighted ? 'linear-gradient(135deg, #a855f7 0%, #6366f1 100%)' : 'transparent', 
-                color: 'white', 
-                fontWeight: '600',
-                fontSize: '14px',
-                border: highlighted ? 'none' : '1px solid rgba(255,255,255,0.2)',
-                cursor: 'pointer',
-                transition: 'all 0.2s ease'
-            }}>
+            <button 
+                onClick={() => {
+                    const productsSection = document.getElementById('products');
+                    if (productsSection) {
+                        productsSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }}
+                style={{ 
+                    width: '100%',
+                    height: '48px', 
+                    borderRadius: '50px', 
+                    background: highlighted ? 'linear-gradient(135deg, #a855f7 0%, #6366f1 100%)' : 'transparent', 
+                    color: 'white', 
+                    fontWeight: '600',
+                    fontSize: '14px',
+                    border: highlighted ? 'none' : '1px solid rgba(255,255,255,0.2)',
+                    cursor: 'pointer',
+                    transition: 'all 0.2s ease'
+                }}>
                 Get Started
             </button>
         </div>
