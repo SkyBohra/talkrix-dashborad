@@ -33,7 +33,7 @@ const jsonLd = {
     name: "Talkrix",
     url: "https://talkrix.com",
     logo: "https://talkrix.com/icon.svg",
-    description: "Talkrix is the AI sales operations platform for Loan & Real Estate. AI calling, WhatsApp automation, and CRM integration that helps DSAs, Loan Agencies, and NBFC sales teams convert more leads and recover more revenue.",
+    description: "Talkrix is the vertical AI infrastructure for India's $500B lending market. We help DSAs, NBFCs, and Real Estate teams convert 3x more leads and recover 40% more revenue with AI-powered calling, WhatsApp automation, and deep CRM integration.",
     foundingDate: "2024",
     sameAs: [
         "https://twitter.com/talkrix",
@@ -42,13 +42,8 @@ const jsonLd = {
     offers: [
         {
             "@type": "Offer",
-            name: "AI Sales Operations Platform",
-            description: "AI Calling + WhatsApp + CRM Automation for Loan & Real Estate sales teams."
-        },
-        {
-            "@type": "Offer",
-            name: "AI Teacher",
-            description: "Intelligent tutoring systems that adapt to each student in real-time."
+            name: "AI Sales Infrastructure",
+            description: "End-to-end AI-powered sales automation for Loan & Real Estate. From lead qualification to revenue recovery."
         }
     ]
 };
@@ -59,20 +54,20 @@ const softwareJsonLd = {
     name: "Talkrix",
     applicationCategory: "BusinessApplication",
     operatingSystem: "Web",
-    description: "AI Sales Operations for Loan & Real Estate. Convert more leads, recover more revenue with AI Calling, WhatsApp automation, and deep CRM integration.",
+    description: "The AI sales infrastructure for India's lending and real estate market. Proven 3x lead conversion lift with 15+ NBFC and DSA partners.",
     offers: {
         "@type": "Offer",
         price: "0",
         priceCurrency: "USD",
-        description: "Free trial available. Pay-per-conversion pricing."
+        description: "Pay-per-conversion pricing. No upfront costs."
     },
     featureList: [
-        "AI-powered calling for lead qualification",
+        "Instant AI calling - 30 second lead response",
         "WhatsApp Business API automation",
-        "Deep CRM integration (Salesforce, Zoho, custom)",
-        "Revenue recovery campaigns",
-        "Multi-language support (Hindi, English, Regional)",
-        "Real-time analytics and conversion tracking"
+        "Deep LOS/CRM integration",
+        "Revenue recovery automation",
+        "Multilingual support (Hindi, English, 8 regional languages)",
+        "TRAI DND compliance built-in"
     ]
 };
 
@@ -279,12 +274,12 @@ export default function Home() {
                 }}>
                     <TrendingUp style={{ width: '16px', height: '16px', color: '#22c55e' }} />
                     <span style={{ color: '#22c55e', fontSize: isMobile ? '12px' : '14px', fontWeight: '600' }}>
-                        {isMobile ? '15+ Partners • 40% Growth' : '15+ NBFC & DSA partners • 40% MoM growth'}
+                        {isMobile ? '₹50L+ GMV • 40% MoM' : 'Live with 15+ partners • ₹50L+ monthly GMV • 40% MoM growth'}
                     </span>
                 </div>
                 
                 <h1 style={{ 
-                    fontSize: isMobile ? '36px' : isTablet ? '56px' : 'clamp(48px, 10vw, 120px)', 
+                    fontSize: isMobile ? '36px' : isTablet ? '56px' : 'clamp(48px, 10vw, 100px)', 
                     fontWeight: '300', 
                     color: 'white', 
                     marginBottom: '0', 
@@ -292,10 +287,10 @@ export default function Home() {
                     lineHeight: '1.1',
                     fontFamily: 'system-ui, -apple-system, sans-serif'
                 }}>
-                    AI Sales Operations
+                    The AI Infrastructure
                 </h1>
                 <h1 style={{ 
-                    fontSize: isMobile ? '36px' : isTablet ? '56px' : 'clamp(48px, 10vw, 120px)', 
+                    fontSize: isMobile ? '36px' : isTablet ? '56px' : 'clamp(48px, 10vw, 100px)', 
                     fontWeight: '300', 
                     color: 'white', 
                     marginBottom: isMobile ? '16px' : '24px', 
@@ -303,17 +298,17 @@ export default function Home() {
                     lineHeight: '1.1',
                     fontFamily: 'system-ui, -apple-system, sans-serif'
                 }}>
-                    for <span style={{ color: '#a855f7' }}>Loan & Real Estate</span>
+                    for <span style={{ color: '#a855f7' }}>India's $500B Lending Market</span>
                 </h1>
                 <p style={{
                     fontSize: isMobile ? '16px' : isTablet ? '18px' : '22px',
                     color: 'rgba(255,255,255,0.7)',
-                    maxWidth: '800px',
+                    maxWidth: '900px',
                     lineHeight: '1.6',
                     marginBottom: isMobile ? '32px' : '48px',
                     padding: isMobile ? '0 8px' : '0'
                 }}>
-                    <strong style={{ color: 'white' }}>AI Calling + WhatsApp + CRM Automation</strong> that helps DSAs, Loan Agencies, and NBFC sales teams <strong style={{ color: '#22c55e' }}>convert 3x more leads</strong> and <strong style={{ color: '#22c55e' }}>recover 40% more revenue</strong>.
+                    We give DSAs, NBFCs, and Real Estate teams an unfair advantage: <strong style={{ color: 'white' }}>AI that calls every lead in 30 seconds</strong>, qualifies in Hindi & English, and syncs to your CRM—so your closers only talk to hot leads.
                 </p>
 
                 {/* CTA Buttons */}
@@ -407,10 +402,10 @@ export default function Home() {
                     width: isMobile ? '100%' : 'auto',
                     maxWidth: isMobile ? '360px' : 'none'
                 }}>
-                    <StatItem value="3x" label="Lead Conversion" isMobile={isMobile} />
-                    <StatItem value="40%" label="Revenue Recovered" isMobile={isMobile} />
-                    <StatItem value="15+" label="NBFC Partners" isMobile={isMobile} />
-                    <StatItem value="₹50L+" label="Monthly GMV" isMobile={isMobile} />
+                    <StatItem value="3x" label="Conversion Lift" isMobile={isMobile} />
+                    <StatItem value="30s" label="Lead Response" isMobile={isMobile} />
+                    <StatItem value="15+" label="Live Partners" isMobile={isMobile} />
+                    <StatItem value="40%" label="MoM Growth" isMobile={isMobile} />
                 </div>
             </section>
 
@@ -431,27 +426,27 @@ export default function Home() {
                         alignItems: 'center' 
                     }}>
                         <div>
-                            <p style={{ color: '#ef4444', fontSize: isMobile ? '12px' : '14px', fontWeight: '600', letterSpacing: '2px', marginBottom: '16px' }}>THE REVENUE LEAK</p>
+                            <p style={{ color: '#ef4444', fontSize: isMobile ? '12px' : '14px', fontWeight: '600', letterSpacing: '2px', marginBottom: '16px' }}>THE $50B PROBLEM</p>
                             <h2 style={{ fontSize: isMobile ? '26px' : isTablet ? '30px' : '36px', fontWeight: '400', color: 'white', letterSpacing: '-1px', marginBottom: '24px', lineHeight: '1.3' }}>
-                                Your sales team is <span style={{ color: '#ef4444' }}>leaving money on the table</span>.
+                                <span style={{ color: '#ef4444' }}>70% of loan leads go cold</span> before anyone picks up the phone.
                             </h2>
                             <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: isMobile ? '14px' : '16px', lineHeight: '1.8', marginBottom: '16px' }}>
-                                <strong style={{ color: 'white' }}>70% of loan leads go cold</strong> because your team can't follow up fast enough. DSAs juggle 100+ leads manually. WhatsApp replies are inconsistent. CRM data is always outdated.
+                                DSAs juggle 100+ leads manually. Follow-ups are inconsistent. CRMs are outdated. <strong style={{ color: 'white' }}>Speed kills in lending—and most teams are too slow.</strong>
                             </p>
                             <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: isMobile ? '14px' : '16px', lineHeight: '1.8' }}>
-                                Every missed call = lost commission. Every delayed follow-up = competitor's win.
+                                The math is brutal: Every hour of delay = 7x drop in contact rates. Your competitors already called.
                             </p>
                         </div>
                         <div>
-                            <p style={{ color: '#22c55e', fontSize: isMobile ? '12px' : '14px', fontWeight: '600', letterSpacing: '2px', marginBottom: '16px' }}>THE TALKRIX SOLUTION</p>
+                            <p style={{ color: '#22c55e', fontSize: isMobile ? '12px' : '14px', fontWeight: '600', letterSpacing: '2px', marginBottom: '16px' }}>OUR SOLUTION</p>
                             <h2 style={{ fontSize: isMobile ? '26px' : isTablet ? '30px' : '36px', fontWeight: '400', color: 'white', letterSpacing: '-1px', marginBottom: '24px', lineHeight: '1.3' }}>
-                                <span style={{ color: '#22c55e' }}>AI that sells</span> while you sleep.
+                                <span style={{ color: '#22c55e' }}>AI sales agents</span> that never sleep, never forget, never quit.
                             </h2>
                             <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: isMobile ? '14px' : '16px', lineHeight: '1.8', marginBottom: '16px' }}>
-                                Talkrix <strong style={{ color: 'white' }}>calls every lead in 30 seconds</strong>, qualifies them with smart questions, <strong style={{ color: 'white' }}>sends personalized WhatsApp follow-ups</strong>, and updates your CRM automatically.
+                                <strong style={{ color: 'white' }}>30-second lead response. 100% follow-through.</strong> Our AI calls in Hindi, English, and 8 regional languages—qualifying leads while your team focuses on closing.
                             </p>
                             <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: isMobile ? '14px' : '16px', lineHeight: '1.8' }}>
-                                Your best closer—working 24/7, in Hindi, English, and regional languages.
+                                Result: 3x conversion rates. 40% more revenue recovered. Proven with 15+ lending partners.
                             </p>
                         </div>
                     </div>
@@ -467,7 +462,7 @@ export default function Home() {
                 borderBottom: '1px solid rgba(255,255,255,0.1)'
             }}>
                 <p style={{ textAlign: 'center', color: 'rgba(255,255,255,0.4)', fontSize: isMobile ? '11px' : '13px', letterSpacing: '2px', marginBottom: isMobile ? '20px' : '32px' }}>
-                    BUILT FOR
+                    BUILT FOR THE LENDING ECOSYSTEM
                 </p>
                 <div style={{ 
                     display: 'grid', 
@@ -476,10 +471,10 @@ export default function Home() {
                     maxWidth: '1200px',
                     margin: '0 auto'
                 }}>
-                    {['DSAs', 'Loan Agencies', 'NBFCs', 'Real Estate Brokers', 'Housing Finance', 'Insurance Agents'].map((industry) => (
+                    {['DSAs & DSA Networks', 'NBFCs', 'Housing Finance', 'Real Estate Developers', 'Loan Aggregators', 'Insurance Agents'].map((industry) => (
                         <div key={industry} style={{ 
                             color: 'rgba(255,255,255,0.5)', 
-                            fontSize: isMobile ? '13px' : isTablet ? '15px' : '18px', 
+                            fontSize: isMobile ? '12px' : isTablet ? '14px' : '16px', 
                             fontWeight: '600', 
                             letterSpacing: '0.5px',
                             textAlign: 'center',
@@ -503,13 +498,14 @@ export default function Home() {
             }}>
                 <div style={{ textAlign: 'center', marginBottom: isMobile ? '48px' : '80px' }}>
                     <p style={{ color: '#a855f7', fontSize: isMobile ? '12px' : '14px', fontWeight: '600', letterSpacing: '2px', marginBottom: '16px' }}>
-                        THE COMPLETE STACK
+                        VERTICAL AI INFRASTRUCTURE
                     </p>
                     <h2 style={{ fontSize: isMobile ? '28px' : isTablet ? '36px' : '48px', fontWeight: '300', color: 'white', letterSpacing: isMobile ? '-1px' : '-2px', marginBottom: '24px' }}>
-                        <span style={{ color: '#a855f7' }}>AI Calling</span> + <span style={{ color: '#22c55e' }}>WhatsApp</span> + <span style={{ color: '#3b82f6' }}>CRM</span>
+                        Not another AI dialer.
+                        <br/><span style={{ color: '#a855f7' }}>The full lending sales stack.</span>
                     </h2>
                     <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: isMobile ? '15px' : '18px', maxWidth: '700px', margin: '0 auto', padding: isMobile ? '0 8px' : '0' }}>
-                        Everything your sales team needs to convert more leads and recover more revenue—fully automated, deeply integrated.
+                        Purpose-built for loan origination, property sales, and revenue recovery. Deep integrations with LOS systems, TRAI compliance, and regional language support.
                     </p>
                 </div>
 
@@ -520,38 +516,38 @@ export default function Home() {
                 }}>
                     <FeatureCard 
                         icon={<Phone />}
-                        title="AI Calling That Converts"
-                        description="Instant lead follow-up in 30 seconds. Smart qualification questions. Natural Hindi, English, and regional language support."
+                        title="30-Second Lead Response"
+                        description="The moment a lead comes in, our AI calls. No human delay. Qualify for loan eligibility, budget, and timeline—automatically."
                         isMobile={isMobile}
                     />
                     <FeatureCard 
                         icon={<MessageSquare />}
-                        title="WhatsApp Automation"
-                        description="Personalized follow-ups, document collection, and payment reminders. Integrated with WhatsApp Business API."
+                        title="WhatsApp-First Follow-ups"
+                        description="India runs on WhatsApp. Personalized document requests, payment reminders, and nurture sequences—all automated."
                         isMobile={isMobile}
                     />
                     <FeatureCard 
                         icon={<Cpu />}
-                        title="Deep CRM Integration"
-                        description="Auto-sync with Salesforce, Zoho, LeadSquared, or your custom CRM. No more manual data entry."
+                        title="Deep LOS Integration"
+                        description="Native connectors for Salesforce, LeadSquared, Zoho, and major LOS platforms. Zero manual data entry."
                         isMobile={isMobile}
                     />
                     <FeatureCard 
                         icon={<TrendingUp />}
-                        title="Revenue Recovery"
-                        description="Automated EMI reminders, payment follow-ups, and collection campaigns. Recover 40% more with AI persistence."
+                        title="Revenue Recovery Engine"
+                        description="Automated EMI reminders and soft collections. Persistent, polite, and TRAI-compliant. Recover 40% more."
                         isMobile={isMobile}
                     />
                     <FeatureCard 
-                        icon={<Target />}
-                        title="Lead Scoring & Routing"
-                        description="AI qualifies leads in real-time and routes hot leads to your best closers. No more wasted time on cold leads."
+                        icon={<Globe />}
+                        title="Multilingual by Default"
+                        description="Hindi, English, and 8 regional languages. Natural conversations that feel local—because lending is local."
                         isMobile={isMobile}
                     />
                     <FeatureCard 
                         icon={<Shield />}
-                        title="Compliance Built-In"
-                        description="TRAI DND compliance, call recording, consent management. Built for regulated financial services."
+                        title="Compliance-First"
+                        description="TRAI DND compliance, call recording, consent management. Built for RBI-regulated financial services."
                         isMobile={isMobile}
                     />
                 </div>
@@ -567,10 +563,10 @@ export default function Home() {
                 <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
                     <div style={{ textAlign: 'center', marginBottom: isMobile ? '48px' : '80px' }}>
                         <p style={{ color: '#a855f7', fontSize: isMobile ? '12px' : '14px', fontWeight: '600', letterSpacing: '2px', marginBottom: '16px' }}>
-                            HOW IT WORKS
+                            GO LIVE IN 48 HOURS
                         </p>
                         <h2 style={{ fontSize: isMobile ? '28px' : isTablet ? '36px' : '48px', fontWeight: '300', color: 'white', letterSpacing: isMobile ? '-1px' : '-2px' }}>
-                            Go live in 48 hours
+                            From signup to conversions in 2 days
                         </h2>
                     </div>
 
@@ -581,20 +577,20 @@ export default function Home() {
                     }}>
                         <StepCard 
                             number="01"
-                            title="Connect your leads"
-                            description="Integrate with your CRM, upload CSV, or connect via API. We'll start calling within minutes of lead arrival."
+                            title="Connect your lead sources"
+                            description="CRM webhook, CSV upload, or API. Your leads flow in. Our AI starts calling within minutes."
                             isMobile={isMobile}
                         />
                         <StepCard 
                             number="02"
-                            title="Customize your AI agent"
-                            description="Set your qualification criteria, script tone, and follow-up sequences. Train on your product knowledge in hours."
+                            title="Configure your playbook"
+                            description="Set qualification criteria, loan products, and escalation rules. We'll train on your specific use cases."
                             isMobile={isMobile}
                         />
                         <StepCard 
                             number="03"
                             title="Watch conversions grow"
-                            description="AI calls, qualifies, and nurtures leads 24/7. Hot leads get routed to your closers. Track everything in real-time."
+                            description="AI handles outreach 24/7. Hot leads route to closers. Track every call, conversion, and rupee in real-time."
                             isMobile={isMobile}
                         />
                     </div>
@@ -611,13 +607,13 @@ export default function Home() {
             }}>
                 <div style={{ textAlign: 'center', marginBottom: isMobile ? '48px' : '80px' }}>
                     <p style={{ color: '#a855f7', fontSize: isMobile ? '12px' : '14px', fontWeight: '600', letterSpacing: '2px', marginBottom: '16px' }}>
-                        PLATFORM
+                        PRODUCTS
                     </p>
                     <h2 style={{ fontSize: isMobile ? '28px' : isTablet ? '36px' : '48px', fontWeight: '300', color: 'white', letterSpacing: isMobile ? '-1px' : '-2px' }}>
-                        Two markets. One platform.
+                        AI infrastructure for high-stakes sales
                     </h2>
                     <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: isMobile ? '15px' : '18px', marginTop: '16px', maxWidth: '600px', margin: '16px auto 0', padding: isMobile ? '0 8px' : '0' }}>
-                        Enterprise voice automation today. AI-powered education tomorrow. Get started with the solution that fits your needs.
+                        Lending sales today. Education tomorrow. One platform powering conversations that convert.
                     </p>
                 </div>
 
@@ -648,15 +644,15 @@ export default function Home() {
                         }}
                     >
                         <h3 style={{ fontSize: isMobile ? '20px' : '28px', fontWeight: '600', color: 'white', marginBottom: '16px' }}>
-                            Voice AI Platform
+                            AI Sales Platform
                         </h3>
                         <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: isMobile ? '14px' : '16px', lineHeight: '1.6', marginBottom: isMobile ? '20px' : '32px' }}>
-                            Deploy AI voice agents for customer support, sales, and operations. Replace 80% of routine calls while improving customer satisfaction.
+                            The complete AI sales infrastructure for lending and real estate. AI calling, WhatsApp automation, CRM sync, and revenue recovery—all in one platform.
                         </p>
                         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: isMobile ? '20px' : '32px' }}>
-                            <span style={{ padding: '6px 12px', backgroundColor: 'rgba(168, 85, 247, 0.2)', borderRadius: '20px', fontSize: isMobile ? '11px' : '13px', color: '#c084fc' }}>🎙️ Voice Agents</span>
-                            <span style={{ padding: '6px 12px', backgroundColor: 'rgba(168, 85, 247, 0.2)', borderRadius: '20px', fontSize: isMobile ? '11px' : '13px', color: '#c084fc' }}>🤖 AI Calls</span>
-                            <span style={{ padding: '6px 12px', backgroundColor: 'rgba(168, 85, 247, 0.2)', borderRadius: '20px', fontSize: isMobile ? '11px' : '13px', color: '#c084fc' }}>⚡ Real-time</span>
+                            <span style={{ padding: '6px 12px', backgroundColor: 'rgba(168, 85, 247, 0.2)', borderRadius: '20px', fontSize: isMobile ? '11px' : '13px', color: '#c084fc' }}>🎙️ AI Calling</span>
+                            <span style={{ padding: '6px 12px', backgroundColor: 'rgba(168, 85, 247, 0.2)', borderRadius: '20px', fontSize: isMobile ? '11px' : '13px', color: '#c084fc' }}>💬 WhatsApp</span>
+                            <span style={{ padding: '6px 12px', backgroundColor: 'rgba(168, 85, 247, 0.2)', borderRadius: '20px', fontSize: isMobile ? '11px' : '13px', color: '#c084fc' }}>⚡ CRM Sync</span>
                         </div>
                         <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: isMobile ? '10px' : '16px' }}>
                             <a 
@@ -803,7 +799,7 @@ export default function Home() {
                         USE CASES
                     </p>
                     <h2 style={{ fontSize: isMobile ? '28px' : isTablet ? '36px' : '48px', fontWeight: '300', color: 'white', letterSpacing: isMobile ? '-1px' : '-2px' }}>
-                        Built for Loan & Real Estate
+                        Where Talkrix drives revenue
                     </h2>
                 </div>
 
@@ -814,30 +810,30 @@ export default function Home() {
                 }}>
                     <UseCaseCard 
                         icon={<Phone />}
-                        title="Lead Qualification"
-                        description="Instant follow-up on every lead. AI qualifies for loan eligibility, budget, timeline—and routes hot leads to your closers in real-time."
-                        stats="3x conversion rate"
+                        title="Instant Lead Qualification"
+                        description="New lead? AI calls in 30 seconds. Qualifies for loan amount, income, property type. Hot leads escalate instantly. Cold leads get nurtured."
+                        stats="3x conversion lift"
                         isMobile={isMobile}
                     />
                     <UseCaseCard 
                         icon={<TrendingUp />}
                         title="Revenue Recovery"
-                        description="Automated EMI reminders, payment follow-ups, and soft collection calls. Persistent, polite, and effective—24/7."
+                        description="Missed EMI? AI calls with empathy and persistence. Payment links via WhatsApp. Escalation only when needed."
                         stats="40% more recovered"
                         isMobile={isMobile}
                     />
                     <UseCaseCard 
                         icon={<Users />}
-                        title="Property Site Visits"
-                        description="Book site visits, send location details via WhatsApp, and confirm attendance. Reduce no-shows by 60%."
+                        title="Site Visit Bookings"
+                        description="For real estate: AI schedules site visits, sends location on WhatsApp, confirms 24 hours before. Reduce no-shows dramatically."
                         stats="60% fewer no-shows"
                         isMobile={isMobile}
                     />
                     <UseCaseCard 
                         icon={<MessageSquare />}
-                        title="Document Collection"
-                        description="Request and collect KYC documents via WhatsApp. Auto-verify and sync to your LOS. Cut processing time in half."
-                        stats="2x faster processing"
+                        title="KYC Document Collection"
+                        description="Request Aadhaar, PAN, bank statements via WhatsApp. Auto-verify formats. Push to your LOS. Faster file-to-sanction."
+                        stats="50% faster processing"
                         isMobile={isMobile}
                     />
                 </div>
@@ -852,10 +848,10 @@ export default function Home() {
                 margin: '0 auto'
             }}>
                 <div style={{ textAlign: 'center', marginBottom: isMobile ? '40px' : '80px' }}>
-                    <p style={{ color: '#a855f7', fontSize: isMobile ? '12px' : '14px', fontWeight: '600', letterSpacing: '2px', marginBottom: '16px' }}>THE TEAM</p>
-                    <h2 style={{ fontSize: isMobile ? '26px' : isTablet ? '36px' : '48px', fontWeight: '300', color: 'white', letterSpacing: isMobile ? '-1px' : '-2px', marginBottom: '24px' }}>Built by operators, for operators</h2>
+                    <p style={{ color: '#a855f7', fontSize: isMobile ? '12px' : '14px', fontWeight: '600', letterSpacing: '2px', marginBottom: '16px' }}>FOUNDERS</p>
+                    <h2 style={{ fontSize: isMobile ? '26px' : isTablet ? '36px' : '48px', fontWeight: '300', color: 'white', letterSpacing: isMobile ? '-1px' : '-2px', marginBottom: '24px' }}>Built by operators who've scaled lending sales</h2>
                     <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: isMobile ? '15px' : '18px', maxWidth: '700px', margin: '0 auto', padding: isMobile ? '0 8px' : '0' }}>
-                        We've scaled sales teams in lending and real estate. We know the pain. Now we're building the AI tools we wish we had.
+                        We've built AI systems processing 50M+ events daily. We've scaled sales teams from 0 to ₹100Cr+ revenue. Now we're building the infrastructure we wished existed.
                     </p>
                 </div>
 
@@ -896,7 +892,7 @@ export default function Home() {
                         <h3 style={{ fontSize: isMobile ? '20px' : '24px', fontWeight: '600', color: 'white', marginBottom: '8px' }}>Satish Yadav</h3>
                         <p style={{ color: '#a855f7', fontSize: isMobile ? '13px' : '14px', fontWeight: '600', marginBottom: '16px' }}>Founder & CTO</p>
                         <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: isMobile ? '13px' : '14px', lineHeight: '1.6', marginBottom: '20px' }}>
-                            10+ years building AI systems at scale. Ex-tech lead at top social commerce startups. Deep expertise in Voice AI, NLP, and conversational systems.
+                            10+ years building AI systems at scale. Ex-tech lead at top social commerce startups. Architected ML pipelines processing 50M+ events/day. Deep expertise in Voice AI, NLP, and real-time systems.
                         </p>
                         <div style={{ display: 'flex', justifyContent: 'center', gap: '16px' }}>
                             <a href="https://www.linkedin.com/in/sateesh-bohra/" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)', transition: 'color 0.2s' }} onMouseEnter={(e) => e.currentTarget.style.color = '#a855f7'} onMouseLeave={(e) => e.currentTarget.style.color = 'rgba(255,255,255,0.5)'}>
@@ -940,7 +936,7 @@ export default function Home() {
                         <h3 style={{ fontSize: isMobile ? '20px' : '24px', fontWeight: '600', color: 'white', marginBottom: '8px' }}>Ravi Biyani</h3>
                         <p style={{ color: '#22c55e', fontSize: isMobile ? '13px' : '14px', fontWeight: '600', marginBottom: '16px' }}>Co-Founder & CEO</p>
                         <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: isMobile ? '13px' : '14px', lineHeight: '1.6', marginBottom: '20px' }}>
-                            Serial entrepreneur with exits in social commerce. Expert in enterprise sales and building high-performance teams.
+                            Serial entrepreneur with exits. Scaled D2C brand to ₹100Cr+ ARR. Deep expertise in enterprise sales, GTM strategy, and building high-performance sales teams in lending.
                         </p>
                         <div style={{ display: 'flex', justifyContent: 'center', gap: '16px' }}>
                             <a href="https://www.linkedin.com/in/ravikumarbiyani/" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)', transition: 'color 0.2s' }} onMouseEnter={(e) => e.currentTarget.style.color = '#22c55e'} onMouseLeave={(e) => e.currentTarget.style.color = 'rgba(255,255,255,0.5)'}>
@@ -960,21 +956,21 @@ export default function Home() {
             }}>
                 <div style={{ maxWidth: '1200px', margin: '0 auto', textAlign: 'center' }}>
                     <p style={{ color: '#a855f7', fontSize: isMobile ? '12px' : '14px', fontWeight: '600', letterSpacing: '2px', marginBottom: '16px' }}>TRACTION</p>
-                    <h2 style={{ fontSize: isMobile ? '26px' : isTablet ? '32px' : '40px', fontWeight: '300', color: 'white', letterSpacing: isMobile ? '-1px' : '-2px', marginBottom: '24px' }}>Proven results with NBFCs & DSAs</h2>
+                    <h2 style={{ fontSize: isMobile ? '26px' : isTablet ? '32px' : '40px', fontWeight: '300', color: 'white', letterSpacing: isMobile ? '-1px' : '-2px', marginBottom: '24px' }}>Proven product-market fit in lending</h2>
                     <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: isMobile ? '15px' : '18px', marginBottom: isMobile ? '40px' : '60px', maxWidth: '600px', margin: isMobile ? '0 auto 40px' : '0 auto 60px' }}>
-                        Real numbers from real lending and real estate partners. Growing 40% month-over-month.
+                        15+ NBFC and DSA partners. ₹50L+ monthly GMV influenced. 40% month-over-month growth. These aren't projections—these are live results.
                     </p>
                     
                     <div style={{ display: 'grid', gridTemplateColumns: isMobile ? 'repeat(2, 1fr)' : 'repeat(4, 1fr)', gap: isMobile ? '12px' : '32px' }}>
                         <div style={{ padding: isMobile ? '20px 12px' : '32px', backgroundColor: 'rgba(168, 85, 247, 0.1)', borderRadius: isMobile ? '12px' : '16px', border: '1px solid rgba(168, 85, 247, 0.2)' }}>
                             <TrendingUp style={{ width: isMobile ? '24px' : '32px', height: isMobile ? '24px' : '32px', color: '#a855f7', marginBottom: isMobile ? '8px' : '16px' }} />
                             <div style={{ fontSize: isMobile ? '28px' : '40px', fontWeight: '700', color: 'white', marginBottom: '8px' }}>3x</div>
-                            <div style={{ color: 'rgba(255,255,255,0.6)', fontSize: isMobile ? '12px' : '14px' }}>Lead Conversion</div>
+                            <div style={{ color: 'rgba(255,255,255,0.6)', fontSize: isMobile ? '12px' : '14px' }}>Conversion Lift</div>
                         </div>
                         <div style={{ padding: isMobile ? '20px 12px' : '32px', backgroundColor: 'rgba(34, 197, 94, 0.1)', borderRadius: isMobile ? '12px' : '16px', border: '1px solid rgba(34, 197, 94, 0.2)' }}>
                             <Target style={{ width: isMobile ? '24px' : '32px', height: isMobile ? '24px' : '32px', color: '#22c55e', marginBottom: isMobile ? '8px' : '16px' }} />
                             <div style={{ fontSize: isMobile ? '28px' : '40px', fontWeight: '700', color: 'white', marginBottom: '8px' }}>15+</div>
-                            <div style={{ color: 'rgba(255,255,255,0.6)', fontSize: isMobile ? '12px' : '14px' }}>Partners</div>
+                            <div style={{ color: 'rgba(255,255,255,0.6)', fontSize: isMobile ? '12px' : '14px' }}>Live Partners</div>
                         </div>
                         <div style={{ padding: isMobile ? '20px 12px' : '32px', backgroundColor: 'rgba(59, 130, 246, 0.1)', borderRadius: isMobile ? '12px' : '16px', border: '1px solid rgba(59, 130, 246, 0.2)' }}>
                             <Users style={{ width: isMobile ? '24px' : '32px', height: isMobile ? '24px' : '32px', color: '#3b82f6', marginBottom: isMobile ? '8px' : '16px' }} />
@@ -984,7 +980,7 @@ export default function Home() {
                         <div style={{ padding: isMobile ? '20px 12px' : '32px', backgroundColor: 'rgba(249, 115, 22, 0.1)', borderRadius: isMobile ? '12px' : '16px', border: '1px solid rgba(249, 115, 22, 0.2)' }}>
                             <Zap style={{ width: isMobile ? '24px' : '32px', height: isMobile ? '24px' : '32px', color: '#f97316', marginBottom: isMobile ? '8px' : '16px' }} />
                             <div style={{ fontSize: isMobile ? '28px' : '40px', fontWeight: '700', color: 'white', marginBottom: '8px' }}>40%</div>
-                            <div style={{ color: 'rgba(255,255,255,0.6)', fontSize: isMobile ? '12px' : '14px' }}>Revenue Recovered</div>
+                            <div style={{ color: 'rgba(255,255,255,0.6)', fontSize: isMobile ? '12px' : '14px' }}>MoM Growth</div>
                         </div>
                     </div>
                 </div>
@@ -998,10 +994,10 @@ export default function Home() {
                 textAlign: 'center'
             }}>
                 <h2 style={{ fontSize: isMobile ? '28px' : isTablet ? '40px' : '56px', fontWeight: '300', color: 'white', letterSpacing: isMobile ? '-1px' : '-2px', marginBottom: '24px', padding: isMobile ? '0 8px' : '0' }}>
-                    Ready to 3x your conversions?
+                    Stop losing leads to slow follow-up
                 </h2>
                 <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: isMobile ? '15px' : '20px', marginBottom: isMobile ? '32px' : '48px', maxWidth: '650px', margin: isMobile ? '0 auto 32px' : '0 auto 48px', padding: isMobile ? '0 8px' : '0' }}>
-                    Join 15+ NBFCs and DSAs already using Talkrix to convert more leads and recover more revenue.
+                    Join 15+ NBFCs and DSAs already using Talkrix to 3x conversions. Go live in 48 hours. Pay only for results.
                 </p>
                 <button 
                     onClick={() => {
@@ -1057,7 +1053,7 @@ export default function Home() {
                                 TALKRIX
                             </div>
                             <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '13px', lineHeight: '1.6', marginBottom: '32px' }}>
-                                AI Sales Operations for Loan & Real Estate
+                                The AI infrastructure for India's lending market
                             </p>
                             <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', marginBottom: '32px' }}>
                                 <a href="#" style={{ color: 'rgba(255,255,255,0.4)', fontSize: '13px', textDecoration: 'none' }}>Twitter</a>
@@ -1078,7 +1074,7 @@ export default function Home() {
                                         TALKRIX
                                     </div>
                                     <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '14px', lineHeight: '1.6', maxWidth: '300px' }}>
-                                        AI Sales Operations for Loan & Real Estate. Convert more leads. Recover more revenue.
+                                        The AI sales infrastructure for India's $500B lending market. Convert more leads. Recover more revenue.
                                     </p>
                                 </div>
                                 <FooterColumn title="Product" links={['Features', 'Pricing', 'Documentation', 'API Reference', 'Changelog']} />
