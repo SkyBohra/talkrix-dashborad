@@ -261,20 +261,20 @@ export default function Home() {
                 padding: isMobile ? '100px 20px 60px' : isTablet ? '120px 32px 80px' : '120px 48px 80px',
                 textAlign: 'center'
             }}>
-                {/* Traction Badge */}
+                {/* Status Badge */}
                 <div style={{
                     display: 'inline-flex',
                     alignItems: 'center',
                     gap: '8px',
                     padding: isMobile ? '6px 14px' : '8px 20px',
-                    backgroundColor: 'rgba(34, 197, 94, 0.15)',
+                    backgroundColor: 'rgba(168, 85, 247, 0.15)',
                     borderRadius: '50px',
-                    border: '1px solid rgba(34, 197, 94, 0.3)',
+                    border: '1px solid rgba(168, 85, 247, 0.3)',
                     marginBottom: isMobile ? '24px' : '32px'
                 }}>
-                    <TrendingUp style={{ width: '16px', height: '16px', color: '#22c55e' }} />
-                    <span style={{ color: '#22c55e', fontSize: isMobile ? '12px' : '14px', fontWeight: '600' }}>
-                        {isMobile ? '₹50L+ GMV • 40% MoM' : 'Live with 15+ partners • ₹50L+ monthly GMV • 40% MoM growth'}
+                    <Rocket style={{ width: '16px', height: '16px', color: '#a855f7' }} />
+                    <span style={{ color: '#a855f7', fontSize: isMobile ? '12px' : '14px', fontWeight: '600' }}>
+                        {isMobile ? 'NOW ACCEPTING EARLY PARTNERS' : 'NOW ACCEPTING EARLY PARTNERS • LIMITED SPOTS'}
                     </span>
                 </div>
                 
@@ -402,10 +402,10 @@ export default function Home() {
                     width: isMobile ? '100%' : 'auto',
                     maxWidth: isMobile ? '360px' : 'none'
                 }}>
-                    <StatItem value="3x" label="Conversion Lift" isMobile={isMobile} />
                     <StatItem value="30s" label="Lead Response" isMobile={isMobile} />
-                    <StatItem value="15+" label="Live Partners" isMobile={isMobile} />
-                    <StatItem value="40%" label="MoM Growth" isMobile={isMobile} />
+                    <StatItem value="24/7" label="AI Availability" isMobile={isMobile} />
+                    <StatItem value="10+" label="Languages" isMobile={isMobile} />
+                    <StatItem value="48hr" label="Go Live Time" isMobile={isMobile} />
                 </div>
             </section>
 
@@ -446,7 +446,7 @@ export default function Home() {
                                 <strong style={{ color: 'white' }}>30-second lead response. 100% follow-through.</strong> Our AI calls in Hindi, English, and 8 regional languages—qualifying leads while your team focuses on closing.
                             </p>
                             <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: isMobile ? '14px' : '16px', lineHeight: '1.8' }}>
-                                Result: 3x conversion rates. 40% more revenue recovered. Proven with 15+ lending partners.
+                                Built by founders who've scaled lending sales teams. Now we're making that playbook available to everyone.
                             </p>
                         </div>
                     </div>
@@ -462,7 +462,7 @@ export default function Home() {
                 borderBottom: '1px solid rgba(255,255,255,0.1)'
             }}>
                 <p style={{ textAlign: 'center', color: 'rgba(255,255,255,0.4)', fontSize: isMobile ? '11px' : '13px', letterSpacing: '2px', marginBottom: isMobile ? '20px' : '32px' }}>
-                    BUILT FOR THE LENDING ECOSYSTEM
+                    DESIGNED FOR
                 </p>
                 <div style={{ 
                     display: 'grid', 
@@ -947,7 +947,7 @@ export default function Home() {
                 </div>
             </section>
 
-            {/* Traction Section */}
+            {/* Early Access Section */}
             <section style={{ 
                 position: 'relative',
                 zIndex: 10,
@@ -955,32 +955,27 @@ export default function Home() {
                 backgroundColor: 'rgba(255,255,255,0.02)'
             }}>
                 <div style={{ maxWidth: '1200px', margin: '0 auto', textAlign: 'center' }}>
-                    <p style={{ color: '#a855f7', fontSize: isMobile ? '12px' : '14px', fontWeight: '600', letterSpacing: '2px', marginBottom: '16px' }}>TRACTION</p>
-                    <h2 style={{ fontSize: isMobile ? '26px' : isTablet ? '32px' : '40px', fontWeight: '300', color: 'white', letterSpacing: isMobile ? '-1px' : '-2px', marginBottom: '24px' }}>Proven product-market fit in lending</h2>
-                    <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: isMobile ? '15px' : '18px', marginBottom: isMobile ? '40px' : '60px', maxWidth: '600px', margin: isMobile ? '0 auto 40px' : '0 auto 60px' }}>
-                        15+ NBFC and DSA partners. ₹50L+ monthly GMV influenced. 40% month-over-month growth. These aren't projections—these are live results.
+                    <p style={{ color: '#a855f7', fontSize: isMobile ? '12px' : '14px', fontWeight: '600', letterSpacing: '2px', marginBottom: '16px' }}>EARLY ACCESS PROGRAM</p>
+                    <h2 style={{ fontSize: isMobile ? '26px' : isTablet ? '32px' : '40px', fontWeight: '300', color: 'white', letterSpacing: isMobile ? '-1px' : '-2px', marginBottom: '24px' }}>Be among the first to transform your lending sales</h2>
+                    <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: isMobile ? '15px' : '18px', marginBottom: isMobile ? '40px' : '60px', maxWidth: '700px', margin: isMobile ? '0 auto 40px' : '0 auto 60px' }}>
+                        Join our founding partners program. Get exclusive pricing, white-glove onboarding, and direct access to our founding team.
                     </p>
                     
-                    <div style={{ display: 'grid', gridTemplateColumns: isMobile ? 'repeat(2, 1fr)' : 'repeat(4, 1fr)', gap: isMobile ? '12px' : '32px' }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', gap: isMobile ? '12px' : '32px' }}>
                         <div style={{ padding: isMobile ? '20px 12px' : '32px', backgroundColor: 'rgba(168, 85, 247, 0.1)', borderRadius: isMobile ? '12px' : '16px', border: '1px solid rgba(168, 85, 247, 0.2)' }}>
-                            <TrendingUp style={{ width: isMobile ? '24px' : '32px', height: isMobile ? '24px' : '32px', color: '#a855f7', marginBottom: isMobile ? '8px' : '16px' }} />
-                            <div style={{ fontSize: isMobile ? '28px' : '40px', fontWeight: '700', color: 'white', marginBottom: '8px' }}>3x</div>
-                            <div style={{ color: 'rgba(255,255,255,0.6)', fontSize: isMobile ? '12px' : '14px' }}>Conversion Lift</div>
+                            <Zap style={{ width: isMobile ? '24px' : '32px', height: isMobile ? '24px' : '32px', color: '#a855f7', marginBottom: isMobile ? '8px' : '16px' }} />
+                            <div style={{ fontSize: isMobile ? '20px' : '24px', fontWeight: '600', color: 'white', marginBottom: '8px' }}>Founding Partner Pricing</div>
+                            <div style={{ color: 'rgba(255,255,255,0.6)', fontSize: isMobile ? '12px' : '14px' }}>Lock in exclusive rates for life</div>
                         </div>
                         <div style={{ padding: isMobile ? '20px 12px' : '32px', backgroundColor: 'rgba(34, 197, 94, 0.1)', borderRadius: isMobile ? '12px' : '16px', border: '1px solid rgba(34, 197, 94, 0.2)' }}>
                             <Target style={{ width: isMobile ? '24px' : '32px', height: isMobile ? '24px' : '32px', color: '#22c55e', marginBottom: isMobile ? '8px' : '16px' }} />
-                            <div style={{ fontSize: isMobile ? '28px' : '40px', fontWeight: '700', color: 'white', marginBottom: '8px' }}>15+</div>
-                            <div style={{ color: 'rgba(255,255,255,0.6)', fontSize: isMobile ? '12px' : '14px' }}>Live Partners</div>
+                            <div style={{ fontSize: isMobile ? '20px' : '24px', fontWeight: '600', color: 'white', marginBottom: '8px' }}>White-Glove Onboarding</div>
+                            <div style={{ color: 'rgba(255,255,255,0.6)', fontSize: isMobile ? '12px' : '14px' }}>Dedicated team to ensure success</div>
                         </div>
                         <div style={{ padding: isMobile ? '20px 12px' : '32px', backgroundColor: 'rgba(59, 130, 246, 0.1)', borderRadius: isMobile ? '12px' : '16px', border: '1px solid rgba(59, 130, 246, 0.2)' }}>
                             <Users style={{ width: isMobile ? '24px' : '32px', height: isMobile ? '24px' : '32px', color: '#3b82f6', marginBottom: isMobile ? '8px' : '16px' }} />
-                            <div style={{ fontSize: isMobile ? '28px' : '40px', fontWeight: '700', color: 'white', marginBottom: '8px' }}>₹50L+</div>
-                            <div style={{ color: 'rgba(255,255,255,0.6)', fontSize: isMobile ? '12px' : '14px' }}>Monthly GMV</div>
-                        </div>
-                        <div style={{ padding: isMobile ? '20px 12px' : '32px', backgroundColor: 'rgba(249, 115, 22, 0.1)', borderRadius: isMobile ? '12px' : '16px', border: '1px solid rgba(249, 115, 22, 0.2)' }}>
-                            <Zap style={{ width: isMobile ? '24px' : '32px', height: isMobile ? '24px' : '32px', color: '#f97316', marginBottom: isMobile ? '8px' : '16px' }} />
-                            <div style={{ fontSize: isMobile ? '28px' : '40px', fontWeight: '700', color: 'white', marginBottom: '8px' }}>40%</div>
-                            <div style={{ color: 'rgba(255,255,255,0.6)', fontSize: isMobile ? '12px' : '14px' }}>MoM Growth</div>
+                            <div style={{ fontSize: isMobile ? '20px' : '24px', fontWeight: '600', color: 'white', marginBottom: '8px' }}>Shape the Product</div>
+                            <div style={{ color: 'rgba(255,255,255,0.6)', fontSize: isMobile ? '12px' : '14px' }}>Direct input on roadmap & features</div>
                         </div>
                     </div>
                 </div>
@@ -994,10 +989,10 @@ export default function Home() {
                 textAlign: 'center'
             }}>
                 <h2 style={{ fontSize: isMobile ? '28px' : isTablet ? '40px' : '56px', fontWeight: '300', color: 'white', letterSpacing: isMobile ? '-1px' : '-2px', marginBottom: '24px', padding: isMobile ? '0 8px' : '0' }}>
-                    Stop losing leads to slow follow-up
+                    Ready to 3x your conversions?
                 </h2>
                 <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: isMobile ? '15px' : '20px', marginBottom: isMobile ? '32px' : '48px', maxWidth: '650px', margin: isMobile ? '0 auto 32px' : '0 auto 48px', padding: isMobile ? '0 8px' : '0' }}>
-                    Join 15+ NBFCs and DSAs already using Talkrix to 3x conversions. Go live in 48 hours. Pay only for results.
+                    Join our early access program. Limited spots available. Be among the first lending teams to leverage AI sales automation.
                 </p>
                 <button 
                     onClick={() => {
