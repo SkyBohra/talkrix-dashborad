@@ -139,6 +139,7 @@ export default function Home() {
                     {isDesktop && (
                         <div style={{ display: 'flex', alignItems: 'center', gap: '32px' }}>
                             <NavLink text="FEATURES" href="#features" />
+                            <NavLink text="TRY DEMO" href="/demo" hasArrow />
                             <NavLink text="DOCS" href="/docs" hasArrow />
                             <NavLink text="RESOURCES" href="/resources" />
                             <NavLink text="CAREERS" href="/careers" />
@@ -146,39 +147,81 @@ export default function Home() {
                     )}
                 </div>
 
-                {/* Desktop CTA Button */}
+                {/* Desktop CTA Buttons */}
                 {!isMobile && (
-                    <button 
-                        onClick={() => {
-                            const productsSection = document.getElementById('products');
-                            if (productsSection) {
-                                productsSection.scrollIntoView({ behavior: 'smooth' });
-                            }
-                        }}
-                        style={{ 
-                            background: 'linear-gradient(135deg, #a855f7 0%, #6366f1 100%)', 
-                            color: 'white', 
-                            border: 'none',
-                            borderRadius: '50px',
-                            padding: isTablet ? '12px 20px' : '14px 28px',
-                            cursor: 'pointer',
-                            fontSize: '13px',
-                            fontWeight: '600',
-                            letterSpacing: '0.5px',
-                            transition: 'transform 0.2s ease, box-shadow 0.2s ease',
-                            boxShadow: '0 4px 20px rgba(168, 85, 247, 0.3)'
-                        }}
-                        onMouseEnter={(e) => {
-                            e.currentTarget.style.transform = 'translateY(-2px)';
-                            e.currentTarget.style.boxShadow = '0 6px 24px rgba(168, 85, 247, 0.4)';
-                        }}
-                        onMouseLeave={(e) => {
-                            e.currentTarget.style.transform = 'translateY(0)';
-                            e.currentTarget.style.boxShadow = '0 4px 20px rgba(168, 85, 247, 0.3)';
-                        }}
-                    >
-                        GET STARTED
-                    </button>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                        <button 
+                            onClick={() => router.push('/demo')}
+                            style={{ 
+                                background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(139, 92, 246, 0.2) 100%)', 
+                                color: 'white', 
+                                border: '1px solid rgba(139, 92, 246, 0.4)',
+                                borderRadius: '50px',
+                                padding: isTablet ? '10px 16px' : '12px 22px',
+                                cursor: 'pointer',
+                                fontSize: '13px',
+                                fontWeight: '600',
+                                letterSpacing: '0.5px',
+                                transition: 'all 0.2s ease',
+                                boxShadow: '0 0 15px rgba(139, 92, 246, 0.15)',
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '8px'
+                            }}
+                            onMouseEnter={(e) => {
+                                e.currentTarget.style.background = 'linear-gradient(135deg, rgba(99, 102, 241, 0.3) 0%, rgba(139, 92, 246, 0.3) 100%)';
+                                e.currentTarget.style.borderColor = 'rgba(139, 92, 246, 0.6)';
+                                e.currentTarget.style.boxShadow = '0 0 25px rgba(139, 92, 246, 0.25)';
+                            }}
+                            onMouseLeave={(e) => {
+                                e.currentTarget.style.background = 'linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(139, 92, 246, 0.2) 100%)';
+                                e.currentTarget.style.borderColor = 'rgba(139, 92, 246, 0.4)';
+                                e.currentTarget.style.boxShadow = '0 0 15px rgba(139, 92, 246, 0.15)';
+                            }}
+                        >
+                            <Mic style={{ width: '16px', height: '16px' }} />
+                            LIVE DEMO
+                            <span style={{ 
+                                width: '6px', 
+                                height: '6px', 
+                                borderRadius: '50%', 
+                                background: '#22c55e', 
+                                boxShadow: '0 0 8px #22c55e',
+                                animation: 'pulse 2s infinite'
+                            }} />
+                        </button>
+                        <button 
+                            onClick={() => {
+                                const productsSection = document.getElementById('products');
+                                if (productsSection) {
+                                    productsSection.scrollIntoView({ behavior: 'smooth' });
+                                }
+                            }}
+                            style={{ 
+                                background: 'linear-gradient(135deg, #a855f7 0%, #6366f1 100%)', 
+                                color: 'white', 
+                                border: 'none',
+                                borderRadius: '50px',
+                                padding: isTablet ? '12px 20px' : '14px 28px',
+                                cursor: 'pointer',
+                                fontSize: '13px',
+                                fontWeight: '600',
+                                letterSpacing: '0.5px',
+                                transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+                                boxShadow: '0 4px 20px rgba(168, 85, 247, 0.3)'
+                            }}
+                            onMouseEnter={(e) => {
+                                e.currentTarget.style.transform = 'translateY(-2px)';
+                                e.currentTarget.style.boxShadow = '0 6px 24px rgba(168, 85, 247, 0.4)';
+                            }}
+                            onMouseLeave={(e) => {
+                                e.currentTarget.style.transform = 'translateY(0)';
+                                e.currentTarget.style.boxShadow = '0 4px 20px rgba(168, 85, 247, 0.3)';
+                            }}
+                        >
+                            GET STARTED
+                        </button>
+                    </div>
                 )}
 
                 {/* Mobile Menu Button */}
@@ -218,6 +261,7 @@ export default function Home() {
                     gap: '8px'
                 }}>
                     <MobileNavLink text="FEATURES" href="#features" onClick={() => setMobileMenuOpen(false)} />
+                    <MobileNavLink text="TRY DEMO" href="/demo" onClick={() => setMobileMenuOpen(false)} />
                     <MobileNavLink text="DOCS" href="/docs" onClick={() => setMobileMenuOpen(false)} />
                     <MobileNavLink text="RESOURCES" href="/resources" onClick={() => setMobileMenuOpen(false)} />
                     <MobileNavLink text="CAREERS" href="/careers" onClick={() => setMobileMenuOpen(false)} />
@@ -361,16 +405,16 @@ export default function Home() {
                     </button>
 
                     <button 
-                        onClick={() => router.push('/docs')}
+                        onClick={() => router.push('/demo')}
                         style={{ 
                             height: isMobile ? '52px' : '60px', 
                             width: isMobile ? '100%' : 'auto',
                             borderRadius: '50px', 
-                            background: 'rgba(255,255,255,0.08)', 
+                            background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(139, 92, 246, 0.2) 100%)', 
                             color: 'white', 
                             fontWeight: '600',
                             fontSize: isMobile ? '13px' : '14px',
-                            border: '1px solid rgba(255,255,255,0.2)',
+                            border: '1px solid rgba(139, 92, 246, 0.4)',
                             cursor: 'pointer',
                             display: 'flex',
                             alignItems: 'center',
@@ -378,19 +422,30 @@ export default function Home() {
                             gap: '12px',
                             padding: isMobile ? '0 32px' : '0 40px',
                             letterSpacing: '1px',
-                            transition: 'all 0.2s ease'
+                            transition: 'all 0.2s ease',
+                            boxShadow: '0 0 20px rgba(139, 92, 246, 0.2)'
                         }}
                         onMouseEnter={(e) => {
-                            e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.12)';
-                            e.currentTarget.style.borderColor = 'rgba(255,255,255,0.3)';
+                            e.currentTarget.style.background = 'linear-gradient(135deg, rgba(99, 102, 241, 0.3) 0%, rgba(139, 92, 246, 0.3) 100%)';
+                            e.currentTarget.style.borderColor = 'rgba(139, 92, 246, 0.6)';
+                            e.currentTarget.style.boxShadow = '0 0 30px rgba(139, 92, 246, 0.3)';
                         }}
                         onMouseLeave={(e) => {
-                            e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.08)';
-                            e.currentTarget.style.borderColor = 'rgba(255,255,255,0.2)';
+                            e.currentTarget.style.background = 'linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(139, 92, 246, 0.2) 100%)';
+                            e.currentTarget.style.borderColor = 'rgba(139, 92, 246, 0.4)';
+                            e.currentTarget.style.boxShadow = '0 0 20px rgba(139, 92, 246, 0.2)';
                         }}
                     >
-                        READ THE DOCS
-                        <Sparkles style={{ width: '18px', height: '18px', opacity: 0.6 }} />
+                        <Mic style={{ width: '18px', height: '18px' }} />
+                        EXPERIENCE LIVE AI
+                        <span style={{ 
+                            width: '8px', 
+                            height: '8px', 
+                            borderRadius: '50%', 
+                            background: '#22c55e', 
+                            boxShadow: '0 0 10px #22c55e',
+                            animation: 'pulse 2s infinite'
+                        }} />
                     </button>
                 </div>
 
