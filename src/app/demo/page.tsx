@@ -326,6 +326,13 @@ export default function DemoPage() {
         }
     };
 
+    const messagesEndRef = useRef<HTMLDivElement>(null);
+    
+    // Auto-scroll to bottom when new messages arrive
+    useEffect(() => {
+        messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }, [messages]);
+
     return (
         <div className="demo-page">
             <div className="bg-gradient" />
@@ -333,9 +340,16 @@ export default function DemoPage() {
             
             <header className="demo-header">
                 <Link href="/" className="back-link">
-                    <ArrowLeft size={20} />
+                    <div className="back-icon">
+                        <ArrowLeft size={18} />
+                    </div>
                     <span>Back to Home</span>
                 </Link>
+                
+                <div className="logo-section">
+                    <div className="logo-glow"></div>
+                    <span className="logo-text">Talkrix</span>
+                </div>
                 
                 <div className="header-badge">
                     <Sparkles size={16} />
@@ -347,102 +361,289 @@ export default function DemoPage() {
             </header>
 
             <main className="demo-main">
-                <div className="demo-content">
-                    <div className="title-section">
-                        <h1 className="demo-title">Experience <span className="gradient-text">AI Voice</span></h1>
-                        <p className="demo-subtitle">Talk to our AI assistant in real-time</p>
-                    </div>
+                {/* Left Panel - Voice Interface */}
+                <div className="left-panel">
+                    <div className="orb-container">
+                        <div className="title-section">
+                            <h1 className="demo-title">Experience <span className="gradient-text">AI Voice</span></h1>
+                            <p className="demo-subtitle">Talk to our AI assistant in real-time</p>
+                        </div>
 
-                    <div className="orb-section" onClick={() => connectionState === 'idle' && startDemo()}>
-                        <VoiceOrb state={connectionState} audioLevel={audioLevel} />
-                        
-                        <p className={`state-message ${connectionState === 'error' ? 'error' : ''}`}>
-                            {connectionState === 'error' && <AlertCircle size={16} />}
-                            {getStateMessage()}
-                        </p>
-                        
-                        <div className="controls">
-                            {connectionState === 'idle' || connectionState === 'ended' ? (
-                                <button className="start-btn" onClick={startDemo}>
-                                    <Phone size={20} />
-                                    <span>{connectionState === 'ended' ? 'Start New Call' : 'Start Conversation'}</span>
-                                </button>
-                            ) : connectionState === 'error' ? (
-                                <button className="start-btn retry" onClick={startDemo}>
-                                    <Phone size={20} />
-                                    <span>Try Again</span>
-                                </button>
-                            ) : (
-                                <div className="active-controls">
-                                    <button className={`control-btn ${isMuted ? 'active' : ''}`} onClick={toggleMute}>
-                                        {isMuted ? <MicOff size={20} /> : <Mic size={20} />}
+                        <div className="orb-section" onClick={() => connectionState === 'idle' && startDemo()}>
+                            <VoiceOrb state={connectionState} audioLevel={audioLevel} />
+                            
+                            <p className={`state-message ${connectionState === 'error' ? 'error' : ''}`}>
+                                {connectionState === 'error' && <AlertCircle size={16} />}
+                                {getStateMessage()}
+                            </p>
+                            
+                            <div className="controls">
+                                {connectionState === 'idle' || connectionState === 'ended' ? (
+                                    <button className="start-btn" onClick={startDemo}>
+                                        <Phone size={20} />
+                                        <span>{connectionState === 'ended' ? 'Start New Call' : 'Start Conversation'}</span>
                                     </button>
-                                    <button className="end-btn" onClick={stopDemo}>
-                                        <PhoneOff size={20} />
+                                ) : connectionState === 'error' ? (
+                                    <button className="start-btn retry" onClick={startDemo}>
+                                        <Phone size={20} />
+                                        <span>Try Again</span>
                                     </button>
-                                    <button className={`control-btn ${isSpeakerOff ? 'active' : ''}`} onClick={() => setIsSpeakerOff(!isSpeakerOff)}>
-                                        {isSpeakerOff ? <VolumeX size={20} /> : <Volume2 size={20} />}
-                                    </button>
+                                ) : (
+                                    <div className="active-controls">
+                                        <button className={`control-btn ${isMuted ? 'active' : ''}`} onClick={toggleMute}>
+                                            {isMuted ? <MicOff size={20} /> : <Mic size={20} />}
+                                        </button>
+                                        <button className="end-btn" onClick={stopDemo}>
+                                            <PhoneOff size={20} />
+                                        </button>
+                                        <button className={`control-btn ${isSpeakerOff ? 'active' : ''}`} onClick={() => setIsSpeakerOff(!isSpeakerOff)}>
+                                            {isSpeakerOff ? <VolumeX size={20} /> : <Volume2 size={20} />}
+                                        </button>
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+
+                        {isMobile && (
+                            <div className="features-grid">
+                                <div className="feature-card">
+                                    <Zap className="feature-icon" />
+                                    <h3>Real-time AI</h3>
+                                    <p>Sub-100ms latency</p>
+                                </div>
+                                <div className="feature-card">
+                                    <Globe className="feature-icon" />
+                                    <h3>Natural Voice</h3>
+                                    <p>Human-like speech</p>
+                                </div>
+                                <div className="feature-card">
+                                    <MessageCircle className="feature-icon" />
+                                    <h3>Context Aware</h3>
+                                    <p>Smart responses</p>
+                                </div>
+                            </div>
+                        )}
+                    </div>
+                </div>
+
+                {/* Right Panel - Conversation */}
+                <div className="right-panel">
+                    <div className="conversation-panel">
+                        <div className="conversation-header">
+                            <div className="header-left">
+                                <MessageCircle size={20} />
+                                <span>Live Conversation</span>
+                            </div>
+                            {connectionState !== 'idle' && connectionState !== 'error' && (
+                                <div className="live-indicator">
+                                    <span className="live-dot"></span>
+                                    <span>Live</span>
                                 </div>
                             )}
                         </div>
-                    </div>
-
-                    {messages.length > 0 && (
-                        <div className="conversation-area">
-                            <div className="conversation-header">
-                                <MessageCircle size={18} />
-                                <span>Conversation</span>
-                            </div>
-                            <div className="messages-container">
-                                {messages.map((msg, idx) => (
-                                    <ConversationBubble key={idx} message={msg.text} isAI={msg.isAI} isStreaming={msg.isStreaming} />
-                                ))}
-                            </div>
-                        </div>
-                    )}
-
-                    <div className="features-grid">
-                        <div className="feature-card">
-                            <Zap className="feature-icon" />
-                            <h3>Real-time AI</h3>
-                            <p>Sub-100ms response latency</p>
-                        </div>
-                        <div className="feature-card">
-                            <Globe className="feature-icon" />
-                            <h3>Natural Voice</h3>
-                            <p>Human-like conversations</p>
-                        </div>
-                        <div className="feature-card">
-                            <MessageCircle className="feature-icon" />
-                            <h3>Context Aware</h3>
-                            <p>Understands your needs</p>
+                        
+                        <div className="messages-container">
+                            {messages.length === 0 ? (
+                                <div className="empty-state">
+                                    <div className="empty-icon">
+                                        <MessageCircle size={48} />
+                                    </div>
+                                    <h3>No conversation yet</h3>
+                                    <p>Start a conversation to see the live transcript here</p>
+                                    {!isMobile && (
+                                        <div className="features-inline">
+                                            <div className="feature-item">
+                                                <Zap size={16} />
+                                                <span>Real-time transcription</span>
+                                            </div>
+                                            <div className="feature-item">
+                                                <Globe size={16} />
+                                                <span>Natural AI responses</span>
+                                            </div>
+                                            <div className="feature-item">
+                                                <Sparkles size={16} />
+                                                <span>Context-aware AI</span>
+                                            </div>
+                                        </div>
+                                    )}
+                                </div>
+                            ) : (
+                                <>
+                                    {messages.map((msg, idx) => (
+                                        <ConversationBubble key={idx} message={msg.text} isAI={msg.isAI} isStreaming={msg.isStreaming} />
+                                    ))}
+                                    <div ref={messagesEndRef} />
+                                </>
+                            )}
                         </div>
                     </div>
                 </div>
             </main>
 
             <style jsx>{`
-                .demo-page { min-height: 100vh; position: relative; overflow-x: hidden; background: linear-gradient(135deg, #0a0a1a 0%, #0f0f2d 50%, #1a1a3e 100%); }
-                .bg-gradient { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at 20% 20%, rgba(99, 102, 241, 0.15) 0%, transparent 50%), radial-gradient(ellipse at 80% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 50%), radial-gradient(ellipse at 50% 50%, rgba(59, 130, 246, 0.08) 0%, transparent 70%); pointer-events: none; }
-                .bg-dots { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px); background-size: 30px 30px; pointer-events: none; }
+                .demo-page { min-height: 100vh; position: relative; overflow-x: hidden; background: linear-gradient(135deg, #050510 0%, #0a0a20 25%, #0f0f2d 50%, #12123a 75%, #1a1a4e 100%); }
+                .bg-gradient { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at 20% 10%, rgba(99, 102, 241, 0.2) 0%, transparent 40%), radial-gradient(ellipse at 80% 90%, rgba(139, 92, 246, 0.15) 0%, transparent 40%), radial-gradient(ellipse at 50% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 60%), radial-gradient(ellipse at 10% 80%, rgba(236, 72, 153, 0.08) 0%, transparent 40%); pointer-events: none; animation: gradient-shift 20s ease-in-out infinite; }
+                @keyframes gradient-shift { 0%, 100% { opacity: 1; } 50% { opacity: 0.8; } }
+                .bg-dots { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px); background-size: 40px 40px; pointer-events: none; }
+                .bg-dots::after { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(180deg, transparent 0%, rgba(5, 5, 16, 0.3) 100%); pointer-events: none; }
                 .demo-header { display: flex; justify-content: space-between; align-items: center; padding: 20px ${isMobile ? '16px' : '48px'}; position: relative; z-index: 10; }
-                .back-link { display: flex; align-items: center; gap: 8px; color: rgba(255, 255, 255, 0.7); text-decoration: none; font-size: 14px; transition: color 0.2s; }
-                .back-link:hover { color: white; }
-                .header-badge { display: flex; align-items: center; gap: 8px; padding: 8px 16px; background: rgba(99, 102, 241, 0.2); border: 1px solid rgba(99, 102, 241, 0.3); border-radius: 20px; color: #a5b4fc; font-size: 13px; font-weight: 500; }
-                .duration { margin-left: 8px; padding-left: 8px; border-left: 1px solid rgba(255,255,255,0.2); font-family: monospace; }
-                .demo-main { display: flex; justify-content: center; padding: ${isMobile ? '20px 16px 60px' : '40px 48px 80px'}; }
-                .demo-content { max-width: 800px; width: 100%; display: flex; flex-direction: column; align-items: center; }
-                .title-section { text-align: center; margin-bottom: 50px; }
-                .demo-title { font-size: ${isMobile ? '2.5rem' : '3.5rem'}; font-weight: 700; color: white; margin-bottom: 16px; letter-spacing: -0.02em; }
+                .back-link { display: flex; align-items: center; gap: 10px; color: rgba(255, 255, 255, 0.8); text-decoration: none; font-size: 14px; font-weight: 500; transition: all 0.3s ease; padding: 10px 16px 10px 10px; border-radius: 12px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); }
+                .back-link:hover { color: white; background: rgba(99, 102, 241, 0.2); border-color: rgba(99, 102, 241, 0.4); transform: translateX(-4px); }
+                .back-icon { width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(99, 102, 241, 0.3), rgba(139, 92, 246, 0.3)); border-radius: 8px; transition: all 0.3s ease; }
+                .back-link:hover .back-icon { background: linear-gradient(135deg, rgba(99, 102, 241, 0.5), rgba(139, 92, 246, 0.5)); }
+                .logo-section { display: ${isMobile ? 'none' : 'flex'}; align-items: center; gap: 8px; position: relative; }
+                .logo-glow { position: absolute; width: 40px; height: 40px; background: radial-gradient(circle, rgba(99, 102, 241, 0.4) 0%, transparent 70%); filter: blur(10px); animation: logo-pulse 3s ease-in-out infinite; }
+                .logo-text { font-size: 22px; font-weight: 700; background: linear-gradient(135deg, #818cf8, #a78bfa, #c084fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; letter-spacing: -0.5px; }
+                .header-badge { display: flex; align-items: center; gap: 8px; padding: 10px 18px; background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(139, 92, 246, 0.15)); border: 1px solid rgba(99, 102, 241, 0.3); border-radius: 24px; color: #a5b4fc; font-size: 13px; font-weight: 500; box-shadow: 0 4px 15px rgba(99, 102, 241, 0.15); }
+                .duration { margin-left: 8px; padding-left: 8px; border-left: 1px solid rgba(255,255,255,0.2); font-family: monospace; color: #c4b5fd; }
+                @keyframes logo-pulse { 0%, 100% { opacity: 0.5; transform: scale(1); } 50% { opacity: 0.8; transform: scale(1.2); } }
+                
+                .demo-main { 
+                    display: flex; 
+                    flex-direction: ${isMobile ? 'column' : 'row'}; 
+                    gap: ${isMobile ? '24px' : '40px'}; 
+                    padding: ${isMobile ? '20px 16px 60px' : '20px 48px 40px'}; 
+                    height: ${isMobile ? 'auto' : 'calc(100vh - 80px)'};
+                    max-width: 1600px;
+                    margin: 0 auto;
+                }
+                
+                .left-panel { 
+                    flex: ${isMobile ? '1' : '0 0 50%'}; 
+                    display: flex; 
+                    align-items: center; 
+                    justify-content: center; 
+                }
+                
+                .orb-container { 
+                    display: flex; 
+                    flex-direction: column; 
+                    align-items: center; 
+                    width: 100%; 
+                    max-width: 500px;
+                }
+                
+                .right-panel { 
+                    flex: ${isMobile ? '1' : '0 0 50%'}; 
+                    display: flex; 
+                    min-height: ${isMobile ? '400px' : 'auto'};
+                }
+                
+                .conversation-panel { 
+                    flex: 1; 
+                    display: flex; 
+                    flex-direction: column; 
+                    background: linear-gradient(180deg, rgba(15, 15, 35, 0.8) 0%, rgba(10, 10, 26, 0.9) 100%); 
+                    border: 1px solid rgba(99, 102, 241, 0.2); 
+                    border-radius: 24px; 
+                    overflow: hidden;
+                    backdrop-filter: blur(20px);
+                    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+                    position: relative;
+                }
+                .conversation-panel::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    height: 1px;
+                    background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.5), transparent);
+                }
+                
+                .conversation-header { 
+                    display: flex; 
+                    align-items: center; 
+                    justify-content: space-between;
+                    gap: 12px; 
+                    padding: 20px 24px; 
+                    background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(139, 92, 246, 0.1));
+                    border-bottom: 1px solid rgba(99, 102, 241, 0.2); 
+                    position: relative;
+                }
+                .conversation-header::after {
+                    content: '';
+                    position: absolute;
+                    bottom: 0;
+                    left: 24px;
+                    right: 24px;
+                    height: 1px;
+                    background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.3), transparent);
+                }
+                
+                .header-left { display: flex; align-items: center; gap: 12px; color: white; font-size: 16px; font-weight: 600; }
+                .header-left svg { color: #818cf8; }
+                
+                .live-indicator { display: flex; align-items: center; gap: 8px; padding: 8px 14px; background: linear-gradient(135deg, rgba(34, 197, 94, 0.25), rgba(16, 185, 129, 0.15)); border: 1px solid rgba(34, 197, 94, 0.4); border-radius: 20px; color: #4ade80; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; box-shadow: 0 0 20px rgba(34, 197, 94, 0.2); }
+                .live-dot { width: 8px; height: 8px; background: #4ade80; border-radius: 50%; animation: pulse-live 1.5s ease-in-out infinite; box-shadow: 0 0 10px #4ade80; }
+                
+                .messages-container { 
+                    flex: 1; 
+                    display: flex; 
+                    flex-direction: column; 
+                    padding: 24px; 
+                    overflow-y: auto; 
+                    gap: 4px;
+                }
+                
+                .empty-state { 
+                    flex: 1; 
+                    display: flex; 
+                    flex-direction: column; 
+                    align-items: center; 
+                    justify-content: center; 
+                    text-align: center; 
+                    padding: 40px 20px;
+                }
+                
+                .empty-icon { 
+                    width: 100px; 
+                    height: 100px; 
+                    display: flex; 
+                    align-items: center; 
+                    justify-content: center; 
+                    background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(139, 92, 246, 0.15)); 
+                    border-radius: 50%; 
+                    margin-bottom: 24px; 
+                    color: #a5b4fc;
+                    border: 1px solid rgba(99, 102, 241, 0.3);
+                    box-shadow: 0 0 40px rgba(99, 102, 241, 0.2);
+                    animation: float 4s ease-in-out infinite;
+                }
+                @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+                
+                .empty-state h3 { font-size: 18px; color: white; margin-bottom: 8px; font-weight: 600; }
+                .empty-state p { font-size: 14px; color: rgba(255, 255, 255, 0.5); max-width: 280px; }
+                
+                .features-inline { 
+                    display: flex; 
+                    flex-direction: column; 
+                    gap: 12px; 
+                    margin-top: 32px;
+                }
+                
+                .feature-item { 
+                    display: flex; 
+                    align-items: center; 
+                    gap: 10px; 
+                    color: rgba(255, 255, 255, 0.6); 
+                    font-size: 14px;
+                }
+                
+                .feature-item svg { color: #818cf8; }
+
+                .title-section { text-align: center; margin-bottom: 30px; }
+                .demo-title { font-size: ${isMobile ? '2rem' : '2.5rem'}; font-weight: 700; color: white; margin-bottom: 12px; letter-spacing: -0.02em; }
                 .gradient-text { background: linear-gradient(135deg, #818cf8, #a78bfa, #c084fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-                .demo-subtitle { font-size: ${isMobile ? '1rem' : '1.2rem'}; color: rgba(255, 255, 255, 0.6); max-width: 500px; margin: 0 auto; }
-                .orb-section { display: flex; flex-direction: column; align-items: center; margin-bottom: 50px; cursor: ${connectionState === 'idle' ? 'pointer' : 'default'}; }
-                .state-message { margin-top: 70px; font-size: 16px; color: rgba(255, 255, 255, 0.7); min-height: 24px; display: flex; align-items: center; gap: 8px; }
+                .demo-subtitle { font-size: ${isMobile ? '0.9rem' : '1rem'}; color: rgba(255, 255, 255, 0.6); max-width: 400px; margin: 0 auto; }
+                .orb-section { display: flex; flex-direction: column; align-items: center; margin-bottom: 30px; cursor: ${connectionState === 'idle' ? 'pointer' : 'default'}; }
+                .state-message { margin-top: 60px; font-size: 15px; color: rgba(255, 255, 255, 0.7); min-height: 24px; display: flex; align-items: center; gap: 8px; }
                 .state-message.error { color: #fca5a5; }
-                .controls { margin-top: 30px; }
-                .start-btn { display: flex; align-items: center; gap: 10px; padding: 16px 32px; background: linear-gradient(135deg, #6366f1, #8b5cf6); border: none; border-radius: 50px; color: white; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4); }
-                .start-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(99, 102, 241, 0.5); }
+                .controls { margin-top: 24px; }
+                .start-btn { display: flex; align-items: center; gap: 12px; padding: 16px 32px; background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a78bfa 100%); border: none; border-radius: 50px; color: white; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4), 0 0 0 0 rgba(99, 102, 241, 0.4); position: relative; overflow: hidden; }
+                .start-btn::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent); transition: left 0.5s ease; }
+                .start-btn:hover::before { left: 100%; }
+                .start-btn:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 12px 35px rgba(99, 102, 241, 0.5), 0 0 0 4px rgba(99, 102, 241, 0.15); }
                 .start-btn.retry { background: linear-gradient(135deg, #f59e0b, #d97706); box-shadow: 0 4px 20px rgba(245, 158, 11, 0.4); }
                 .active-controls { display: flex; align-items: center; gap: 16px; }
                 .control-btn { width: 50px; height: 50px; border-radius: 50%; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); color: white; cursor: pointer; transition: all 0.2s ease; display: flex; align-items: center; justify-content: center; }
@@ -450,15 +651,15 @@ export default function DemoPage() {
                 .control-btn.active { background: rgba(239, 68, 68, 0.2); border-color: rgba(239, 68, 68, 0.4); color: #fca5a5; }
                 .end-btn { width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #ef4444, #dc2626); border: none; color: white; cursor: pointer; transition: all 0.2s ease; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(239, 68, 68, 0.4); }
                 .end-btn:hover { transform: scale(1.05); }
-                .conversation-area { width: 100%; max-width: 600px; background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 20px; margin-bottom: 50px; }
-                .conversation-header { display: flex; align-items: center; gap: 8px; color: rgba(255, 255, 255, 0.6); font-size: 14px; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
-                .messages-container { display: flex; flex-direction: column; max-height: 300px; overflow-y: auto; }
-                .features-grid { display: grid; grid-template-columns: repeat(${isMobile ? '1' : '3'}, 1fr); gap: 20px; width: 100%; }
-                .feature-card { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 16px; padding: 24px; text-align: center; transition: all 0.3s ease; }
-                .feature-card:hover { background: rgba(255, 255, 255, 0.08); border-color: rgba(99, 102, 241, 0.3); transform: translateY(-4px); }
-                .feature-icon { width: 32px; height: 32px; color: #818cf8; margin-bottom: 12px; }
-                .feature-card h3 { font-size: 16px; font-weight: 600; color: white; margin-bottom: 8px; }
-                .feature-card p { font-size: 14px; color: rgba(255, 255, 255, 0.5); }
+                
+                .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; width: 100%; margin-top: 20px; }
+                .feature-card { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 16px 12px; text-align: center; transition: all 0.3s ease; }
+                .feature-card:hover { background: rgba(255, 255, 255, 0.08); border-color: rgba(99, 102, 241, 0.3); }
+                .feature-icon { width: 24px; height: 24px; color: #818cf8; margin-bottom: 8px; }
+                .feature-card h3 { font-size: 13px; font-weight: 600; color: white; margin-bottom: 4px; }
+                .feature-card p { font-size: 11px; color: rgba(255, 255, 255, 0.5); }
+                
+                @keyframes pulse-live { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.2); } }
             `}</style>
         </div>
     );
