@@ -459,7 +459,7 @@ export default function Home() {
                 }}>
                     <StatItem value="30s" label="Lead Response" isMobile={isMobile} />
                     <StatItem value="24/7" label="AI Availability" isMobile={isMobile} />
-                    <StatItem value="10+" label="Languages" isMobile={isMobile} />
+                    <StatItem value="50+" label="Languages" isMobile={isMobile} />
                     <StatItem value="48hr" label="Go Live Time" isMobile={isMobile} />
                 </div>
             </section>
@@ -481,7 +481,7 @@ export default function Home() {
                         alignItems: 'center' 
                     }}>
                         <div>
-                            <p style={{ color: '#ef4444', fontSize: isMobile ? '12px' : '14px', fontWeight: '600', letterSpacing: '2px', marginBottom: '16px' }}>THE $50B PROBLEM</p>
+                            <p style={{ color: '#ef4444', fontSize: isMobile ? '12px' : '14px', fontWeight: '600', letterSpacing: '2px', marginBottom: '16px' }}>THE $50M PROBLEM</p>
                             <h2 style={{ fontSize: isMobile ? '26px' : isTablet ? '30px' : '36px', fontWeight: '400', color: 'white', letterSpacing: '-1px', marginBottom: '24px', lineHeight: '1.3' }}>
                                 <span style={{ color: '#ef4444' }}>70% of loan leads go cold</span> before anyone picks up the phone.
                             </h2>
@@ -945,9 +945,9 @@ export default function Home() {
                             />
                         </div>
                         <h3 style={{ fontSize: isMobile ? '20px' : '24px', fontWeight: '600', color: 'white', marginBottom: '8px' }}>Satish Yadav</h3>
-                        <p style={{ color: '#a855f7', fontSize: isMobile ? '13px' : '14px', fontWeight: '600', marginBottom: '16px' }}>Founder & CTO</p>
+                        <p style={{ color: '#a855f7', fontSize: isMobile ? '13px' : '14px', fontWeight: '600', marginBottom: '16px' }}>Co-Founder & CTO</p>
                         <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: isMobile ? '13px' : '14px', lineHeight: '1.6', marginBottom: '20px' }}>
-                            10+ years building AI systems at scale. Ex-tech lead at top social commerce startups. Architected ML pipelines processing 50M+ events/day. Deep expertise in Voice AI, NLP, and real-time systems.
+                            9+ years building production-grade AI and backend systems at scale; ex-Founding Engineer at a YC-backed social commerce startup.Architected event-driven microservices and Voice AI platforms handling thousands of concurrent interactions, with deep expertise in Voice AI, NLP, RAG systems, and real-time distributed architectures.
                         </p>
                         <div style={{ display: 'flex', justifyContent: 'center', gap: '16px' }}>
                             <a href="https://www.linkedin.com/in/sateesh-bohra/" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)', transition: 'color 0.2s' }} onMouseEnter={(e) => e.currentTarget.style.color = '#a855f7'} onMouseLeave={(e) => e.currentTarget.style.color = 'rgba(255,255,255,0.5)'}>
@@ -991,7 +991,7 @@ export default function Home() {
                         <h3 style={{ fontSize: isMobile ? '20px' : '24px', fontWeight: '600', color: 'white', marginBottom: '8px' }}>Ravi Biyani</h3>
                         <p style={{ color: '#22c55e', fontSize: isMobile ? '13px' : '14px', fontWeight: '600', marginBottom: '16px' }}>Co-Founder & CEO</p>
                         <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: isMobile ? '13px' : '14px', lineHeight: '1.6', marginBottom: '20px' }}>
-                            Serial entrepreneur with exits. Scaled D2C brand to ₹100Cr+ ARR. Deep expertise in enterprise sales, GTM strategy, and building high-performance sales teams in lending.
+                            Operator with 6+ years of experience building and scaling VC-backed startups — drove 0→1200x growth ($20M+ GMV) leading product, GTM, finance, and fundraising from the Founder’s Office.Currently building voice-first Conversational AI at Talkrix; MBA with deep execution strength across AI product, analytics, and revenue-led growth.
                         </p>
                         <div style={{ display: 'flex', justifyContent: 'center', gap: '16px' }}>
                             <a href="https://www.linkedin.com/in/ravikumarbiyani/" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)', transition: 'color 0.2s' }} onMouseEnter={(e) => e.currentTarget.style.color = '#22c55e'} onMouseLeave={(e) => e.currentTarget.style.color = 'rgba(255,255,255,0.5)'}>
