@@ -141,8 +141,8 @@ export default function Home() {
                             <NavLink text="FEATURES" href="#features" />
                             <NavLink text="TRY DEMO" href="/demo" hasArrow />
                             <NavLink text="DOCS" href="/docs" hasArrow />
-                            <NavLink text="RESOURCES" href="/resources" />
-                            <NavLink text="CAREERS" href="/careers" />
+                            {/* <NavLink text="RESOURCES" href="/resources" /> */}
+                            {/* <NavLink text="CAREERS" href="/careers" /> */}
                         </div>
                     )}
                 </div>
@@ -263,8 +263,8 @@ export default function Home() {
                     <MobileNavLink text="FEATURES" href="#features" onClick={() => setMobileMenuOpen(false)} />
                     <MobileNavLink text="TRY DEMO" href="/demo" onClick={() => setMobileMenuOpen(false)} />
                     <MobileNavLink text="DOCS" href="/docs" onClick={() => setMobileMenuOpen(false)} />
-                    <MobileNavLink text="RESOURCES" href="/resources" onClick={() => setMobileMenuOpen(false)} />
-                    <MobileNavLink text="CAREERS" href="/careers" onClick={() => setMobileMenuOpen(false)} />
+                    {/* <MobileNavLink text="RESOURCES" href="/resources" onClick={() => setMobileMenuOpen(false)} /> */}
+                    {/* <MobileNavLink text="CAREERS" href="/careers" onClick={() => setMobileMenuOpen(false)} /> */}
                     <div style={{ marginTop: '16px', paddingTop: '16px', borderTop: '1px solid rgba(255,255,255,0.1)' }}>
                         <button 
                             onClick={() => {
@@ -947,7 +947,7 @@ export default function Home() {
                         <h3 style={{ fontSize: isMobile ? '20px' : '24px', fontWeight: '600', color: 'white', marginBottom: '8px' }}>Satish Yadav</h3>
                         <p style={{ color: '#a855f7', fontSize: isMobile ? '13px' : '14px', fontWeight: '600', marginBottom: '16px' }}>Co-Founder & CTO</p>
                         <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: isMobile ? '13px' : '14px', lineHeight: '1.6', marginBottom: '20px' }}>
-                            9+ years building production-grade AI and backend systems at scale; ex-Founding Engineer at a YC-backed social commerce startup.Architected event-driven microservices and Voice AI platforms handling thousands of concurrent interactions, with deep expertise in Voice AI, NLP, RAG systems, and real-time distributed architectures.
+                            9+ years building production-grade AI and backend systems at scale; ex-Founding Engineer at a YC-backed social commerce startup. Architected event-driven microservices and Voice AI platforms handling thousands of concurrent interactions, with deep expertise in Voice AI, NLP, RAG systems, and real-time distributed architectures.
                         </p>
                         <div style={{ display: 'flex', justifyContent: 'center', gap: '16px' }}>
                             <a href="https://www.linkedin.com/in/sateesh-bohra/" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)', transition: 'color 0.2s' }} onMouseEnter={(e) => e.currentTarget.style.color = '#a855f7'} onMouseLeave={(e) => e.currentTarget.style.color = 'rgba(255,255,255,0.5)'}>
@@ -981,17 +981,18 @@ export default function Home() {
                             margin: '0 auto 24px',
                             overflow: 'hidden',
                             border: '3px solid rgba(34, 197, 94, 0.5)',
-                            background: 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center'
+                            position: 'relative'
                         }}>
-                            <span style={{ fontSize: isMobile ? '36px' : '48px', color: 'white', fontWeight: '700' }}>RB</span>
+                            <img 
+                                src="/images/team/ravi.png" 
+                                alt="Ravi Biyani - Founder & CEO"
+                                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                            />
                         </div>
                         <h3 style={{ fontSize: isMobile ? '20px' : '24px', fontWeight: '600', color: 'white', marginBottom: '8px' }}>Ravi Biyani</h3>
                         <p style={{ color: '#22c55e', fontSize: isMobile ? '13px' : '14px', fontWeight: '600', marginBottom: '16px' }}>Co-Founder & CEO</p>
                         <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: isMobile ? '13px' : '14px', lineHeight: '1.6', marginBottom: '20px' }}>
-                            Operator with 6+ years of experience building and scaling VC-backed startups — drove 0→1200x growth ($20M+ GMV) leading product, GTM, finance, and fundraising from the Founder’s Office.Currently building voice-first Conversational AI at Talkrix; MBA with deep execution strength across AI product, analytics, and revenue-led growth.
+                            Operator with 6+ years of experience building and scaling VC-backed startups — drove 0→1200x growth ($20M+ GMV) leading product, GTM, finance, and fundraising from the Founder’s Office. Currently building voice-first Conversational AI at Talkrix; MBA with deep execution strength across AI product, analytics, and revenue-led growth.
                         </p>
                         <div style={{ display: 'flex', justifyContent: 'center', gap: '16px' }}>
                             <a href="https://www.linkedin.com/in/ravikumarbiyani/" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)', transition: 'color 0.2s' }} onMouseEnter={(e) => e.currentTarget.style.color = '#22c55e'} onMouseLeave={(e) => e.currentTarget.style.color = 'rgba(255,255,255,0.5)'}>
